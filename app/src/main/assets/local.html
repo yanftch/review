@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+        <title>
+            js调用java
+        </title>
+    </head>
+    
+    <body>
+        <p>
+            <xmp id="show">
+            </xmp>
+        </p>
+        <p>
+            <xmp id="init">
+            </xmp>
+        </p>
+        <p>
+            <input type="text" id="text1" value="username" />
+        </p>
+        <p>
+            <input type="text" id="text2" value="password" />
+        </p>
+        <p>
+            <input type="button" id="enter" value="发消息给Native" onclick="testClick();"
+            />
+        </p>
+        <p>
+            <input type="button" id="showInfoFromJS" value="showInfoFromJS" onclick="showInfoFromJS();"
+            />
+        </p>
+        <p>
+            <input type="button" id="enter1" value="调用Native方法" onclick="testClick1();"
+            />
+        </p>
+    </body>
+    <script>
+
+        // 此方法是提供给 Android 中调用的，传递一个字符串参数
+        function showInfoFromJava(message) {
+            document.getElementById("show").innerHTML = "data from java, data = " + message + " ,method = showInfoFromJava"
+        }
+
+         // 此方法是提供给 Android 中调用的，传递一个字符串参数，同时给 Android 回调一个字符串
+        function showInfoFromJava2(message) {
+            document.getElementById("show").innerHTML = "data from java, data = " + message + " ,method = showInfoFromJava"
+            return "message from JS."
+        }
+
+        // 此方法是 JS 来调用 Android 原生的某个方法
+        function showInfoFromJS() {
+            var msg = "message from JS."
+            window.channel_name.showInfoFromJs(msg)
+
+        }
+
+
+        function testClick() {
+            var str1 = document.getElementById("text1").value;
+            var str2 = document.getElementById("text2").value;
+
+            //send message to native
+            var data = {id: 1, content: "这是一个图片 <img src=\"a.png\"/> test\r\nhahaha"};
+            window.WebViewJavascriptBridge.send(
+                data
+                , function(responseData) {
+                    document.getElementById("show").innerHTML = "repsonseData from java, data = " + responseData
+                }
+            );
+
+        }
+
+        function testClick1() {
+            var str1 = document.getElementById("text1").value;
+            var str2 = document.getElementById("text2").value;
+
+            //call native method
+            window.WebViewJavascriptBridge.callHandler(
+                'submitFromWeb'
+                , {'param': '中文测试'}
+                , function(responseData) {
+                    document.getElementById("show").innerHTML = "send get responseData from java, data = " + responseData
+                }
+            );
+        }
+
+        function bridgeLog(logContent) {
+            document.getElementById("show").innerHTML = logContent;
+        }
+
+        function connectWebViewJavascriptBridge(callback) {
+            if (window.WebViewJavascriptBridge) {
+                callback(WebViewJavascriptBridge)
+            } else {
+                document.addEventListener(
+                    'WebViewJavascriptBridgeReady'
+                    , function() {
+                        callback(WebViewJavascriptBridge)
+                    },
+                    false
+                );
+            }
+        }
+
+        connectWebViewJavascriptBridge(function(bridge) {
+            bridge.init(function(message, responseCallback) {
+                console.log('JS got a message', message);
+                var data = {
+                    'Javascript Responds': '测试中文!'
+                };
+
+                if (responseCallback) {
+                    console.log('JS responding with', data);
+                    responseCallback(data);
+                }
+            });
+
+            // bridge.registerHandler("functionInJs", function(data, responseCallback) {
+            //     document.getElementById("show").innerHTML = ("data from Java: = " + data);
+            //     if (responseCallback) {
+            //         var responseData = "Javascript Says Right back aka!";
+            //         responseCallback(responseData);
+            //     }
+            // });
+            // const callback = (data, responseCallback) => {
+            //     document.getElementById("show").innerHTML = ("data from Java: = " + data);
+            //     if (responseCallback) {
+            //         var responseData = "Javascript Says Right back aka!";
+            //         responseCallback(responseData);
+            //     }
+            // }
+            // bridge.registerHandler("functionInJs", callback);
+            
+
+            const setData = (cb) =>{
+                bridge.registerHandler("functionInJs", cb);
+            }
+            setData((dataFromNative, ccb) => {
+                document.getElementById("show").innerHTML = ("data from Java: = " + dataFromNative);
+                ccb("你大爷永远是你大爷！");
+
+            });
+
+            // setData((data, responseCallback) => {
+            //     document.getElementById("show").innerHTML = ("data from Java: = " + data);
+            //     if (responseCallback) {
+            //         var responseData = "Javascript Says Right back aka!";
+            //         responseCallback(responseData);
+            //     }
+            // })
+        })
+    </script>
+
+</html>
+

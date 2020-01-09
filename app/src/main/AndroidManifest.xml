@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        package="com.yanftch.review">
+
+    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme"
+            tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".android.pages.PopupWindowActivity"></activity>
+        <activity android:name=".rxjava.RxJavaMainActivity" />
+        <activity android:name=".android.pages.BitmapActivity" />
+        <activity android:name=".android.pages.AnimationActivity" />
+        <activity android:name=".android.pages.ServiceActivity" />
+        <activity android:name=".android.pages.CoordinatorLayoutActivity" />
+        <activity android:name=".android.pages.RecyclerViewActivity" />
+        <activity android:name=".android.pages.RxJavaActivity" />
+        <activity android:name=".android.pages.ViewPagerActivity" />
+        <activity android:name=".android.pages.TestJavaActivity" />
+        <activity android:name=".android.pages.TestActivity" />
+        <activity android:name=".android.pages.FragmentActivity" />
+        <activity android:name=".android.pages.WebViewActivity" />
+        <activity android:name=".android.pages.EventActivity" />
+        <activity android:name=".android.pages.ExpandableListViewActivity" />
+        <activity android:name=".android.pages.LifecycleActivity" />
+        <activity android:name=".android.pages.JsBridgeActivity" />
+        <activity android:name=".android.pages.AccessibilityServiceActivity" />
+        <activity
+                android:name=".MainActivity"
+                android:configChanges="orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+                android:name=".android.service.MyAccessibilityService"
+                android:enabled="true"
+                android:exported="true"
+                android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+
+            <meta-data
+                    android:name="android.accessibilityservice"
+                    android:resource="@xml/accessibility_service_configs" />
+        </service>
+        <service android:name=".android.service.MyService" />
+    </application>
+
+</manifest>

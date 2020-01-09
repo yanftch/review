@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        tools:context=".android.pages.ExpandableListViewActivity">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:gravity="center_vertical"
+            android:layout_height="48dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:textColor="#000000"
+                android:layout_height="wrap_content"
+                android:text="Filter"
+        />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_height="wrap_content"
+                android:text="RESET"
+                android:id="@+id/tv_reset"
+                android:textColor="#ff0000"
+        />
+    </RelativeLayout>
+    <View android:layout_width="match_parent" android:layout_height="1dp"
+          android:background="#e5e5e5"/>
+
+    <ExpandableListView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scrollbars="none"
+            android:layout_weight="1"
+            android:childDivider="#00000000"
+            android:divider="#00000000"
+            android:id="@+id/expand_listview"/>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:id="@+id/btn_show_dlg"
+                android:layout_height="wrap_content"
+                android:text="半屏效果"
+        />
+        <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_ancho"
+                android:text="Done"
+        />
+    </LinearLayout>
+</LinearLayout>

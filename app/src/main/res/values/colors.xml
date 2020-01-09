@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="black_100">#E5E5E5</color>
+    <color name="black_200">#CCCCCC</color>
+    <color name="black_300">#B2B2B2</color>
+    <color name="black_400">#999999</color>
+    <color name="black_50">#F2F2F2</color>
+    <color name="black_500">#7F7F7F</color>
+    <color name="black_600">#666666</color>
+    <color name="black_700">#4C4C4C</color>
+    <color name="black_800">#333333</color>
+    <color name="black_900">#191919</color>
+    <color name="dsb_disabled_color">#66939393</color>
+    <color name="dsb_progress_color">#ff009688</color>
+    <color name="dsb_ripple_color_focused">#99999999</color>
+    <color name="dsb_ripple_color_pressed">#77939393</color>
+    <color name="dsb_track_color">#ff939393</color>
+    <color name="facebook_blue">#4761b0</color>
+    <color name="flags_icon_color">#ed3f01</color>
+    <color name="fm_background">@color/palette_grey_5</color>
+    <color name="fm_flag_bg">#fff7d3</color>
+    <color name="fm_foreground">@color/palette_white</color>
+    <color name="google_login_blue">#4285f4</color>
+    <color name="link">#cc1daaf1</color>
+    <color name="link_orange">@color/palette_orange_100</color>
+    <color name="orange_100">#FFD9B2</color>
+    <color name="orange_200">#FEC280</color>
+    <color name="orange_300">#FFAA4D</color>
+    <color name="orange_400">#FF9526</color>
+    <color name="orange_500">#FF8303</color>
+    <color name="orange_600">#FB7803</color>
+    <color name="orange_700">#F56802</color>
+    <color name="orange_800">#EF5802</color>
+    <color name="orange_900">#E53E03</color>
+    <color name="orange_dark">#c55400</color>
+    <color name="orange_light">#ffb445</color>
+    <color name="orange_primary">#ff8303</color>
+    <color name="palette_e95500">#e95500</color>
+    <color name="palette_grey_0">@color/palette_white</color>
+    <color name="palette_grey_10">#e9e9e9</color>
+    <color name="palette_grey_100">#242424</color>
+    <color name="palette_grey_10_t">#19242424</color>
+    <color name="palette_grey_15">#dedede</color>
+    <color name="palette_grey_20">#d3d3d3</color>
+    <color name="palette_grey_20_t">#33242424</color>
+    <color name="palette_grey_25">#c8c8c8</color>
+    <color name="palette_grey_30">#bdbdbd</color>
+    <color name="palette_grey_30_t">#4c242424</color>
+    <color name="palette_grey_40">#a7a7a7</color>
+    <color name="palette_grey_40_t">#66242424</color>
+    <color name="palette_grey_5">#f4f4f4</color>
+    <color name="palette_grey_50">#919191</color>
+    <color name="palette_grey_50_t">#80242424</color>
+    <color name="palette_grey_60">#7c7c7c</color>
+    <color name="palette_grey_60_t">#99242424</color>
+    <color name="palette_grey_7">#f0f0f0</color>
+    <color name="palette_grey_70">#656565</color>
+    <color name="palette_grey_70_t">#b3242424</color>
+    <color name="palette_grey_80">#505050</color>
+    <color name="palette_grey_80_t">#cc242424</color>
+    <color name="palette_grey_90">#393939</color>
+    <color name="palette_grey_90_t">#e6242424</color>
+    <color name="palette_notice_blue">#1daaf1</color>
+    <color name="palette_orange_10">#fff3ea</color>
+    <color name="palette_orange_100">@color/orange_primary</color>
+    <color name="palette_orange_10_t">#19ff8830</color>
+    <color name="palette_orange_15">#ffe7d6</color>
+    <color name="palette_orange_20">#ffe7d6</color>
+    <color name="palette_orange_20_t">#33ff8830</color>
+    <color name="palette_orange_30">#ffdbc0</color>
+    <color name="palette_orange_30_t">#4cff8830</color>
+    <color name="palette_orange_40">#ffcfac</color>
+    <color name="palette_orange_40_t">#66ff8830</color>
+    <color name="palette_orange_50">#ffc397</color>
+    <color name="palette_orange_50_t">#80ff8830</color>
+    <color name="palette_orange_60">#ffb883</color>
+    <color name="palette_orange_60_t">#99ff8830</color>
+    <color name="palette_orange_70">#ffab6e</color>
+    <color name="palette_orange_70_t">#b3ff8830</color>
+    <color name="palette_orange_80">#ffa059</color>
+    <color name="palette_orange_80_t">#ccff8830</color>
+    <color name="palette_orange_90">#ff9444</color>
+    <color name="palette_orange_90_t">#e6ff8830</color>
+    <color name="palette_orange_dark">#c35a00</color>
+    <color name="palette_white">#ffffff</color>
+    <color name="red_alerts">#e65100</color>
+    <color name="twitter_blue">#73caf0</color>
+    <color name="white">#ffffff</color>
+    <color name="white_transparency_30">#44ffffff</color>
+    <color name="white_transparency_80">#ccffffff</color>
+    <color name="white_transparency_90">#eeffffff</color>
+
+    <drawable name="img_selected">#44aaaaaa</drawable>
+    <drawable name="img_defaul">#00000000</drawable>
+
+    <color name="text_color_orange">#fe8136</color>
+    <color name="subtitle_text_color">#4f4f4f</color>
+    <color name="review_text_color">@color/palette_grey_80</color>
+
+    <color name="waterfall_item_bg_color">@color/palette_white</color>
+    <color name="waterfall_item_bg_color_highlight">@color/palette_orange_80</color>
+    <color name="waterfall_item_text_color">@color/palette_grey_60</color>
+    <color name="waterfall_item_text_color_highlight">@color/palette_white</color>
+
+    <!-- 5miles styling colors -->
+    <color name="fm_banner_bg">#f2ffffff</color>
+    <color name="fm_banner_border_bottom">#c6c6c6</color>
+    <color name="fm_orange">@color/palette_orange_100</color>
+    <color name="avatar_border_orange">#66ff8830</color>
+    <color name="thumb_border_silver">#cccccc</color>
+    <color name="fm_orange_pressed">#acff8830</color>
+    <color name="fm_blue_map_overlay">#805f78f7</color>
+    <color name="fm_btn_silver">#b9b9b9</color>
+    <color name="fm_btn_silver_pressed">#acb9b9b9</color>
+    <color name="fm_text_orange">@color/palette_orange_100</color>
+    <color name="fm_text_orange_pressed">#acff8830</color>
+    <color name="fm_text_silver">#818181</color>
+    <color name="fm_text_hint_white">#acffffff</color>
+    <color name="fm_text_hint_silver">#cccccc</color>
+    <color name="fm_text_dark_gray">#242424</color>
+    <color name="fm_text_dark_gray_pressed">#ac242424</color>
+    <color name="fm_hr_silver">#e9e9e9</color>
+    <color name="fm_hr_gray">#eaeaea</color>
+    <color name="fm_bg_gray">#e7e7e7</color>
+    <color name="fm_title_black">#595959</color>
+    <color name="fm_toast_bg">#bb000000</color>
+    <color name="fm_navive_button">#8a000000</color>
+    <color name="fm_bubble_gray_translucent">#acc7c7c7</color>
+    <color name="fm_mask_bg">#4d000000</color>
+    <color name="fm_message_mask">#aa000000</color>
+    <color name="chat_bg_mask">#99000000</color>
+    <color name="fm_dim_bg">#cc000000</color>
+    <color name="fm_selected_item_bg">#dddddd</color>
+
+    <color name="fm_red">#f36966</color>
+    <color name="fm_light_blue">#53badb</color>
+    <color name="fm_yellow">#ffbc15</color>
+    <color name="fm_green">#70ad46</color>
+
+    <color name="light_black">#CC000000</color>
+
+    <color name="light_black_AA">#99242424</color>
+
+    <color name="facebook_blue_pressed">#f04761b0</color>
+
+    <!-- verify info popup -->
+    <color name="verify_info_popup_text_silver">#c6c8c9</color>
+    <color name="verify_info_popup_divider_gray">#6d6d6d</color>
+
+    <color name="user_following_bg">#fff</color>
+
+    <color name="search_input_text_color">#656565</color>
+    <color name="search_top_category_color">@color/palette_grey_15</color>
+    <color name="search_top_category_highlight_color">@color/palette_grey_10</color>
+    <color name="search_sub_category_color">@color/palette_grey_10</color>
+    <color name="search_sub_category_highlight_color">@color/palette_white</color>
+    <color name="search_separator_color">#c8c8c8</color>
+
+    <color name="search_result_sub_category_selected_text_color">#ffb883</color>
+    <color name="search_result_sub_category_text_color">#242424</color>
+
+    <color name="review_reviewer_name_color">@color/palette_grey_60</color>
+
+    <!-- material theme color -->
+    <color name="txt_color_primary">#656565</color>
+    <color name="window_background">@color/palette_grey_5</color>
+    <color name="color_accent">@color/palette_orange_100</color>
+
+    <color name="searchbox_icon_tint">#a4a4a4</color>
+    <color name="item_tags_border_color">#dedede</color>
+    <color name="divider_silver">#dedede</color>
+    <color name="item_bottom_bar_color">#ddffffff</color>
+
+    <color name="default_status_bar">#999999</color>
+
+    <color name="profile_text_orange">@color/palette_orange_100</color>
+
+    <color name="waterfall_item_keywords_bg">#fcf5f0</color>
+    <color name="link_text_color">#1daaf1</color>
+
+    <color name="user_status_color_active">@color/palette_grey_100</color>
+    <color name="user_status_color_inactive">@color/palette_grey_100</color>
+    <color name="item_promotion_label_white">#e8ffffff</color>
+
+    <color name="review_rating_active">#FFDA43</color>
+    <color name="review_rating_inactive">#B0B0B0</color>
+
+    <color name="item_display_tag_color">#9ab2d3</color>
+    <color name="category_root_bg_color_normal">#f8f8f8</color>
+    <color name="external_link_color">#6aafa9</color>
+    <color name="shop_status_color">#4db6ac</color>
+
+    <color name="bid_yellow">#eedb00</color>
+    <color name="bid_green">#32b9b5</color>
+    <color name="bid_grey">@color/palette_grey_30</color>
+    <color name="bid_blue">#0297e1</color>
+    <color name="bid_red_dark">#d62d20</color>
+    <color name="bid_orange_light">#ff8830</color>
+    <color name="bid_orange">#ff8303</color>
+    <color name="bid_purple">#0057e7</color>
+    <color name="bid_golden">#d0a727</color>
+    <color name="bid_pink">#fe2370</color>
+    <color name="bid_item_new_bg">#3b3bea</color>
+    <color name="bid_car_before">#ff0303</color>
+    <color name="bid_car_after">#5d5d5d</color>
+    <color name="bid_car_time">#202020</color>
+    <color name="red">#ff0000</color>
+    <color name="profile_text_red">#f5222d</color>
+    <color name="black_two">#030303</color>
+
+    <color name="secondary_black">#99000000</color>
+    <color name="orange_80">#EF5802</color>
+    <color name="orange_50">#FF8303</color>
+    <color name="share_golden">#d0a727</color>
+    <color name="home_tab_normal_text_color">#757575</color>
+    <color name="car_pre_bid_bg">#F5F5F5</color>
+    <color name="car_pre_bid_divider">#979797</color>
+
+</resources>
+
