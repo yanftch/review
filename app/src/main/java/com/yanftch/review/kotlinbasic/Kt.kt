@@ -167,6 +167,38 @@ fun main(args: Array<String>) {
     println("${dataClassModel.age}, ${dataClassModel.name}")
     val singleton1 = Singleton.saySingleton()
 
+
+    /**
+     * 集合
+     */
+    println("开始学习---------------------集合---------------------")
+    val mImmutableList = listOf<String>("a", "b", "c")
+    println("第 0 个元素是：${mImmutableList.get(0)}") // get 可以替换为 [] 操作符
+    println("a 元素在集合中的位置是：${mImmutableList.indexOf("a")}")
+    println("size 是：${mImmutableList.size}")
+    println("集合是否为空：${mImmutableList.isEmpty()}")
+    println("集合中是否包含 b ：${mImmutableList.contains("b")}")
+    // 批量操作
+    val mImmutableListChildren = listOf<String>("a", "b")
+    println("大集合包含小集合吗？ ${mImmutableList.containsAll(mImmutableListChildren)}")
+
+    // 可变集合
+    val mMutableList = mutableListOf<String>("a", "b", "c")
+    mMutableList.add("d")
+    mMutableList.add(4, "e")
+    println("mMutableList == $mMutableList")
+    println("删除：${mMutableList.removeAt(4)}")
+    println("${mMutableList.remove("a")}")
+    println("mMutableList == $mMutableList")
+    mMutableList.set(0, "n") // 可以替换为 [] 操作符
+    println("mMutableList == $mMutableList")
+    // 批量操作
+    mMutableList.addAll(mutableListOf("1", "2"))
+    mMutableList.removeAll(mutableListOf("1", "2"))
+    var mChar: Char = 'a'
+    println("char====$mChar")
+    println("""$3""")
+
 }
 
 // 简单单例类
