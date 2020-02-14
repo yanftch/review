@@ -15,7 +15,8 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".android.pages.PopupWindowActivity"></activity>
+        <activity android:name=".android.unit_test.UnitTestDemoActivity"></activity>
+        <activity android:name=".android.pages.PopupWindowActivity" />
         <activity android:name=".rxjava.RxJavaMainActivity" />
         <activity android:name=".android.pages.BitmapActivity" />
         <activity android:name=".android.pages.AnimationActivity" />

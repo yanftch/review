@@ -18,6 +18,9 @@ import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.yanftch.review.android.modules.MenuItems
+import com.yanftch.review.android.pages.TestActivity
+import com.yanftch.review.android.unit_test.UnitTestDemoActivity
 import okhttp3.OkHttpClient
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
@@ -25,10 +28,11 @@ import org.jetbrains.anko.sdk15.listeners.onClick
 import java.util.*
 import kotlin.collections.ArrayList
 
+@Suppress("unused")
 class MainActivity : AppCompatActivity() {
     val TAG = "debug_MainActivity"
     private lateinit var recyclerView: RecyclerView
-    private lateinit var datas: ArrayList<com.yanftch.review.android.modules.MenuItems>
+    private lateinit var datas: ArrayList<MenuItems>
     var hashMap: HashMap<String, Any>? = null
     var hashTab: Hashtable<String, Any>? = null
     private var scale = 1.0f
@@ -75,98 +79,105 @@ class MainActivity : AppCompatActivity() {
     private fun generateDatas() {
         datas = ArrayList()
         datas.add(
-            com.yanftch.review.android.modules.MenuItems(
+            MenuItems(
+                name = "单元测试",
+                clazz = UnitTestDemoActivity::class.java
+            )
+        )
+
+        datas.add(
+            MenuItems(
                 name = "PopupWindow",
                 clazz = com.yanftch.review.android.pages.PopupWindowActivity::class.java
             )
         )
         datas.add(
-            com.yanftch.review.android.modules.MenuItems(
+            MenuItems(
                 name = "Bitmap",
                 clazz = com.yanftch.review.android.pages.BitmapActivity::class.java
             )
         )
         datas.add(
-            com.yanftch.review.android.modules.MenuItems(
+            MenuItems(
                 name = "Animation",
                 clazz = com.yanftch.review.android.pages.AnimationActivity::class.java
             )
         )
         datas.add(
-            com.yanftch.review.android.modules.MenuItems(
+            MenuItems(
                 name = "Service",
                 clazz = com.yanftch.review.android.pages.ServiceActivity::class.java
             )
         )
 
         datas.add(
-            com.yanftch.review.android.modules.MenuItems(
+            MenuItems(
                 name = "CoordinatorLayout",
                 clazz = com.yanftch.review.android.pages.RecyclerViewActivity::class.java
             )
         )
         datas.add(
-            com.yanftch.review.android.modules.MenuItems(
+            MenuItems(
                 name = "RecyclerView",
                 clazz = com.yanftch.review.android.pages.RecyclerViewActivity::class.java
             )
         )
         datas.add(
-            com.yanftch.review.android.modules.MenuItems(
+            MenuItems(
                 name = "RxJava",
                 clazz = com.yanftch.review.android.pages.RxJavaActivity::class.java
             )
         )
         datas.add(
-            com.yanftch.review.android.modules.MenuItems(
+            MenuItems(
                 name = "ViewPager",
                 clazz = com.yanftch.review.android.pages.ViewPagerActivity::class.java
             )
         )
         datas.add(
-            com.yanftch.review.android.modules.MenuItems(
+            MenuItems(
                 name = "Fragment lifecycle",
                 clazz = com.yanftch.review.android.pages.FragmentActivity::class.java
             )
         )
         datas.add(
-            com.yanftch.review.android.modules.MenuItems(
+            MenuItems(
                 name = "Test Demo",
-                clazz = com.yanftch.review.android.pages.TestActivity::class.java
+                clazz = TestActivity::class.java
             )
         )
         datas.add(
-            com.yanftch.review.android.modules.MenuItems(
+            MenuItems(
                 name = "Event",
                 clazz = com.yanftch.review.android.pages.EventActivity::class.java
             )
         )
         datas.add(
-            com.yanftch.review.android.modules.MenuItems(
+            MenuItems(
                 name = "WebView 与 JS",
                 clazz = com.yanftch.review.android.pages.WebViewActivity::class.java
             )
         )
         datas.add(
-            com.yanftch.review.android.modules.MenuItems(
+            MenuItems(
                 name = "AccessibilityService",
                 clazz = com.yanftch.review.android.pages.AccessibilityServiceActivity::class.java
             )
         )
         datas.add(
-            com.yanftch.review.android.modules.MenuItems(
+            MenuItems(
                 name = "JsBridge",
                 clazz = com.yanftch.review.android.pages.JsBridgeActivity::class.java
             )
         )
         datas.add(
-            com.yanftch.review.android.modules.MenuItems(
+            MenuItems(
                 name = "Life",
                 clazz = com.yanftch.review.android.pages.LifecycleActivity::class.java
             )
         )
         datas.add(
-            com.yanftch.review.android.modules.MenuItems(
+            MenuItems(
                 name = "ExpandableListView",
                 clazz = com.yanftch.review.android.pages.ExpandableListViewActivity::class.java
             )
@@ -209,7 +220,7 @@ class MainActivity : AppCompatActivity() {
         inner class RvViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             private lateinit var title: TextView
 
-            fun render(item: com.yanftch.review.android.modules.MenuItems) {
+            fun render(item: MenuItems) {
                 title = itemView.find(R.id.text_view)
                 title.text = item.name
                 title.setOnClickListener {

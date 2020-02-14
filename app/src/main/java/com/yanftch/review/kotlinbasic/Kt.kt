@@ -199,6 +199,74 @@ fun main(args: Array<String>) {
     println("char====$mChar")
     println("""$3""")
 
+    /**
+     * map
+     */
+    // 不可变 map
+    val mMap = mapOf(1 to "a", 2 to "b", 3 to "c")
+    val mMutableMapOf = mutableMapOf(1 to "a", 2 to "b", 3 to "c")
+    mMap.forEach {
+        println("map key = ${it.key}, value = ${it.value}")
+    }
+    println(mMap.get(1))
+    mMutableMapOf.put(5, "555")
+
+
+    /**
+     * Lambda 表达式
+     */
+    // 无参有返回值
+    main2()
+//    { println("定义的是无参有返回值的Lambda表达式")}
+
+    // 有参有返回值
+
+    val intRange = 1..20
+    println("2 的倍数")
+    println("能被 2 整除的：${intRange.pickNum { it % 2 == 0 }}")
+    println("3 的倍数")
+    println("能被 3 整除的：${intRange.pickNum { it % 3 == 0 }}")
+
+
+    /**
+     * 内置高阶函数
+     */
+
+    val list = mutableListOf<Int>()
+    var count = 2
+    repeat(3) {
+        println("repeat---it = $it")
+        count ++
+    }
+    println("高阶函数：repeat $count")
+    list.run {
+        this.add(1)
+        this.add(2)
+    }
+    println("高阶函数：run $list")
+
+
+
+}
+
+fun IntRange.pickNum(function: (Int) -> Boolean): List<Int> {
+    val resultList = mutableListOf<Int>()
+    for (index in this) {
+        if (function(index)) {
+            resultList.add(index)
+        }
+    }
+    return resultList
+}
+
+fun main2() {
+    val a = {
+        println("定义的是无参有返回值的Lambda表达式")
+        "返回值是我"
+    }()
+    println("a === $a")
+    val sum = { a: Int, b: Int -> a + b }(2, 3) // 有参数有返回值
+    println("sum === $sum")
 }
 
 // 简单单例类
