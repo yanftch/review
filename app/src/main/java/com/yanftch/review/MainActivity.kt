@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.yanftch.review.android.modules.MenuItems
 import com.yanftch.review.android.pages.CalendarActivity
+import com.yanftch.review.android.pages.ConvenientbannerActivity
 import com.yanftch.review.android.pages.TestActivity
 import com.yanftch.review.android.unit_test.UnitTestDemoActivity
 import okhttp3.OkHttpClient
@@ -79,6 +80,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun generateDatas() {
         datas = ArrayList()
+        datas.add(
+            MenuItems(
+                name = "convenientbanner",
+                clazz = ConvenientbannerActivity::class.java
+            )
+        )
         datas.add(
             MenuItems(
                 name = "日程提醒",
