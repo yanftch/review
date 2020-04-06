@@ -50,7 +50,7 @@ class Fragment1 : Fragment() {
 
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         Log.e("debug_Fragment1", "onAttach: ")
     }

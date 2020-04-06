@@ -61,6 +61,7 @@ class UnitTestDemoActivity : AppCompatActivity(), UnitTestContract.View {
     override fun onLoginSucceed(message: Any) {
         Log.e("debug_UnitTestDemoActivity", "onLoginSucceed: message=======>$message")
         toast(message.toString())
+        toast(message.toString())
     }
 
     override fun onLoginError(errorMsg: Any) {

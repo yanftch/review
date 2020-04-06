@@ -1,11 +1,12 @@
 package com.yanftch.review.android.pages;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.view.KeyEvent;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
@@ -19,6 +20,7 @@ import java.util.List;
 public class ConvenientbannerActivity extends AppCompatActivity {
 
     private ConvenientBanner mConverientBanner;
+    private EditText mEditText;
     private List<String> mList = new ArrayList<>();
 
 
@@ -34,6 +36,13 @@ public class ConvenientbannerActivity extends AppCompatActivity {
 
         mConverientBanner.setClipChildren(false);
         mConverientBanner.setClipToPadding(false);
+        mEditText = findViewById(R.id.et_search);
+        mEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                return false;
+            }
+        });
 
 
         mConverientBanner.getViewPager().setLayoutParams(layoutParams);

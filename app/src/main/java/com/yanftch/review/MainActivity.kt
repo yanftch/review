@@ -9,6 +9,7 @@ import android.util.Log
 import android.util.LruCache
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
@@ -18,9 +19,11 @@ import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.yanftch.review.android.dialog.CommentDialogFragment
 import com.yanftch.review.android.modules.MenuItems
 import com.yanftch.review.android.pages.CalendarActivity
 import com.yanftch.review.android.pages.ConvenientbannerActivity
+import com.yanftch.review.android.pages.NestedScrollViewActivity
 import com.yanftch.review.android.pages.TestActivity
 import com.yanftch.review.android.unit_test.UnitTestDemoActivity
 import okhttp3.OkHttpClient
@@ -29,6 +32,7 @@ import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.sdk15.listeners.onClick
 import java.util.*
 import kotlin.collections.ArrayList
+
 
 @Suppress("unused")
 class MainActivity : AppCompatActivity() {
@@ -40,6 +44,7 @@ class MainActivity : AppCompatActivity() {
     private var scale = 1.0f
     private var okHttp: OkHttpClient? = OkHttpClient()
     private var linkedHashmap: LinkedHashMap<Any, Any>? = null
+
     //    private var sp: SharedPreferences? = getSharedPreferences("", MODE_PRIVATE)
     private var view: View? = null
     private var lruCache: LruCache<Any, Any>? = null
@@ -80,6 +85,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun generateDatas() {
         datas = ArrayList()
+        datas.add(
+            MenuItems(
+                name = "NestedScrollView",
+                clazz = NestedScrollViewActivity::class.java
+            )
+        )
         datas.add(
             MenuItems(
                 name = "convenientbanner",
@@ -201,25 +212,29 @@ class MainActivity : AppCompatActivity() {
     private fun createContentView(): View =
         UI {
             verticalLayout {
-                //                editText {
+//                editText {
 //                    hint = "hind..."
+//                    imeOptions = EditorInfo.IME_ACTION_SEARCH
 //
 //                }
                 button {
                     text = "click"
                     onClick {
                         newBidItemList.add(0, "4444")
+                        val commentDialogFragment = CommentDialogFragment()
+                        commentDialogFragment.setOnLoginInforCompleted { userName, passWord ->
+                            toast(passWord)
+                        }
+                        commentDialogFragment.show(supportFragmentManager, "CommentDialogFragment")
 
-//                        alert {
-//                            title = "title"
-//                        }.show()
                     }
                 }
+
                 recyclerView = recyclerView().lparams(matchParent, matchParent)
             }
         }.view
 
-    inner class RvAdapter : RecyclerView.Adapter<RvAdapter.RvViewHolder>() {
+    inner class RvAdapter() : RecyclerView.Adapter<RvAdapter.RvViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RvViewHolder {
             val view = layoutInflater.inflate(R.layout.rv_item, parent, false)
             return RvViewHolder(view)
@@ -291,7 +306,7 @@ class MainActivity : AppCompatActivity() {
         Log.e("debug_MainActivity", "onRestoreInstanceState: ")
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration?) {
+    override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         Log.e("debug_MainActivity", "onConfigurationChanged: newConfig=${newConfig}")
     }

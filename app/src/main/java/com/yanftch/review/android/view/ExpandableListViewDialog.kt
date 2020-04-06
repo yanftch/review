@@ -41,7 +41,7 @@ class ExpandableListViewDialog(
         eventListener = dialogClickListener
     }
 
-    override fun show(manager: FragmentManager?, tag: String?) {
+    override fun show(manager: FragmentManager, tag: String?) {
         super.show(manager, tag)
     }
 
