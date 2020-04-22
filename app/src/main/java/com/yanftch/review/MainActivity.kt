@@ -21,11 +21,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.yanftch.review.android.dialog.CommentDialogFragment
 import com.yanftch.review.android.modules.MenuItems
-import com.yanftch.review.android.pages.CalendarActivity
-import com.yanftch.review.android.pages.ConvenientbannerActivity
-import com.yanftch.review.android.pages.NestedScrollViewActivity
-import com.yanftch.review.android.pages.TestActivity
+import com.yanftch.review.android.pages.*
 import com.yanftch.review.android.unit_test.UnitTestDemoActivity
+import com.yanftch.review.demo.ui.login.LoginActivity
 import okhttp3.OkHttpClient
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
@@ -85,6 +83,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun generateDatas() {
         datas = ArrayList()
+        datas.add(
+            MenuItems(
+                name = "DIY  view",
+                clazz = DiyViewActivity::class.java
+            )
+        )
+        datas.add(
+            MenuItems(
+                name = "LoginActivity-Kotlin",
+                clazz = LoginActivity::class.java
+            )
+        )
         datas.add(
             MenuItems(
                 name = "NestedScrollView",

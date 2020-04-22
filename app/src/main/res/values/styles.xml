@@ -33,4 +33,10 @@
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowSoftInputMode">stateAlwaysVisible</item>
     </style>
+
+
+    <style name="zra_star_16" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="android:progressDrawable">@drawable/ratingbar_on</item>
+        <item name="android:indeterminateDrawable">@drawable/ratingbar_on</item>
+    </style>
 </resources>

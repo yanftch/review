@@ -17,6 +17,10 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".android.pages.DiyViewActivity"></activity>
+        <activity
+                android:name=".demo.ui.login.LoginActivity"
+                android:label="@string/app_name" />
         <activity android:name=".android.pages.NestedScrollViewActivity" />
         <activity android:name=".android.pages.ConvenientbannerActivity" />
         <activity android:name=".android.pages.CalendarActivity" />
