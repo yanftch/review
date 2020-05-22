@@ -17,7 +17,8 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".android.pages.DiyViewActivity"></activity>
+        <activity android:name=".android.pages.ConstraintLayoutActivity"></activity>
+        <activity android:name=".android.pages.DiyViewActivity" />
         <activity
                 android:name=".demo.ui.login.LoginActivity"
                 android:label="@string/app_name" />

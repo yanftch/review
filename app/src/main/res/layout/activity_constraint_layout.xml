@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.yanftch.review.android.pages.ConstraintLayoutActivity">
+
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/margin_top"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/margin_bottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/margin_left"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/margin_right"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+
+
+    <View
+            android:id="@+id/view_center"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/orange_100"
+            app:layout_constraintBottom_toBottomOf="@id/margin_bottom"
+            app:layout_constraintLeft_toLeftOf="@id/margin_left"
+            app:layout_constraintRight_toRightOf="@id/margin_right"
+            app:layout_constraintTop_toTopOf="@id/margin_top" />
+
+    <View
+            android:id="@+id/view_left"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/orange_50"
+            app:layout_constraintCircle="@id/view_center"
+            app:layout_constraintCircleAngle="90"
+            app:layout_constraintCircleRadius="75dp" />
+
+    <View
+            android:id="@+id/view_top"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/orange_50"
+            app:layout_constraintCircle="@id/view_center"
+            app:layout_constraintCircleAngle="0"
+            app:layout_constraintCircleRadius="75dp" />
+
+    <View
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/orange_50"
+            app:layout_constraintCircle="@id/view_center"
+            app:layout_constraintCircleAngle="180"
+            app:layout_constraintCircleRadius="75dp" />
+
+
+    <View
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/orange_50"
+            app:layout_constraintCircle="@id/view_center"
+            app:layout_constraintCircleAngle="45"
+            app:layout_constraintCircleRadius="75dp" />
+
+    <View
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/orange_50"
+            app:layout_constraintCircle="@id/view_center"
+            app:layout_constraintCircleAngle="135"
+            app:layout_constraintCircleRadius="75dp" />
+
+    <View
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/orange_50"
+            app:layout_constraintCircle="@id/view_center"
+            app:layout_constraintCircleAngle="270"
+            app:layout_constraintCircleRadius="75dp" />
+
+    <View
+            android:id="@+id/v_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/bid_grey"
+            app:layout_constraintLeft_toLeftOf="@id/margin_left"
+            app:layout_constraintTop_toTopOf="@id/margin_top" />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/fm_green"
+            app:layout_constraintRight_toLeftOf="@id/margin_right"
+            android:text="时间的是覅已是非时间时间打胶机覅偶记交首付就按实际发为偶"
+            android:textColor="@color/white"
+            android:layout_marginStart="20dp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintLeft_toRightOf="@id/v_1"
+            app:layout_constraintTop_toTopOf="@id/v_1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

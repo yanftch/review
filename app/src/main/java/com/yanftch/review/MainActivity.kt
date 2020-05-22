@@ -16,6 +16,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -83,6 +84,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun generateDatas() {
         datas = ArrayList()
+
+        datas.add(
+            MenuItems(
+                name = "ConstraintLayout",
+                clazz = ConstraintLayoutActivity::class.java
+            )
+        )
         datas.add(
             MenuItems(
                 name = "DIY  view",
