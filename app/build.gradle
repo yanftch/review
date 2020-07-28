@@ -26,6 +26,10 @@ android {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
+
+    lintOptions {
+        abortOnError false
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -33,6 +37,11 @@ android {
         }
     }
     buildToolsVersion = '28.0.3'
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
 }
 task autoDemo {
     println("--------------start do----------------")
@@ -59,8 +68,15 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     // Optional -- Robolectric environment
     testImplementation 'androidx.test:core:1.2.0'
-    // Optional -- Mockito framework
-    testImplementation 'org.mockito:mockito-core:2.27.0'
+    //Mockito for unit tests
+    testImplementation "org.mockito:mockito-core:2.28.2"
+    //Mockito for Android tests
+    androidTestImplementation 'org.mockito:mockito-android:2.28.2'
+
+    testImplementation group: 'org.powermock', name: 'powermock-module-junit4', version: '2.0.7'
+    testImplementation group: 'org.powermock', name: 'powermock-api-mockito2', version: '2.0.7'
+    testImplementation group: 'org.powermock', name: 'powermock-core', version: '2.0.7'
+
 
 
     // JsBridge

@@ -23,6 +23,8 @@ import com.bumptech.glide.Glide
 import com.yanftch.review.android.dialog.CommentDialogFragment
 import com.yanftch.review.android.modules.MenuItems
 import com.yanftch.review.android.pages.*
+import com.yanftch.review.android.pages.tablayout_viewpager_fragment.SwitchFragmentActivity
+import com.yanftch.review.android.pages.tablayout_viewpager_fragment.TabLayoutActivity
 import com.yanftch.review.android.unit_test.UnitTestDemoActivity
 import com.yanftch.review.demo.ui.login.LoginActivity
 import okhttp3.OkHttpClient
@@ -84,6 +86,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun generateDatas() {
         datas = ArrayList()
+        datas.add(
+            MenuItems(
+                name = "Switch Fragment",
+                clazz = SwitchFragmentActivity::class.java
+            )
+        )
+        datas.add(
+            MenuItems(
+                name = "TabLayout",
+                clazz = TabLayoutActivity::class.java
+            )
+        )
 
         datas.add(
             MenuItems(
@@ -191,6 +205,12 @@ class MainActivity : AppCompatActivity() {
         )
         datas.add(
             MenuItems(
+                name = "Test Java Page",
+                clazz = TestJavaActivity::class.java
+            )
+        )
+        datas.add(
+            MenuItems(
                 name = "Event",
                 clazz = com.yanftch.review.android.pages.EventActivity::class.java
             )
@@ -238,12 +258,12 @@ class MainActivity : AppCompatActivity() {
                 button {
                     text = "click"
                     onClick {
-                        newBidItemList.add(0, "4444")
-                        val commentDialogFragment = CommentDialogFragment()
-                        commentDialogFragment.setOnLoginInforCompleted { userName, passWord ->
-                            toast(passWord)
-                        }
-                        commentDialogFragment.show(supportFragmentManager, "CommentDialogFragment")
+//                        newBidItemList.add(0, "4444")
+//                        val commentDialogFragment = CommentDialogFragment()
+//                        commentDialogFragment.setOnLoginInforCompleted { userName, passWord ->
+//                            toast(passWord)
+//                        }
+//                        commentDialogFragment.show(supportFragmentManager, "CommentDialogFragment")
 
                     }
                 }
@@ -281,52 +301,52 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        Log.e("debug_MainActivity", "onStart: ")
+//        Log.e("debug_MainActivity", "onStart: ")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.e("debug_MainActivity", "onResume: ")
+//        Log.e("debug_MainActivity", "onResume: ")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.e("debug_MainActivity", "onPause: ")
+//        Log.e("debug_MainActivity", "onPause: ")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.e("debug_MainActivity", "onStop: ")
+//        Log.e("debug_MainActivity", "onStop: ")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.e("debug_MainActivity", "onDestroy: ")
+//        Log.e("debug_MainActivity", "onDestroy: ")
     }
 
     override fun onRestart() {
         super.onRestart()
-        Log.e("debug_MainActivity", "onRestart: ")
+//        Log.e("debug_MainActivity", "onRestart: ")
     }
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
-        Log.e("debug_MainActivity", "onNewIntent: ")
+//        Log.e("debug_MainActivity", "onNewIntent: ")
     }
 
     override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
-        Log.e("debug_MainActivity", "onSaveInstanceState: ")
+//        Log.e("debug_MainActivity", "onSaveInstanceState: ")
         super.onSaveInstanceState(outState, outPersistentState)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         super.onRestoreInstanceState(savedInstanceState)
-        Log.e("debug_MainActivity", "onRestoreInstanceState: ")
+//        Log.e("debug_MainActivity", "onRestoreInstanceState: ")
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        Log.e("debug_MainActivity", "onConfigurationChanged: newConfig=${newConfig}")
+//        Log.e("debug_MainActivity", "onConfigurationChanged: newConfig=${newConfig}")
     }
 
 

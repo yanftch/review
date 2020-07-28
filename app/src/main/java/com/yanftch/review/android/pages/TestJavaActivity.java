@@ -1,38 +1,43 @@
 package com.yanftch.review.android.pages;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.yanftch.review.R;
-import com.yanftch.review.kotlinbasic.InnerClassDemo;
-
-import java.lang.ref.WeakReference;
 
 public class TestJavaActivity extends AppCompatActivity {
+    private Button mButton, mButton2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_java);
-        InnerClassDemo.Companion.getNAME();
+        mButton = findViewById(R.id.btn1);
+        mButton2 = findViewById(R.id.btn2);
 
+        mButton.setOnClickListener(v -> {
+            getStringInfo(null);
+        });
+        mButton2.setOnClickListener(v -> {
+            getStringInfo("2");
+        });
 
     }
 
-    private static class MyHandler extends Handler {
-        private WeakReference<Context> mContextWf;
-
-        public MyHandler(Context context) {
-            this.mContextWf = new WeakReference<>(context);
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
+    private void getStringInfo(String message) {
+        switch (message) {
+            case "1":
+                Toast.makeText(this, "message = " + message, Toast.LENGTH_SHORT).show();
+                break;
+            case "2":
+                Toast.makeText(this, "message case 2= " + message, Toast.LENGTH_SHORT).show();
+                break;
+            case "3":
+                Toast.makeText(this, "message case 3= " + message, Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 }

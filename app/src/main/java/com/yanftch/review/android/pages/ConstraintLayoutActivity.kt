@@ -10,17 +10,30 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.bumptech.glide.load.data.ExifOrientationStream
 import com.yanftch.review.R
+import com.yanftch.review.android.utils.AddTagUtils
 import com.yanftch.review.android.view.ExpandableLinearLayout
 
 class ConstraintLayoutActivity : AppCompatActivity() {
+    private lateinit var mLlTags: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_constraint_layout2)
+        mLlTags = findViewById(R.id.ll_tags)
+
         addTag()
         findViewById<TextView>(R.id.tv_more).setOnClickListener {
             Log.e("debug_ConstraintLayoutActivity:", "onCreate==>  ${getBooleamTest()}")
         }
+
+        AddTagUtils.addTag(this, mLlTags, "title", R.color.black_900, R.drawable.bg_shape_outer_24, 18f,12f,6f,6f,10f, onClick = {
+
+            null
+        })
+        AddTagUtils.addTag2(this, mLlTags, "title", R.color.black_900, R.drawable.bg_shape_outer_24, 18f,12f,6f,6f,10f, onClick = {
+
+            null
+        })
     }
     private var mIsBoolean = true
 
@@ -39,7 +52,6 @@ class ConstraintLayoutActivity : AppCompatActivity() {
     fun addTag() {
         var tvMore = findViewById<TextView>(R.id.tv_more)
 
-        var llTags = findViewById<LinearLayout>(R.id.ll_activities)
         var expandTags = findViewById<ExpandableLinearLayout>(R.id.expand_ll_tags)
 
 
@@ -50,7 +62,7 @@ class ConstraintLayoutActivity : AppCompatActivity() {
         }
         expandTags.removeAllViews()
 
-        list.forEachIndexed { index, s ->
+        list.forEachIndexed { _, s ->
             val textView = TextView(this)
             var view = LayoutInflater.from(this).inflate(R.layout.rv_item, null)
             view.findViewById<TextView>(R.id.text_view).text = s

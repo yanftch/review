@@ -7,20 +7,20 @@ package com.yanftch.review.android.unit_test
  * Time : 21:08
  * Desc :
  */
-class UnitTestPresenter(val view: UnitTestContract.View) : UnitTestContract.Presenter {
-    private var mView: UnitTestContract.View = view
+class UnitTestPresenter(val view: UnitTestContract.View?) : UnitTestContract.Presenter {
+    private var mView: UnitTestContract.View? = view
 
     init {
-        mView.setPresenter(this)
+        mView?.setPresenter(this)
     }
 
     override fun login(name: String, pwd: String) {
         Runnable {
             Thread.sleep(5000)
             if (name == "aaa") {
-                mView.onLoginSucceed("login success...name=$name, pwd=$pwd")
+                mView?.onLoginSucceed("login success...name=$name, pwd=$pwd")
             } else {
-                mView.onLoginError("login error...name=$name")
+                mView?.onLoginError("login error...name=$name")
             }
         }.run()
     }
@@ -28,7 +28,7 @@ class UnitTestPresenter(val view: UnitTestContract.View) : UnitTestContract.Pres
     override fun register(name: String, pwd: String) {
         Runnable {
             Thread.sleep(5000)
-            mView.onLoginError("注册失败...")
+            mView?.onLoginError("注册失败...")
         }.run()
     }
 

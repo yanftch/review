@@ -1,5 +1,7 @@
 package com.yanftch.review.android.pages
 
+import android.animation.Animator
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.util.Log
 import android.util.SparseArray
@@ -13,11 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.yanftch.review.R
-import org.jetbrains.anko.UI
-import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.sdk15.listeners.onClick
 import org.jetbrains.anko.textColorResource
-import org.jetbrains.anko.verticalLayout
 
 class RecyclerViewActivity : AppCompatActivity() {
     private lateinit var datas: ArrayList<ItemModel>
@@ -27,6 +26,10 @@ class RecyclerViewActivity : AppCompatActivity() {
     private lateinit var sparseArray: SparseArray<String>
     private var linearLayout: LinearLayout? = null
 
+    companion object {
+        var mTvQuestion: TextView? = null
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,41 +38,145 @@ class RecyclerViewActivity : AppCompatActivity() {
 
 
         datas = ArrayList()
-        for (i in 0..20) {
+        for (i in 0..1000) {
             val model = ItemModel("name $i", false)
             datas.add(model)
         }
 
         layoutManager = LinearLayoutManager(this)
 
+        setContentView(R.layout.rv_test)
+        recyclerView = findViewById(R.id.recyclerView)
+        mTvQuestion = findViewById(R.id.tv_question)
 
-        setContentView(UI {
-            verticalLayout {
-                recyclerView = recyclerView {
-
-                }
-            }
-        }.view)
+//        setContentView(UI {
+//            relativeLayout {
+//                recyclerView = recyclerView {
+//
+//                }
+//                textView {
+//                    text = "我是红包"
+//                    backgroundColor = R.color.orange_100
+//                    padding = 20
+//                }
+//            }
+//        }.view)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter =
-            MyAdapter(datas, object : ItemClick{
+            MyAdapter(datas, object : ItemClick {
                 override fun onItemClick(model: ItemModel) {
                 }
 
             })
-        recyclerView.scrollToPosition(20)
 
+        // 滑动监听
+        recyclerView.addOnScrollListener(OnScroll())
+        val objectAnimatorOut: ObjectAnimator =
+            ObjectAnimator.ofFloat(mTvQuestion, "translationX", 0f, 200f)
+                .setDuration(1000)
+        var needTry = false
+        mTvQuestion?.setOnClickListener {
+            Log.e("debug_", ": mTvQuestion 飞出去,  ")
+
+            if (objectAnimatorOut.isRunning) {
+                Log.e("debug_", ": mTvQuestion 飞出去,  running  ")
+
+
+            } else {
+                Log.e("debug_", ": mTvQuestion 飞出去, start  ")
+
+                objectAnimatorOut.start()
+            }
+        }
+
+
+    }
+
+    class OnScroll : RecyclerView.OnScrollListener() {
+        var needTryLocal = true
+
+        var objectAnimatorOut: ObjectAnimator =
+            ObjectAnimator.ofFloat(mTvQuestion, "translationX", 0f, 200f)
+                .setDuration(1000)
+
+        var objectAnimatorIn: ObjectAnimator =
+            ObjectAnimator.ofFloat(mTvQuestion, "translationX", 200f, 0f)
+                .setDuration(1000)
+
+        init {
+            objectAnimatorOut.addListener(object : Animator.AnimatorListener {
+                override fun onAnimationRepeat(animation: Animator?) {
+                }
+
+                override fun onAnimationEnd(animation: Animator?) {
+                    // 动画结束，也就是滑动出去以后，禁用重复属性
+                    needTryLocal = false
+                }
+
+                override fun onAnimationCancel(animation: Animator?) {
+                }
+
+                override fun onAnimationStart(animation: Animator?) {
+                }
+            })
+            objectAnimatorIn.addListener(object : Animator.AnimatorListener{
+                override fun onAnimationRepeat(animation: Animator?) {
+                }
+
+                override fun onAnimationEnd(animation: Animator?) {
+                    needTryLocal = true
+                }
+
+                override fun onAnimationCancel(animation: Animator?) {
+                }
+
+                override fun onAnimationStart(animation: Animator?) {
+                }
+            })
+        }
+
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//            Log.e("debug_", ": dy = $dy")
+        }
+
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            super.onScrollStateChanged(recyclerView, newState)
+            val b = recyclerView.canScrollVertically(-1) // 返回false，表示已经在顶部了
+            val isAtTop = !b
+            Log.e("debug_", "onScrollStateChanged: newState $newState,   b = $b")
+
+            if (newState == 1 || newState == 2) {
+                // 滚出去
+                if (objectAnimatorOut.isRunning) {
+                    return
+                } else {
+                    if (needTryLocal) {
+                        objectAnimatorOut.start()
+                    }
+                }
+
+            } else if (newState == 0) {
+                // 滚回来
+                if (objectAnimatorIn.isRunning) {
+                    return
+                } else {
+                    objectAnimatorIn.start()
+                }
+            }
+
+        }
     }
 
     class MyAdapter(var datas: ArrayList<ItemModel>, var c: ItemClick) :
         RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
-        lateinit var itemClick:ItemClick
+        lateinit var itemClick: ItemClick
 
-        companion object{
+        companion object {
             var mSelectedPosition: Int = -1
             var mList = mutableListOf<ItemModel>()
         }
+
         init {
             mList = datas
             itemClick = c
@@ -114,8 +221,8 @@ class RecyclerViewActivity : AppCompatActivity() {
         }
     }
 
-    interface ItemClick{
-        fun onItemClick(model:ItemModel)
+    interface ItemClick {
+        fun onItemClick(model: ItemModel)
     }
 
     data class ItemModel(

@@ -21,4 +21,9 @@ class ExampleInstrumentedTest {
         val appContext = InstrumentationRegistry.getTargetContext()
         assertEquals("com.yanftch.review", appContext.packageName)
     }
+
+    @Test
+    fun assertEauqlsStrin() {
+
+    }
 }

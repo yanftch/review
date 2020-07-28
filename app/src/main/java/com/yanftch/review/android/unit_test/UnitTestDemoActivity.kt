@@ -72,6 +72,10 @@ class UnitTestDemoActivity : AppCompatActivity(), UnitTestContract.View {
     override fun setPresenter(presenter: UnitTestContract.Presenter) {
         mPresenter = presenter
     }
+
+    override fun isActive(): Boolean {
+        return isFinishing
+    }
 }
 
 class TestClickListener: View.OnClickListener {

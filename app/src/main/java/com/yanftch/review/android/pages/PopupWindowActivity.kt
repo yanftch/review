@@ -62,7 +62,7 @@ class PopupWindowActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     private fun contentView4Pop() = UI {
         verticalLayout {
-            backgroundResource = R.color.palette_grey_100
+            backgroundResource = R.color.white
             textView {
                 text = "POP"
                 textSize = 20F
@@ -127,7 +127,7 @@ class BackPopupWindow constructor(@NonNull contentView: View, width: Int, height
         contentView.setOnKeyListener { v, keyCode, event ->
             Log.e(
                 "debug_BackPopupWindow",
-                "onKeyListener.....: keyCode = $keyCode, event = ${event.action}"
+                "onKeyListener....?.: keyCode = $keyCode, event = ${event.action}"
             )
             true
         }

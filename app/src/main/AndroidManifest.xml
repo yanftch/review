@@ -17,7 +17,10 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".android.pages.ConstraintLayoutActivity"></activity>
+        <activity android:name=".android.pages.tablayout_viewpager_fragment.SwitchFragmentActivity"></activity>
+        <activity android:name=".android.pages.tablayout_viewpager_fragment.TabLayoutActivity" />
+        <activity android:name=".android.mvp.LoginMvpActivity" />
+        <activity android:name=".android.pages.ConstraintLayoutActivity" />
         <activity android:name=".android.pages.DiyViewActivity" />
         <activity
                 android:name=".demo.ui.login.LoginActivity"

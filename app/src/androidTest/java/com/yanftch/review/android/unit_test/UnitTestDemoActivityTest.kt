@@ -6,11 +6,29 @@ import org.junit.Before
 import org.junit.Test
 
 import org.junit.Assert.*
+import org.junit.runner.RunWith
+import org.mockito.Mock
+import org.mockito.junit.MockitoJUnitRunner
 
+@RunWith(MockitoJUnitRunner::class)
 class UnitTestDemoActivityTest {
 
+
+    // P 层
+    var mPresenter: UnitTestPresenter? = null
+
+    @Mock
+    val mView: UnitTestContract.View? = null
+
+    /**
+     * 完成前期准备工作
+     *
+     */
     @Before
     fun setUp() {
+
+        mPresenter = UnitTestPresenter(mView)
+
     }
 
     @After

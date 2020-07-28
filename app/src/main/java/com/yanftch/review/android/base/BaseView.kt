@@ -9,4 +9,5 @@ package com.yanftch.review.android.base
  */
 interface BaseView<T> {
     fun setPresenter(presenter: T)
+    fun isActive(): Boolean
 }
