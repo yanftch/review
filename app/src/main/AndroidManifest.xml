@@ -17,7 +17,15 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".android.pages.tablayout_viewpager_fragment.SwitchFragmentActivity"></activity>
+        <activity android:name=".android.pages.DouYinActivity"></activity>
+        <activity
+                android:name=".android.pages.PhotoViewActivity"
+                android:theme="@style/AppThemeNoAnimation" />
+        <activity
+                android:name=".android.pages.StaggeredGridActivity"
+                android:theme="@style/AppThemeNoBar" />
+        <activity android:name=".android.pages.ViewPager2Activity" />
+        <activity android:name=".android.pages.tablayout_viewpager_fragment.SwitchFragmentActivity" />
         <activity android:name=".android.pages.tablayout_viewpager_fragment.TabLayoutActivity" />
         <activity android:name=".android.mvp.LoginMvpActivity" />
         <activity android:name=".android.pages.ConstraintLayoutActivity" />

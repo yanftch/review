@@ -88,6 +88,24 @@ class MainActivity : AppCompatActivity() {
         datas = ArrayList()
         datas.add(
             MenuItems(
+                name = "抖音切换",
+                clazz = DouYinActivity::class.java
+            )
+        )
+        datas.add(
+            MenuItems(
+                name = "瀑布流",
+                clazz = StaggeredGridActivity::class.java
+            )
+        )
+        datas.add(
+            MenuItems(
+                name = "ViewPager2 Demo",
+                clazz = ViewPager2Activity::class.java
+            )
+        )
+        datas.add(
+            MenuItems(
                 name = "Switch Fragment",
                 clazz = SwitchFragmentActivity::class.java
             )
