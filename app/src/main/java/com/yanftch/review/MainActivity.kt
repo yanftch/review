@@ -9,20 +9,18 @@ import android.util.Log
 import android.util.LruCache
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModel
-import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.yanftch.review.android.dialog.CommentDialogFragment
 import com.yanftch.review.android.modules.MenuItems
 import com.yanftch.review.android.pages.*
+import com.yanftch.review.android.pages.douyin.Page2DouYinActivity
 import com.yanftch.review.android.pages.tablayout_viewpager_fragment.SwitchFragmentActivity
 import com.yanftch.review.android.pages.tablayout_viewpager_fragment.TabLayoutActivity
 import com.yanftch.review.android.unit_test.UnitTestDemoActivity
@@ -86,6 +84,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun generateDatas() {
         datas = ArrayList()
+        datas.add(
+            MenuItems(
+                name = "ViewPager2实现抖音切换",
+                clazz = Page2DouYinActivity::class.java
+            )
+        )
         datas.add(
             MenuItems(
                 name = "抖音切换",

@@ -1,13 +1,34 @@
 package com.yanftch.review.android.modules;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class RowsBean {
-    public RowsBean(String picList) {
+public class RowsBean implements Serializable {
+    @Override
+    public String toString() {
+        return "RowsBean{" +
+                "content='" + content + '\'' +
+                ", videoUrl='" + videoUrl + '\'' +
+                ", picList='" + picList + '\'' +
+                '}';
+    }
+
+    public RowsBean(List<PicBean > picList) {
         this.picList = picList;
     }
 
-    public RowsBean(String videoUrl, String picList) {
+    public RowsBean(String headPicUrl) {
+        this.headPicUrl = headPicUrl;
+    }
+
+    public RowsBean(String videoUrl, List<PicBean> picList) {
+        this.videoUrl = videoUrl;
+        this.picList = picList;
+    }
+
+    public RowsBean(String content, String videoUrl, List<PicBean> picList, String headPicUrl) {
+        this.headPicUrl = headPicUrl;
+        this.content = content;
         this.videoUrl = videoUrl;
         this.picList = picList;
     }
@@ -42,7 +63,7 @@ public class RowsBean {
     private String impressStatus;
     private int mediaType; // 媒体类型 1 图片；2 视频
     private List<String> labelList;
-    private String picList;
+    private List<PicBean> picList;
     private boolean isPublishing = false;
 
     public boolean isPublishing() {
@@ -52,6 +73,7 @@ public class RowsBean {
     public void setPublishing(boolean publishing) {
         isPublishing = publishing;
     }
+
 
     public String getVideoUrl() {
         return videoUrl;
@@ -157,11 +179,11 @@ public class RowsBean {
         this.labelList = labelList;
     }
 
-    public String getPicList() {
+    public List<PicBean> getPicList() {
         return picList;
     }
 
-    public void setPicList(String picList) {
+    public void setPicList(List<PicBean> picList) {
         this.picList = picList;
     }
 
@@ -178,4 +200,33 @@ public class RowsBean {
         return 1 == isPraise;
     }
 
+    public class PicBean {
+        private String picUrl;
+        private double height;
+        private double width;
+
+        public String getPicUrl() {
+            return picUrl;
+        }
+
+        public void setPicUrl(String picUrl) {
+            this.picUrl = picUrl;
+        }
+
+        public double getHeight() {
+            return height;
+        }
+
+        public void setHeight(double height) {
+            this.height = height;
+        }
+
+        public double getWidth() {
+            return width;
+        }
+
+        public void setWidth(double width) {
+            this.width = width;
+        }
+    }
 }

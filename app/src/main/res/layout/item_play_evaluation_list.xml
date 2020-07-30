@@ -2,13 +2,27 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/palette_grey_30">
 
     <ImageView
             android:id="@+id/iv_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/loading" />
+            android:src="@drawable/loading"
+            android:visibility="gone" />
+
+    <com.bigkoo.convenientbanner.ConvenientBanner
+            android:id="@+id/cb_viewpager"
+            android:layout_width="match_parent"
+            app:canLoop="true"
+            android:layout_height="match_parent" />
+
+    <com.pili.pldroid.player.widget.PLVideoTextureView
+            android:id="@+id/pl_video_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     <TextView
             android:id="@+id/tv_debug_info"

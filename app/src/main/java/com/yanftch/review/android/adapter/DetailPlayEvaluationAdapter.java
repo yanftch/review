@@ -82,7 +82,8 @@ public class DetailPlayEvaluationAdapter extends RecyclerView.Adapter<DetailPlay
 
         Log.e("debug_DetailPlayEvaluationAdapter:", "onBindViewHolder==> position = " + position + ", holder.hashCode() = " + holder.hashCode() + ", imageView.hashCode() = " + holder.mImageView.hashCode());
 
-        String picList = model.getPicList();
+
+        String picList = model.getPicList().get(0).getPicUrl();
         Glide.with(mContext).load(picList).into(holder.mImageView);
 
         holder.mTvDebugInfo.setText(position + ", holder.hashCode = " + holder.hashCode() + ", imageView.hashCode = " + holder.mImageView.hashCode());
