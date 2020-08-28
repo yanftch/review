@@ -54,6 +54,7 @@ public class TabFragment2 extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.e(TAG, "onCreate: ");
+        isFirstVisible = true;
     }
 
     @Override
@@ -107,11 +108,24 @@ public class TabFragment2 extends Fragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser && !hasVisible) {
+            Log.e(TAG, "setUserVisibleHint2: isVisibleToUser = " + isVisibleToUser);
+            hasVisible = true;
+        }
+
         Log.e(TAG, "setUserVisibleHint: isVisibleToUser = " + isVisibleToUser);
+        if (isFirstVisible && isVisibleToUser) {
+            Log.e("fragment666-----2", "setUserVisibleHint: isVisibleToUser = " + isVisibleToUser + ", isFirstVisible = " + isFirstVisible);
+            isFirstVisible = false;
+        }
     }
+
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         Log.e(TAG, "onHiddenChanged: hidden = " + hidden);
     }
+
+    private boolean isFirstVisible, hasVisible;
+
 }

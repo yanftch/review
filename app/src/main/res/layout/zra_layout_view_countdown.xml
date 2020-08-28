@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:background="@color/palette_grey_30">
+
+    <LinearLayout
+            android:id="@+id/ll_time_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:paddingEnd="@dimen/dp_6"
+                android:text="距结束"
+                android:textColor="@color/color_ct1_60"
+                android:textSize="@dimen/font_6" />
+
+        <TextView
+                android:id="@+id/tv_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_test"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:padding="@dimen/dp_1"
+                android:textColor="@color/color_ct2"
+                android:textSize="@dimen/font_6"
+                tools:text="59" />
+
+        <TextView
+                android:id="@+id/tv_day_separator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/dp_2"
+                android:text="天"
+                android:textColor="@color/color_ct4"
+                android:textSize="@dimen/font_6"
+                tools:text="天" />
+
+        <TextView
+                android:id="@+id/tv_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_test"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:padding="@dimen/dp_1"
+                android:textColor="@color/color_ct2"
+                android:textSize="@dimen/font_6"
+                tools:text="59" />
+
+        <TextView
+                android:id="@+id/tv_hour_separator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/dp_2"
+                android:text=":"
+                android:textColor="@color/color_ct4"
+                android:textSize="@dimen/font_6"
+                tools:text=":" />
+
+        <TextView
+                android:id="@+id/tv_minute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_test"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:padding="@dimen/dp_1"
+                android:textColor="@color/color_ct2"
+                android:textSize="@dimen/font_6"
+                tools:text="59" />
+
+        <TextView
+                android:id="@+id/tv_minute_separator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/dp_2"
+                android:text=":"
+                android:textColor="@color/color_ct4"
+                android:textSize="@dimen/font_6"
+                tools:text=":" />
+
+        <TextView
+                android:id="@+id/tv_second"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_test"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:padding="@dimen/dp_1"
+                android:textColor="@color/color_ct2"
+                android:textSize="@dimen/font_6"
+                tools:text="59" />
+
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/tv_end_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:visibility="gone"
+            tools:text="我是倒计时结束后的显示文案"
+            tools:visibility="visible" />
+</LinearLayout>

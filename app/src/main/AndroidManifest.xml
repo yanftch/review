@@ -25,7 +25,11 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".android.pages.douyin.Page2DouYinActivity"></activity>
+        <activity android:name=".android.pages.douyin.Page2DouYinActivity"
+                android:theme="@style/AppThemeNoAnimation"
+                >
+
+        </activity>
         <activity android:name=".android.pages.DouYinActivity" />
         <activity
                 android:name=".android.pages.PhotoViewActivity"

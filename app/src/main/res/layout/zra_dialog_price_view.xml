@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_44"
+        android:layout_marginRight="@dimen/dp_44"
+        android:background="@color/transparent"
+        android:orientation="vertical"
+        tools:background="@color/color_000000_50">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/im_bg_white_cornor_8"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+        <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_24"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:lines="1"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12"
+                android:textColor="@color/color_ct1_85"
+                android:textSize="@dimen/font_4"
+                android:textStyle="bold"
+                tools:text="开播前您将收到短信提醒" />
+
+        <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="@dimen/dp_4"
+                android:paddingBottom="@dimen/dp_4"
+                tools:text="2020年08月09日16:36:04" />
+
+        <com.yanftch.review.android.view.CountDownView
+                android:id="@+id/countdown_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_10" />
+
+        <TextView
+                android:id="@+id/tv_sub_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:lines="1"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12"
+                android:textColor="@color/color_ct1_60"
+                android:textSize="@dimen/font_5"
+                tools:text="租期不满1年时会根据不同的租期上浮" />
+
+        <LinearLayout
+                android:id="@+id/ll_middle_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_24"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginEnd="@dimen/dp_24"
+                android:background="@drawable/zra_bg_color14_radius_4dp"
+                android:orientation="vertical"
+                tools:layout_height="@dimen/dp_100">
+
+            <LinearLayout
+                    android:id="@+id/ll_table_title_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@drawable/divider_line_vertical"
+                    android:orientation="horizontal"
+                    android:showDividers="middle">
+
+                <TextView
+                        android:id="@+id/tv_title_lease"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/dp_14"
+                        android:paddingBottom="@dimen/dp_14"
+                        android:textColor="@color/color_ct1_60"
+                        android:textSize="@dimen/font_7"
+                        tools:text="租期1" />
+
+                <TextView
+                        android:id="@+id/tv_title_pre_price"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/dp_14"
+                        android:paddingBottom="@dimen/dp_14"
+                        android:textColor="@color/color_ct1_60"
+                        android:textSize="@dimen/font_7"
+                        tools:text="优惠价2" />
+
+                <TextView
+                        android:id="@+id/tv_title_original_price"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/dp_14"
+                        android:paddingBottom="@dimen/dp_14"
+                        android:textColor="@color/color_ct1_60"
+                        android:textSize="@dimen/font_7"
+                        tools:text="原价3" />
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/ll_table_rows_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    tools:layout_height="@dimen/dp_60" />
+
+        </LinearLayout>
+
+        <TextView
+                android:id="@+id/tv_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_24"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginEnd="@dimen/dp_24"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:background="@drawable/bg_rectangle_ff961e_radius_2"
+                android:gravity="center"
+                android:paddingTop="@dimen/dp_12"
+                android:paddingBottom="@dimen/dp_12"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_5"
+                android:textStyle="bold"
+                tools:text="咨询价格详情" />
+
+    </LinearLayout>
+
+    <ImageView
+            android:id="@+id/iv_close_dialog"
+            android:layout_width="@dimen/dp_32"
+            android:layout_height="@dimen/dp_32"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_24"
+            android:src="@drawable/close_circle" />
+
+</LinearLayout>

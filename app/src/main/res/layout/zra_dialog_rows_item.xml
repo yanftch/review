@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/divider_line_vertical"
+        android:orientation="horizontal"
+        android:showDividers="middle">
+
+    <!--租期-->
+    <TextView
+            android:id="@+id/tv_lease"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingTop="@dimen/dp_14"
+            android:paddingBottom="@dimen/dp_14"
+            android:textColor="@color/color_ct1_85"
+            android:textSize="@dimen/font_7"
+            tools:text="0-9个月" />
+    <!--优惠价-->
+    <LinearLayout
+            android:id="@+id/ll_pre_price_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="bottom|center"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/dp_14"
+            android:paddingBottom="@dimen/dp_14">
+
+
+        <TextView
+                android:id="@+id/tv_pre_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_ct3"
+                android:textSize="@dimen/font_6"
+                android:textStyle="bold"
+                tools:text="￥2000" />
+
+        <TextView
+                android:id="@+id/tv_pre_price_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_ct3"
+                android:textSize="@dimen/font_7"
+                tools:text="/月" />
+    </LinearLayout>
+
+    <!--原价-->
+    <LinearLayout
+            android:id="@+id/ll_original_price_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="bottom|center"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/dp_14"
+            android:paddingBottom="@dimen/dp_14">
+
+        <TextView
+                android:id="@+id/tv_original_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_ct1_40"
+                android:textSize="@dimen/font_6"
+                android:textStyle="bold"
+                tools:text="￥2000" />
+
+        <TextView
+                android:id="@+id/tv_original_price_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_ct1_40"
+                android:textSize="@dimen/font_7"
+                tools:text="/月" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -9,6 +9,8 @@ import android.util.Log
 import android.util.LruCache
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
@@ -18,7 +20,10 @@ import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.yanftch.review.android.dialog.TransDialogFragment
+import com.yanftch.review.android.modules.ItemBean
 import com.yanftch.review.android.modules.MenuItems
+import com.yanftch.review.android.modules.PriceDialogModel
 import com.yanftch.review.android.pages.*
 import com.yanftch.review.android.pages.douyin.Page2DouYinActivity
 import com.yanftch.review.android.pages.tablayout_viewpager_fragment.SwitchFragmentActivity
@@ -49,6 +54,7 @@ class MainActivity : AppCompatActivity() {
     private var lruCache: LruCache<Any, Any>? = null
     private var glide: Glide? = null
     private var viewModel: ViewModel? = null
+    private var mEditView: EditText? = null
 
     init {
     }
@@ -272,14 +278,56 @@ class MainActivity : AppCompatActivity() {
     private fun createContentView(): View =
         UI {
             verticalLayout {
-//                editText {
-//                    hint = "hind..."
-//                    imeOptions = EditorInfo.IME_ACTION_SEARCH
-//
-//                }
+                mEditView = editText {
+                    hint = "一定要输入数字哈..."
+                    imeOptions = EditorInfo.IME_ACTION_SEARCH
+                    inputType = EditorInfo.TYPE_CLASS_NUMBER
+                }
                 button {
                     text = "click"
                     onClick {
+                        var mModel: PriceDialogModel? = PriceDialogModel()
+                        mModel?.title = "短租价格说明"
+                        mModel?.subTitle = "租期不满一年会根据不同租期上浮价格"
+                        mModel?.buttonText = "咨询价格详情"
+                        mModel?.leaseTitle = "租期"
+                        mModel?.originalPriceTitle = "原价"
+                        mModel?.prePriceTitle = "优惠价"
+                        val list = mutableListOf<ItemBean>()
+                        val item1 = ItemBean()
+                        item1.color = "#ff3737"
+                        item1.lease = "12个月以上"
+                        item1.originalPrice = "82991"
+                        item1.prePrice = "80991"
+                        item1.priceUnit = "/月"
+                        item1.unit = "$"
+                        val item2 = ItemBean()
+                        item2.color = "#ff3737"
+                        item2.lease = "4-11个月"
+                        item2.originalPrice = "82993"
+                        item2.prePrice = ""
+                        item2.priceUnit = "/月"
+                        item2.unit = "$"
+                        val item3 = ItemBean()
+                        item3.color = "#ff3737"
+                        item3.lease = "1-3个月"
+                        item3.originalPrice = "82993"
+                        item3.prePrice = "80993"
+                        item3.priceUnit = "/月"
+                        item3.unit = "￥"
+
+                        list.add(item1)
+                        list.add(item2)
+                        list.add(item3)
+                        mModel?.list = list
+
+                        val s = mEditView?.text?.toString()
+                        var toInt = s?.toInt()?:0
+                        mModel?.time = (toInt * 1000).toLong()
+                        mModel?.endMessage = "$toInt 结束了"
+
+                        var dialogFragment = TransDialogFragment.getInstance(mModel)
+                        dialogFragment.show(supportFragmentManager, "trans")
 //                        newBidItemList.add(0, "4444")
 //                        val commentDialogFragment = CommentDialogFragment()
 //                        commentDialogFragment.setOnLoginInforCompleted { userName, passWord ->
@@ -315,6 +363,11 @@ class MainActivity : AppCompatActivity() {
                 title.setOnClickListener {
                     if (item.clazz != null) {
                         startActivity(Intent(this@MainActivity, item.clazz))
+                        overridePendingTransition(
+                    0,
+                            0
+                        )
+
                     }
                 }
             }
