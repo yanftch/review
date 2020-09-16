@@ -9,13 +9,12 @@
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
 
     <application
             android:allowBackup="true"
@@ -25,11 +24,10 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".android.pages.douyin.Page2DouYinActivity"
-                android:theme="@style/AppThemeNoAnimation"
-                >
-
-        </activity>
+        <activity android:name=".android.pages.smartrefreshlayout.SmartActivity1"></activity>
+        <activity
+                android:name=".android.pages.douyin.Page2DouYinActivity"
+                android:theme="@style/AppThemeNoAnimation"></activity>
         <activity android:name=".android.pages.DouYinActivity" />
         <activity
                 android:name=".android.pages.PhotoViewActivity"
@@ -46,7 +44,9 @@
         <activity
                 android:name=".demo.ui.login.LoginActivity"
                 android:label="@string/app_name" />
-        <activity android:name=".android.pages.NestedScrollViewActivity" />
+        <activity
+                android:name=".android.pages.NestedScrollViewActivity"
+                android:theme="@style/AppThemeNoBar" />
         <activity android:name=".android.pages.ConvenientbannerActivity" />
         <activity android:name=".android.pages.CalendarActivity" />
         <activity android:name=".android.unit_test.UnitTestDemoActivity" />

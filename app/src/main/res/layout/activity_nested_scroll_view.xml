@@ -6,24 +6,65 @@
         android:layout_height="match_parent"
         tools:context="com.yanftch.review.android.pages.NestedScrollViewActivity">
 
-    <androidx.core.widget.NestedScrollView
+
+    <com.yanftch.review.android.view.nested_scrollview.MyNestedScrollView
             android:layout_width="match_parent"
+            android:id="@+id/nsv"
             android:layout_height="match_parent">
 
        <LinearLayout
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
            android:orientation="vertical">
-           <TextView
+
+           <LinearLayout
+                   android:id="@+id/ll_1"
                    android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:text="fjafioajfioajsifojioajeiofjiodsfjaisiosgniognioasdioiofjeioafn"
-                   android:textSize="20sp" />
+                   android:layout_height="300dp"
+                   android:background="@color/black_600">
+
+               <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="我是banner，可以滑动出去"
+                       android:textColor="@color/white"
+                       android:textSize="30sp" />
+
+           </LinearLayout>
+
+           <LinearLayout
+                   android:id="@+id/ll_target_view"
+                   android:layout_width="match_parent"
+                   android:layout_height="@dimen/dp_48"
+                   android:layout_gravity="center"
+                   android:background="@color/red"
+                   android:gravity="center">
+
+               <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="滑动，然后固定吸顶"
+                       android:textColor="@color/white" />
+
+           </LinearLayout>
+
 
            <androidx.recyclerview.widget.RecyclerView
                    android:id="@+id/rv_list"
+                   android:layout_height="match_parent"
                    android:layout_width="match_parent"
-                   android:layout_height="wrap_content" />
+                   android:overScrollMode="never" />
        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+    </com.yanftch.review.android.view.nested_scrollview.MyNestedScrollView>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#19FF961E"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,6 +26,7 @@ import com.yanftch.review.android.modules.MenuItems
 import com.yanftch.review.android.modules.PriceDialogModel
 import com.yanftch.review.android.pages.*
 import com.yanftch.review.android.pages.douyin.Page2DouYinActivity
+import com.yanftch.review.android.pages.smartrefreshlayout.SmartActivity1
 import com.yanftch.review.android.pages.tablayout_viewpager_fragment.SwitchFragmentActivity
 import com.yanftch.review.android.pages.tablayout_viewpager_fragment.TabLayoutActivity
 import com.yanftch.review.android.unit_test.UnitTestDemoActivity
@@ -90,6 +91,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun generateDatas() {
         datas = ArrayList()
+        datas.add(
+            MenuItems(
+                name = "smart+悬浮",
+                clazz = SmartActivity1::class.java
+            )
+        )
         datas.add(
             MenuItems(
                 name = "ViewPager2实现抖音切换",
@@ -198,7 +205,7 @@ class MainActivity : AppCompatActivity() {
         datas.add(
             MenuItems(
                 name = "CoordinatorLayout",
-                clazz = com.yanftch.review.android.pages.RecyclerViewActivity::class.java
+                clazz = CoordinatorLayoutActivity::class.java
             )
         )
         datas.add(
