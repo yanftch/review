@@ -1,14 +1,18 @@
 package com.yanftch.review
 
+import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.location.Location
+import android.net.wifi.WifiManager
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.DisplayMetrics
 import android.util.Log
 import android.util.LruCache
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.TextView
@@ -20,16 +24,15 @@ import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.yanftch.review.android.dialog.TransDialogFragment
-import com.yanftch.review.android.modules.ItemBean
 import com.yanftch.review.android.modules.MenuItems
-import com.yanftch.review.android.modules.PriceDialogModel
 import com.yanftch.review.android.pages.*
 import com.yanftch.review.android.pages.douyin.Page2DouYinActivity
 import com.yanftch.review.android.pages.smartrefreshlayout.SmartActivity1
+import com.yanftch.review.android.pages.smartrefreshlayout.SmartActivity2
 import com.yanftch.review.android.pages.tablayout_viewpager_fragment.SwitchFragmentActivity
 import com.yanftch.review.android.pages.tablayout_viewpager_fragment.TabLayoutActivity
 import com.yanftch.review.android.unit_test.UnitTestDemoActivity
+import com.yanftch.review.android.view.InputDialogFragment
 import com.yanftch.review.demo.ui.login.LoginActivity
 import okhttp3.OkHttpClient
 import org.jetbrains.anko.*
@@ -86,11 +89,68 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = RvAdapter()
         recyclerView.layoutManager = lm
 
+        val dm = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(dm)
+
+        var density = dm.density
+        Log.e("debug_MainActivity:", "onCreate==> dm.density = " + density + ", dp2pd(20) = " + dip2px(this, 20f))
+
+
+    }
+    fun dip2px(context: Context, dpValue: Float): Int {
+        val scale = context.resources.displayMetrics.density
+        Log.e("debug_MainActivity:", "dip2px==> scale = $scale   , screenWidth = " + getScreenWidth(this))
+        return (dpValue * scale + 0.5f).toInt()
+    }
+
+    fun getScreenWidth(context: Context): Int {
+        val wm = context
+            .getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val outMetrics = DisplayMetrics()
+        wm.defaultDisplay.getMetrics(outMetrics)
+        return outMetrics.widthPixels
+    }
+    fun getScreenHeight(context: Context): Int {
+        val wm = context
+            .getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val outMetrics = DisplayMetrics()
+        wm.defaultDisplay.getMetrics(outMetrics)
+        return outMetrics.heightPixels
     }
 
 
     private fun generateDatas() {
         datas = ArrayList()
+        datas.add(
+            MenuItems(
+                name = "Load Image Page ",
+                clazz = ImageLoadActivity::class.java
+            )
+        )
+        datas.add(
+            MenuItems(
+                name = "Nsv and Rv Page ",
+                clazz = NsvAndRvActivity::class.java
+            )
+        )
+        datas.add(
+            MenuItems(
+                name = "CalendarView Page ",
+                clazz = CalendarViewActivity::class.java
+            )
+        )
+        datas.add(
+            MenuItems(
+                name = "NestedScrollView 顶部图片缩放效果",
+                clazz = NestedScrollViewWithScaleHeaderImageActivity::class.java
+            )
+        )
+        datas.add(
+            MenuItems(
+                name = "smart 2",
+                clazz = SmartActivity2::class.java
+            )
+        )
         datas.add(
             MenuItems(
                 name = "smart+悬浮",
@@ -118,7 +178,7 @@ class MainActivity : AppCompatActivity() {
         datas.add(
             MenuItems(
                 name = "ViewPager2 Demo",
-                clazz = ViewPager2Activity::class.java
+                clazz = ViewPager2DemoActivity::class.java
             )
         )
         datas.add(
@@ -293,54 +353,63 @@ class MainActivity : AppCompatActivity() {
                 button {
                     text = "click"
                     onClick {
-                        var mModel: PriceDialogModel? = PriceDialogModel()
-                        mModel?.title = "短租价格说明"
-                        mModel?.subTitle = "租期不满一年会根据不同租期上浮价格"
-                        mModel?.buttonText = "咨询价格详情"
-                        mModel?.leaseTitle = "租期"
-                        mModel?.originalPriceTitle = "原价"
-                        mModel?.prePriceTitle = "优惠价"
-                        val list = mutableListOf<ItemBean>()
-                        val item1 = ItemBean()
-                        item1.color = "#ff3737"
-                        item1.lease = "12个月以上"
-                        item1.originalPrice = "82991"
-                        item1.prePrice = "80991"
-                        item1.priceUnit = "/月"
-                        item1.unit = "$"
-                        val item2 = ItemBean()
-                        item2.color = "#ff3737"
-                        item2.lease = "4-11个月"
-                        item2.originalPrice = "82993"
-                        item2.prePrice = ""
-                        item2.priceUnit = "/月"
-                        item2.unit = "$"
-                        val item3 = ItemBean()
-                        item3.color = "#ff3737"
-                        item3.lease = "1-3个月"
-                        item3.originalPrice = "82993"
-                        item3.prePrice = "80993"
-                        item3.priceUnit = "/月"
-                        item3.unit = "￥"
+                        var bean = BaseBean()
+                        var wifiService = applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+                        var connectionInfo = wifiService.connectionInfo
+                        Log.e("debug_", ": bssid = ${connectionInfo.bssid} ${connectionInfo.ssid}")
 
-                        list.add(item1)
-                        list.add(item2)
-                        list.add(item3)
-                        mModel?.list = list
 
-                        val s = mEditView?.text?.toString()
-                        var toInt = s?.toInt()?:0
-                        mModel?.time = (toInt * 1000).toLong()
-                        mModel?.endMessage = "$toInt 结束了"
 
-                        var dialogFragment = TransDialogFragment.getInstance(mModel)
-                        dialogFragment.show(supportFragmentManager, "trans")
-//                        newBidItemList.add(0, "4444")
-//                        val commentDialogFragment = CommentDialogFragment()
-//                        commentDialogFragment.setOnLoginInforCompleted { userName, passWord ->
-//                            toast(passWord)
-//                        }
-//                        commentDialogFragment.show(supportFragmentManager, "CommentDialogFragment")
+//                        var dlg: InputDialogFragment = InputDialogFragment()
+//                        dlg.show(supportFragmentManager,"input")
+//                        var mModel: PriceDialogModel? = PriceDialogModel()
+//                        mModel?.title = "短租价格说明"
+//                        mModel?.subTitle = "租期不满一年会根据不同租期上浮价格"
+//                        mModel?.buttonText = "咨询价格详情"
+//                        mModel?.leaseTitle = "租期"
+//                        mModel?.originalPriceTitle = "原价"
+//                        mModel?.prePriceTitle = "优惠价"
+//                        val list = mutableListOf<ItemBean>()
+//                        val item1 = ItemBean()
+//                        item1.color = "#ff3737"
+//                        item1.lease = "12个月以上"
+//                        item1.originalPrice = "82991"
+//                        item1.prePrice = "80991"
+//                        item1.priceUnit = "/月"
+//                        item1.unit = "$"
+//                        val item2 = ItemBean()
+//                        item2.color = "#ff3737"
+//                        item2.lease = "4-11个月"
+//                        item2.originalPrice = "82993"
+//                        item2.prePrice = ""
+//                        item2.priceUnit = "/月"
+//                        item2.unit = "$"
+//                        val item3 = ItemBean()
+//                        item3.color = "#ff3737"
+//                        item3.lease = "1-3个月"
+//                        item3.originalPrice = "82993"
+//                        item3.prePrice = "80993"
+//                        item3.priceUnit = "/月"
+//                        item3.unit = "￥"
+//
+//                        list.add(item1)
+//                        list.add(item2)
+//                        list.add(item3)
+//                        mModel?.list = list
+//
+//                        val s = mEditView?.text?.toString()
+//                        var toInt = s?.toInt()?:0
+//                        mModel?.time = (toInt * 1000).toLong()
+//                        mModel?.endMessage = "$toInt 结束了"
+//
+//                        var dialogFragment = TransDialogFragment.getInstance(mModel)
+//                        dialogFragment.show(supportFragmentManager, "trans")
+////                        newBidItemList.add(0, "4444")
+////                        val commentDialogFragment = CommentDialogFragment()
+////                        commentDialogFragment.setOnLoginInforCompleted { userName, passWord ->
+////                            toast(passWord)
+////                        }
+////                        commentDialogFragment.show(supportFragmentManager, "CommentDialogFragment")
 
                     }
                 }

@@ -20,14 +20,25 @@
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
+            android:name=".MyApp"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".android.pages.smartrefreshlayout.SmartActivity1"></activity>
+        <activity android:name=".android.pages.ImageLoadActivity"></activity>
+        <activity android:name=".android.pages.NsvAndRvActivity" />
+        <activity android:name=".android.pages.CalendarViewActivity" />
+        <activity
+                android:name=".android.pages.NestedScrollViewWithScaleHeaderImageActivity"
+                android:theme="@style/AppThemeNoBar" />
+        <activity android:name=".android.pages.ViewPager2DemoActivity" />
+        <activity
+                android:name=".android.pages.smartrefreshlayout.SmartActivity2"
+                android:theme="@style/AppThemeNoBar" />
+        <activity android:name=".android.pages.smartrefreshlayout.SmartActivity1" />
         <activity
                 android:name=".android.pages.douyin.Page2DouYinActivity"
-                android:theme="@style/AppThemeNoAnimation"></activity>
+                android:theme="@style/AppThemeNoAnimation" />
         <activity android:name=".android.pages.DouYinActivity" />
         <activity
                 android:name=".android.pages.PhotoViewActivity"

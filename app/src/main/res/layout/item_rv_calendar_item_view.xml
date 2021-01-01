@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/ll_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_2"
+        tools:background="@color/palette_grey_20">
+
+    <TextView
+            android:id="@+id/tv_in_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:textColor="@color/color_ct4"
+            android:textSize="@dimen/font_9"
+            android:textStyle="bold"
+            tools:text="入住日" />
+
+    <TextView
+            android:id="@+id/tv_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_1"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:textColor="@color/color_ct1_85"
+            android:textSize="@dimen/font_6"
+            android:textStyle="bold"
+            tools:text="14" />
+
+    <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_1"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:textColor="@color/color_ct3"
+            android:textSize="@dimen/font_9"
+            android:textStyle="bold"
+            tools:text="$3000" />
+
+    <TextView
+            android:id="@+id/tv_tips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_1"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:textColor="@color/color_ct3"
+            android:textSize="@dimen/font_9"
+            android:textStyle="bold"
+            tools:text="低价" />
+
+</LinearLayout>
