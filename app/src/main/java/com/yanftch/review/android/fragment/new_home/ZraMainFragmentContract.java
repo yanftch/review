@@ -11,7 +11,7 @@ public interface ZraMainFragmentContract {
             /**
              * 渲染banner
              */
-            void renderBanner();
+            void renderBanner(List<ZraEntryBean> list);
 
             /**
              * 渲染金刚位入口

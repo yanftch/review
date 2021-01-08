@@ -52,4 +52,19 @@
         <!--是否使用默认的底部-->
         <attr name="useDefaultBottom" format="boolean" />
     </declare-styleable>
+    <declare-styleable name="ArcLayout">
+        <attr name="arcHeight" format="dimension"/>
+        <attr name="arcDirection" format="enum">
+            <enum name="top" value="0"/>
+            <enum name="bottom" value="1"/>
+        </attr>
+        <attr name="arcOrientation" format="enum">
+            <enum name="in" value="0"/>
+            <enum name="out" value="1"/>
+        </attr>
+        <attr name="arcOffsetX" format="dimension"/>
+        <attr name="arcOffsetY" format="dimension"/>
+        <attr name="arcSrc" format="reference"/>
+    </declare-styleable>
+
 </resources>

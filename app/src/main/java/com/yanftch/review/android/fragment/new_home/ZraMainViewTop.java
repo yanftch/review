@@ -7,11 +7,15 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.bigkoo.convenientbanner.ConvenientBanner;
+import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
+import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.opensource.svgaplayer.SVGADrawable;
 import com.opensource.svgaplayer.SVGAImageView;
@@ -46,6 +50,10 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
     // 金刚位入口
     private LinearLayout mLlEntryView;
 
+    // banner
+    private ConvenientBanner mConvenientBanner;
+    private RelativeLayout mRlBannerContainer;
+
     public ZraMainViewTop(@NonNull ZraMainFragment zraMainFragment) {
         mZraMainFragment = zraMainFragment;
         mContext = zraMainFragment.getContext();
@@ -62,6 +70,8 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
      */
     private void initView(View view) {
         mLlEntryView = view.findViewById(R.id.ll_top_entry_container);
+        mConvenientBanner = view.findViewById(R.id.cb_banner);
+        mRlBannerContainer = view.findViewById(R.id.rl_top_banner_container);
 
     }
 
@@ -115,9 +125,36 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
 
     }
 
+    /**
+     * 渲染 banner
+     */
     @Override
-    public void renderBanner() {
+    public void renderBanner(List<ZraEntryBean> list) {
+        if (list == null || list.isEmpty()) {
+            mRlBannerContainer.setVisibility(View.GONE);
+            return;
+        }
+        mRlBannerContainer.setVisibility(View.VISIBLE);
+        if (mConvenientBanner.isTurning()) {
+            mConvenientBanner.stopTurning();
+        }
 
+        mConvenientBanner.setPages(new CBViewHolderCreator<ZraMainBannerViewHolder>() {
+            @Override
+            public ZraMainBannerViewHolder createHolder() {
+                return new ZraMainBannerViewHolder();
+            }
+        }, list).setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Toast.makeText(mContext, "banner click " + position, Toast.LENGTH_SHORT).show();
+                // TODO:yanfeng 2021/1/8 走通用的路由跳转
+
+            }
+        });
+        if (!mConvenientBanner.isTurning()) {
+            mConvenientBanner.startTurning(3000);
+        }
     }
 
     /**
@@ -268,5 +305,21 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
         } else {
             return mZraMainFragment.getContext();
         }
+    }
+
+    public void onPause() {
+        if (mConvenientBanner != null) {
+            mConvenientBanner.stopTurning();
+        }
+
+    }
+
+    public void onResume() {
+        if (mConvenientBanner != null && !mConvenientBanner.isTurning()) {
+            mConvenientBanner.startTurning(3000);
+        }
+    }
+
+    public void onDestroy() {
     }
 }

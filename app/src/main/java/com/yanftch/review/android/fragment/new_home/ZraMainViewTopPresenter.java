@@ -31,7 +31,7 @@ public class ZraMainViewTopPresenter implements ZraMainFragmentContract.Top.Pres
         ZraMainPageBaseModel baseModel = new ZraMainPageBaseModel();
 
         List<ZraEntryBean> entryBeanList = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) {
             ZraEntryBean entryBean = new ZraEntryBean();
             entryBean.setTitle("合租" + i);
             entryBean.setImg("https://webimg.ziroom.com/92aa86c8-98d5-4566-9182-757673dba574.png");
@@ -40,13 +40,28 @@ public class ZraMainViewTopPresenter implements ZraMainFragmentContract.Top.Pres
             entryBeanList.add(entryBean);
         }
 
+        List<ZraEntryBean> bannerList = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            ZraEntryBean entryBean = new ZraEntryBean();
+            entryBean.setTitle("合租" + i);
+            entryBean.setImg("https://webimg.ziroom.com/687cedc4-65fc-45a8-ba20-5b3d1b02b14f.jpeg");
+            entryBean.setIcon("https://webimg.ziroom.com/e7f6a98e-a276-4abb-ba58-7e59591acde2.png");
+            entryBean.setIconSvga("https://file.ziroom.com/g4m3/M00/26/4B/ChAZE18g8YGATHkWAAAH-dLbNOE78.svga");
+            bannerList.add(entryBean);
+        }
+
         // 封装
         baseModel.setEntry(entryBeanList);
+        baseModel.setBanner(bannerList);
 
         // TODO:yanfeng 2021/1/8 外层，需要判断 baseMode 是否为空
 
         if (getView() != null && getView().isActive()) {
+            // 渲染 金刚位
             getView().renderEntry(baseModel.getEntry());
+
+            // 渲染 banner
+            getView().renderBanner(baseModel.getBanner());
         }
 
     }

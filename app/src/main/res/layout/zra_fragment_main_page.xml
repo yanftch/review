@@ -31,19 +31,27 @@
                         tools:layout_height="@dimen/dp_30">
 
                     <!--banner模块-->
-                <com.bigkoo.convenientbanner.ConvenientBanner
-                        android:layout_width="match_parent"
-                        android:id="@+id/cb_banner"
-                        android:layout_height="@dimen/dp_100"/>
+                    <com.yanftch.review.android.fragment.new_home.ArcLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
+                        <com.bigkoo.convenientbanner.ConvenientBanner
+                                android:id="@+id/cb_banner"
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp" />
+
+                    </com.yanftch.review.android.fragment.new_home.ArcLayout>
 
                 </RelativeLayout>
 
                 <!--顶部金刚位入口-->
                 <LinearLayout
+                        android:layout_marginStart="@dimen/dp_8"
                         android:id="@+id/ll_top_entry_container"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_24"
+                        android:layout_marginEnd="@dimen/dp_8"
                         android:orientation="vertical"
                         android:visibility="gone"
                         tools:background="@color/red"

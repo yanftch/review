@@ -5,6 +5,8 @@ import java.util.List;
 public class ZraMainPageBaseModel {
     // 金刚位
     private List<ZraEntryBean> entry;
+    // banner
+    private List<ZraEntryBean> banner;
 
 
 
@@ -12,6 +14,14 @@ public class ZraMainPageBaseModel {
     // ============================
     // ============================
 
+
+    public List<ZraEntryBean> getBanner() {
+        return banner;
+    }
+
+    public void setBanner(List<ZraEntryBean> banner) {
+        this.banner = banner;
+    }
 
     public List<ZraEntryBean> getEntry() {
         return entry;

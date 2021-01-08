@@ -76,11 +76,17 @@ public class ZraMainFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+        if (mTopView != null) {
+            mTopView.onPause();
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        if (mTopView != null) {
+            mTopView.onResume();
+        }
     }
 
     @Override
@@ -95,5 +101,8 @@ public class ZraMainFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (mTopView != null) {
+            mTopView.onDestroy();
+        }
     }
 }
