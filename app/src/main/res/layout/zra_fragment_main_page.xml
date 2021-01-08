@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <com.yanftch.review.android.view.ObservableScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <LinearLayout
+                    android:id="@+id/ll_top_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <!--top banner-->
+                <RelativeLayout
+                        android:id="@+id/rl_top_banner_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:background="@color/color_5D4037"
+                        tools:layout_height="@dimen/dp_30">
+
+                    <!--banner模块-->
+                <com.bigkoo.convenientbanner.ConvenientBanner
+                        android:layout_width="match_parent"
+                        android:id="@+id/cb_banner"
+                        android:layout_height="@dimen/dp_100"/>
+
+
+                </RelativeLayout>
+
+                <!--顶部金刚位入口-->
+                <LinearLayout
+                        android:id="@+id/ll_top_entry_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        tools:background="@color/red"
+                        tools:layout_height="@dimen/dp_40"
+                        tools:visibility="visible" />
+
+                <!--特价房模块-->
+                <LinearLayout
+                        android:id="@+id/ll_discount_base_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                    <TextView
+                            android:id="@+id/tv_discount_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/color_ct1_85"
+                            android:textSize="@dimen/font_3"
+                            tools:text="特价房模块" />
+
+                    <HorizontalScrollView
+                            android:id="@+id/hsv_discount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:scrollbars="none">
+
+                        <LinearLayout
+                                android:id="@+id/ll_hsv_discount_container"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal" />
+                    </HorizontalScrollView>
+                </LinearLayout>
+
+                <!--营销模块-->
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        tools:layout_height="@dimen/dp_30">
+
+                </LinearLayout>
+
+                <!--多媒体找房模块-->
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        tools:layout_height="@dimen/dp_30">
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- 如下是 底部 模块 -->
+
+
+            <!--瀑布流模块-->
+            <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_flow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                <ViewStub
+                        android:id="@+id/vs_flow_empty"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+            </FrameLayout>
+
+        </LinearLayout>
+    </com.yanftch.review.android.view.ObservableScrollView>
+
+</LinearLayout>
