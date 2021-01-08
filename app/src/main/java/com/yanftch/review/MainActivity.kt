@@ -123,6 +123,12 @@ class MainActivity : AppCompatActivity() {
         datas = ArrayList()
         datas.add(
             MenuItems(
+                name = "New Home Page ",
+                clazz = NewHomeActivity::class.java
+            )
+        )
+        datas.add(
+            MenuItems(
                 name = "Load Image Page ",
                 clazz = ImageLoadActivity::class.java
             )
