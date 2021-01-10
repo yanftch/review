@@ -17,6 +17,9 @@
     <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/dp_4"
+            android:outlineAmbientShadowColor="@color/color_ct1_85"
+            android:textSize="@dimen/font_6"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="@id/pv_image"
             app:layout_constraintStart_toStartOf="@id/pv_image"

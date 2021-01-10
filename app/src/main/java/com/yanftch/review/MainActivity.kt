@@ -29,6 +29,7 @@ import com.yanftch.review.android.pages.*
 import com.yanftch.review.android.pages.douyin.Page2DouYinActivity
 import com.yanftch.review.android.pages.smartrefreshlayout.SmartActivity1
 import com.yanftch.review.android.pages.smartrefreshlayout.SmartActivity2
+import com.yanftch.review.android.pages.tablayout_viewpager_fragment.DiyTablayoutActivity
 import com.yanftch.review.android.pages.tablayout_viewpager_fragment.SwitchFragmentActivity
 import com.yanftch.review.android.pages.tablayout_viewpager_fragment.TabLayoutActivity
 import com.yanftch.review.android.unit_test.UnitTestDemoActivity
@@ -121,6 +122,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun generateDatas() {
         datas = ArrayList()
+        datas.add(
+            MenuItems(
+                name = "Diy Tablayout Page ",
+                clazz = DiyTablayoutActivity::class.java
+            )
+        )
         datas.add(
             MenuItems(
                 name = "New Home Page ",
