@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/pv_image"
+            android:layout_width="@dimen/dp_138"
+            android:layout_height="@dimen/dp_104"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:roundedCornerRadius="@dimen/dp_4"
+            tools:background="@color/palette_grey_70" />
+
+    <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_12"
+            android:includeFontPadding="false"
+            android:maxLines="2"
+            android:textColor="@color/color_ct1_85"
+            android:textSize="@dimen/font_5"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/pv_image"
+            app:layout_constraintTop_toTopOf="@id/pv_image"
+            tools:text="开间A户型-项目名字是将府自如寓-地址是酒仙桥" />
+
+    <TextView
+            android:id="@+id/tv_sub_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_6"
+            android:lines="1"
+            android:textColor="@color/color_ct1_40"
+            android:textSize="@dimen/font_7"
+            app:layout_constraintStart_toStartOf="@id/tv_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            tools:text="酒仙桥|16平方" />
+
+    <TextView
+            android:id="@+id/tv_content_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_14"
+            android:includeFontPadding="false"
+            android:textColor="@color/color_ct1_85"
+            android:textSize="@dimen/font_8"
+            app:layout_constraintStart_toStartOf="@id/tv_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_sub_title"
+            tools:text="最高立减" />
+
+    <TextView
+            android:id="@+id/tv_content_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:textColor="@color/color_ct3"
+            android:textSize="@dimen/font_6"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_content_left"
+            app:layout_constraintStart_toEndOf="@id/tv_content_left"
+            tools:text="$1000" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

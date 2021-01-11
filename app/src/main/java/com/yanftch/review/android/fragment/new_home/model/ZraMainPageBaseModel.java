@@ -8,12 +8,23 @@ public class ZraMainPageBaseModel {
     // banner
     private List<ZraEntryBean> banner;
 
+    // 特价房
+    private SpecialPriceHouseBean speicalPriceHouse;
+
 
 
     // ============================
     // ============================
     // ============================
 
+
+    public SpecialPriceHouseBean getSpeicalPriceHouse() {
+        return speicalPriceHouse;
+    }
+
+    public void setSpeicalPriceHouse(SpecialPriceHouseBean speicalPriceHouse) {
+        this.speicalPriceHouse = speicalPriceHouse;
+    }
 
     public List<ZraEntryBean> getBanner() {
         return banner;

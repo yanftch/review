@@ -33,6 +33,7 @@
                     <!--banner模块-->
                     <com.yanftch.review.android.fragment.new_home.ArcLayout
                             android:layout_width="match_parent"
+                            tools:visibility="gone"
                             android:layout_height="wrap_content">
 
                         <com.bigkoo.convenientbanner.ConvenientBanner
@@ -50,50 +51,190 @@
                         android:id="@+id/ll_top_entry_container"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        tools:layout_height="40dp"
                         android:layout_marginTop="@dimen/dp_24"
                         android:layout_marginEnd="@dimen/dp_8"
                         android:orientation="vertical"
-                        android:visibility="gone"
                         tools:background="@color/red"
-                        tools:layout_height="@dimen/dp_40"
                         tools:visibility="visible" />
 
                 <!--特价房模块-->
-                <LinearLayout
-                        android:id="@+id/ll_discount_base_container"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_discount_container"
                         android:layout_width="match_parent"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_14"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:visibility="gone"
+                        android:layout_marginEnd="@dimen/dp_16"
+                        tools:background="@color/palette_grey_10"
+                        tools:layout_height="220dp"
                         tools:visibility="visible">
 
-                    <TextView
-                            android:id="@+id/tv_discount_title"
+                    <com.facebook.drawee.view.SimpleDraweeView
+                            android:id="@+id/pv_bg"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="@dimen/dp_10"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:roundedCornerRadius="@dimen/dp_6"
+                            tools:background="@color/palette_grey_30" />
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                            android:id="@+id/pv_title"
+                            android:layout_width="108dp"
+                            android:layout_height="@dimen/dp_54"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:background="@color/red" />
+
+                    <LinearLayout
+                            android:id="@+id/ll_count_down_container"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/color_ct1_85"
-                            android:textSize="@dimen/font_3"
-                            tools:text="特价房模块" />
+                            android:layout_marginEnd="@dimen/dp_8"
+                            android:gravity="center_vertical|end"
+                            app:layout_constraintBottom_toTopOf="@+id/ll_hsv_anchor"
+                            app:layout_constraintEnd_toEndOf="@id/pv_bg"
+                            app:layout_constraintTop_toTopOf="@id/pv_bg"
+                            tools:layout_height="@dimen/dp_40"
+                            tools:layout_width="300dp">
 
-                    <HorizontalScrollView
-                            android:id="@+id/hsv_discount"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp_10"
-                            android:scrollbars="none">
-
-                        <LinearLayout
-                                android:id="@+id/ll_hsv_discount_container"
+                        <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:text="距结束"
+                                android:textColor="#FFF1C6"
+                                android:textSize="@dimen/font_7" />
+
+                        <TextView
+                                android:id="@+id/tv_day"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_6"
+                                android:background="@drawable/bg_rectangle_fff1c6_radius_3"
+                                android:includeFontPadding="false"
+                                android:paddingStart="@dimen/dp_2"
+                                android:paddingTop="@dimen/dp_4"
+                                android:paddingEnd="@dimen/dp_2"
+                                android:paddingBottom="@dimen/dp_4"
+                                android:text=""
+                                android:textColor="@color/red"
+                                android:textSize="@dimen/font_7"
+                                android:visibility="gone" />
+
+                        <TextView
+                                android:id="@+id/tv_hour"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_6"
+                                android:background="@drawable/bg_rectangle_fff1c6_radius_3"
+                                android:includeFontPadding="false"
+                                android:paddingStart="@dimen/dp_2"
+                                android:paddingTop="@dimen/dp_4"
+                                android:paddingEnd="@dimen/dp_2"
+                                android:paddingBottom="@dimen/dp_4"
+                                android:text="23"
+                                android:textColor="@color/red"
+                                android:textSize="@dimen/font_7" />
+
+                        <TextView
+                                android:id="@+id/tv_hour_separator"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_4"
+                                android:includeFontPadding="false"
+                                android:text=":"
+                                android:textColor="#FFF1C6"
+                                android:textSize="@dimen/font_7" />
+
+                        <TextView
+                                android:id="@+id/tv_minute"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_4"
+                                android:background="@drawable/bg_rectangle_fff1c6_radius_3"
+                                android:includeFontPadding="false"
+                                android:paddingStart="@dimen/dp_2"
+                                android:paddingTop="@dimen/dp_4"
+                                android:paddingEnd="@dimen/dp_2"
+                                android:paddingBottom="@dimen/dp_4"
+                                android:text="23"
+                                android:textColor="@color/red"
+                                android:textSize="@dimen/font_7" />
+
+                        <TextView
+                                android:id="@+id/tv_minute_separator"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_4"
+                                android:includeFontPadding="false"
+                                android:text=":"
+                                android:textColor="#FFF1C6"
+                                android:textSize="@dimen/font_7" />
+
+                        <TextView
+                                android:id="@+id/tv_second"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_4"
+                                android:background="@drawable/bg_rectangle_fff1c6_radius_3"
+                                android:includeFontPadding="false"
+                                android:paddingStart="@dimen/dp_2"
+                                android:paddingTop="@dimen/dp_4"
+                                android:paddingEnd="@dimen/dp_2"
+                                android:paddingBottom="@dimen/dp_4"
+                                android:text="23"
+                                android:textColor="@color/red"
+                                android:textSize="@dimen/font_7" />
+
+                        <TextView
+                                android:id="@+id/tv_day_unit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_4"
+                                android:includeFontPadding="false"
+                                android:text="天"
+                                android:textColor="#FFF1C6"
+                                android:textSize="@dimen/font_7" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:id="@+id/ll_hsv_anchor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_8"
+                            android:layout_marginEnd="@dimen/dp_8"
+                            android:background="@drawable/bg_rectangle_white_radius_6"
+                            app:layout_constraintTop_toBottomOf="@id/pv_title"
+                            tools:layout_height="120dp">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_houses"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_8"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:layout_marginBottom="@dimen/dp_10"
+                                android:scrollbars="none"
                                 android:orientation="horizontal" />
-                    </HorizontalScrollView>
-                </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_10"
+                            app:layout_constraintTop_toBottomOf="@id/ll_hsv_anchor" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <!--营销模块-->
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        tools:background="@color/green"
                         android:orientation="vertical"
                         tools:layout_height="@dimen/dp_30">
 

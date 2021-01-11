@@ -110,6 +110,7 @@
     <dimen name="dp_87">87dp</dimen>
     <dimen name="dp_88">88dp</dimen>
     <dimen name="dp_89">89dp</dimen>
+    <dimen name="dp_120">120dp</dimen>
     <dimen name="dp_9">9dp</dimen>
     <dimen name="dp_90">90dp</dimen>
     <dimen name="dp_91">91dp</dimen>
@@ -163,4 +164,5 @@
     <dimen name="sp_39">39sp</dimen>
     <dimen name="sp_40">40sp</dimen>
     <dimen name="mini_text">15sp</dimen>
+    <dimen name="dp_138">138dp</dimen>
 </resources>

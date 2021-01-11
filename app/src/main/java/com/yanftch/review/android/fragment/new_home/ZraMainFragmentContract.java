@@ -1,5 +1,6 @@
 package com.yanftch.review.android.fragment.new_home;
 
+import com.yanftch.review.android.fragment.new_home.model.SpecialPriceHouseBean;
 import com.yanftch.review.android.fragment.new_home.model.ZraEntryBean;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public interface ZraMainFragmentContract {
             /**
              * 渲染特价房模块
              */
-            void renderSpecialHouseInfo();
+            void renderSpecialHouseInfo(SpecialPriceHouseBean specialPriceHouseBean);
 
             /**
              * 渲染瓷片营销区域

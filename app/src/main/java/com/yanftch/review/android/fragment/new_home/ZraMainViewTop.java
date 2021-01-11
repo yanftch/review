@@ -3,6 +3,7 @@ package com.yanftch.review.android.fragment.new_home;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.os.CountDownTimer;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
@@ -22,6 +26,8 @@ import com.opensource.svgaplayer.SVGAImageView;
 import com.opensource.svgaplayer.SVGAParser;
 import com.opensource.svgaplayer.SVGAVideoEntity;
 import com.yanftch.review.R;
+import com.yanftch.review.android.fragment.new_home.adapter.ZraMainSpecialHouseListAdapter;
+import com.yanftch.review.android.fragment.new_home.model.SpecialPriceHouseBean;
 import com.yanftch.review.android.fragment.new_home.model.ZraEntryBean;
 import com.yanftch.review.android.utils.DensityUtil;
 import com.yanftch.review.android.utils.ScreenUtils;
@@ -37,6 +43,9 @@ import java.util.List;
  * Desc : 首页-顶部部分
  */
 public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
+    private final int DAY_SECONDS = 24 * 60 * 60;
+    private final int HOUR_SECONDS = 60 * 60;
+    private final int MINUTE_SECONDS = 60;
 
     private Context mContext;
     // 屏幕宽度
@@ -53,6 +62,16 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
     // banner
     private ConvenientBanner mConvenientBanner;
     private RelativeLayout mRlBannerContainer;
+
+    // 特价房
+    private ConstraintLayout mClDiscountContainer;
+    private SimpleDraweeView mPvDiscountBgImage;
+    private SimpleDraweeView mPvDiscountTitleImage;
+    private LinearLayout mLlDiscountCountdownContainer;
+    private TextView mTvCountdownDay, mTvCountdownDayUnit, mTvCountdownHour, mTvCountdownHourSeparator, mTvCountdownMinute, mTvCountdownMinuteSeparator, mTvCountdownSecond;
+    private MyCountDownTimer mCountTimer;
+    private LinearLayout mLlHsvOuterContainer;
+    private RecyclerView mRvDiscountHouse;
 
     public ZraMainViewTop(@NonNull ZraMainFragment zraMainFragment) {
         mZraMainFragment = zraMainFragment;
@@ -72,6 +91,19 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
         mLlEntryView = view.findViewById(R.id.ll_top_entry_container);
         mConvenientBanner = view.findViewById(R.id.cb_banner);
         mRlBannerContainer = view.findViewById(R.id.rl_top_banner_container);
+        mClDiscountContainer = view.findViewById(R.id.cl_discount_container);
+        mPvDiscountBgImage = view.findViewById(R.id.pv_bg);
+        mPvDiscountTitleImage = view.findViewById(R.id.pv_title);
+        mLlDiscountCountdownContainer = view.findViewById(R.id.ll_count_down_container);
+        mTvCountdownDay = view.findViewById(R.id.tv_day);
+        mTvCountdownHour = view.findViewById(R.id.tv_hour);
+        mTvCountdownHourSeparator = view.findViewById(R.id.tv_hour_separator);
+        mTvCountdownMinute = view.findViewById(R.id.tv_minute);
+        mTvCountdownMinuteSeparator = view.findViewById(R.id.tv_minute_separator);
+        mTvCountdownSecond = view.findViewById(R.id.tv_second);
+        mTvCountdownDayUnit = view.findViewById(R.id.tv_day_unit);
+        mLlHsvOuterContainer = view.findViewById(R.id.ll_hsv_anchor);
+        mRvDiscountHouse = view.findViewById(R.id.rv_houses);
 
     }
 
@@ -209,7 +241,8 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
                 bottomLine.addView(getEntryItemView(bean), layoutParams);
             }
             mLlEntryView.addView(topLine);
-            mLlEntryView.addView(bottomLine);
+            // 改需求了，只显示1行，超过5个的就不显示超出的了
+            // mLlEntryView.addView(bottomLine);
         }
     }
 
@@ -268,9 +301,114 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
         });
     }
 
+    /**
+     * 渲染特价房模块数据
+     */
     @Override
-    public void renderSpecialHouseInfo() {
+    public void renderSpecialHouseInfo(SpecialPriceHouseBean specialPriceHouseBean) {
+        if (specialPriceHouseBean == null) {
+            mClDiscountContainer.setVisibility(View.GONE);
+            return;
+        }
+        mClDiscountContainer.setVisibility(View.VISIBLE);
+        // 背景图
+        mPvDiscountBgImage.setImageURI(specialPriceHouseBean.getActBaseImg());
+        // TODO:yanfeng 2021/1/10 替换下边的方法
+//        mPvDiscountBgImage.setController(ImageUtil.frescoController(specialPriceHouseBean.getActBaseImg()));
+        // 标题图 mPvTitle.setController(ImageUtil.frescoController(entity.getTitleImage()));
+        mPvDiscountTitleImage.setImageURI(specialPriceHouseBean.getTitleImage());
+        // TODO:yanfeng 2021/1/10 替换下边的方法
+//        mPvDiscountTitleImage.setController(ImageUtil.frescoController(specialPriceHouseBean.getTitleImage()));
 
+        // 倒计时
+        if (specialPriceHouseBean.getSurplusTime() > 0) {
+            mLlDiscountCountdownContainer.setVisibility(View.VISIBLE);
+            if (specialPriceHouseBean.getSurplusTime() > DAY_SECONDS) { // 大于1天，只显示 N 天
+                int days = (int) Math.ceil(specialPriceHouseBean.getSurplusTime() * 1.0d / DAY_SECONDS);
+                long distanceSeconds = specialPriceHouseBean.getSurplusTime() - DAY_SECONDS;
+                mTvCountdownDay.setText(formatTime(days));
+                mTvCountdownDay.setVisibility(View.VISIBLE);
+                mTvCountdownDayUnit.setVisibility(View.VISIBLE);
+                mTvCountdownHour.setVisibility(View.GONE);
+                mTvCountdownHourSeparator.setVisibility(View.GONE);
+                mTvCountdownMinute.setVisibility(View.GONE);
+                mTvCountdownMinuteSeparator.setVisibility(View.GONE);
+                mTvCountdownSecond.setVisibility(View.GONE);
+
+                mLlDiscountCountdownContainer.postDelayed(() -> {
+                    startCountDown((int) (specialPriceHouseBean.getSurplusTime() - distanceSeconds));
+                }, distanceSeconds * 1000);
+            } else {
+                startCountDown((int) specialPriceHouseBean.getSurplusTime());
+            }
+        } else {
+            mLlDiscountCountdownContainer.setVisibility(View.GONE);
+        }
+
+        // 房间横滑列表
+        List<SpecialPriceHouseBean.SpecialPriceHouseVosBean> list = specialPriceHouseBean.getSpeicalPriceHouseVos();
+        if (list == null || list.isEmpty()) {
+            mClDiscountContainer.setVisibility(View.GONE);
+        } else {
+            mClDiscountContainer.setVisibility(View.VISIBLE);
+            mLlHsvOuterContainer.setVisibility(View.VISIBLE);
+
+            mRvDiscountHouse.setLayoutManager(new LinearLayoutManager(mContext, RecyclerView.HORIZONTAL, false));
+            mRvDiscountHouse.setAdapter(new ZraMainSpecialHouseListAdapter(mContext, list));
+            mRvDiscountHouse.addItemDecoration(new RightWhiteRecyclerDecoration(mContext));
+        }
+    }
+
+    /**
+     * 开启特价房倒计时
+     */
+    private void startCountDown(int time) {
+        if (mCountTimer != null) {
+            mCountTimer.cancel();
+        }
+        mCountTimer = new MyCountDownTimer(1000 * time, 1000);
+        mCountTimer.start();
+    }
+
+    class MyCountDownTimer extends CountDownTimer {
+        public MyCountDownTimer(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @SuppressLint("DefaultLocale")
+        @Override
+        public void onTick(long millisUntilFinished) {
+            showTime(Math.round(millisUntilFinished / 1000.0f));
+        }
+
+        @Override
+        public void onFinish() {
+            mLlDiscountCountdownContainer.setVisibility(View.GONE);
+            cancel();
+        }
+    }
+
+    public void showTime(long time) {
+        mTvCountdownDay.setVisibility(View.GONE);
+        mTvCountdownDayUnit.setVisibility(View.GONE);
+        mTvCountdownHour.setVisibility(View.VISIBLE);
+        mTvCountdownHourSeparator.setVisibility(View.VISIBLE);
+        mTvCountdownMinute.setVisibility(View.VISIBLE);
+        mTvCountdownMinuteSeparator.setVisibility(View.VISIBLE);
+        mTvCountdownSecond.setVisibility(View.VISIBLE);
+        int hour = (int) (time / HOUR_SECONDS);
+        int minute = (int) ((time - hour * HOUR_SECONDS) / MINUTE_SECONDS);
+        int second = (int) (time % MINUTE_SECONDS);
+        mTvCountdownHour.setText(formatTime(hour));
+        mTvCountdownMinute.setText(formatTime(minute));
+        mTvCountdownSecond.setText(formatTime(second));
+    }
+
+    private String formatTime(int time) {
+        if (time < 10) {
+            return "0" + time;
+        }
+        return String.valueOf(time);
     }
 
     @Override
