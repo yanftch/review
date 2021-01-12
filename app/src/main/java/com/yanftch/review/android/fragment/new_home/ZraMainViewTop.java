@@ -7,6 +7,7 @@ import android.os.CountDownTimer;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -29,6 +30,8 @@ import com.yanftch.review.R;
 import com.yanftch.review.android.fragment.new_home.adapter.ZraMainSpecialHouseListAdapter;
 import com.yanftch.review.android.fragment.new_home.model.SpecialPriceHouseBean;
 import com.yanftch.review.android.fragment.new_home.model.ZraEntryBean;
+import com.yanftch.review.android.fragment.new_home.model.ZraMainMarketBean;
+import com.yanftch.review.android.fragment.new_home.model.ZraMarketModel;
 import com.yanftch.review.android.utils.DensityUtil;
 import com.yanftch.review.android.utils.ScreenUtils;
 
@@ -73,6 +76,9 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
     private LinearLayout mLlHsvOuterContainer;
     private RecyclerView mRvDiscountHouse;
 
+    // 营销模块  瓷片区
+    private LinearLayout mLlMarketContainer;
+
     public ZraMainViewTop(@NonNull ZraMainFragment zraMainFragment) {
         mZraMainFragment = zraMainFragment;
         mContext = zraMainFragment.getContext();
@@ -104,6 +110,9 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
         mTvCountdownDayUnit = view.findViewById(R.id.tv_day_unit);
         mLlHsvOuterContainer = view.findViewById(R.id.ll_hsv_anchor);
         mRvDiscountHouse = view.findViewById(R.id.rv_houses);
+
+        mLlMarketContainer = view.findViewById(R.id.ll_market_container);
+
 
     }
 
@@ -355,6 +364,8 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
 
             mRvDiscountHouse.setLayoutManager(new LinearLayoutManager(mContext, RecyclerView.HORIZONTAL, false));
             mRvDiscountHouse.setAdapter(new ZraMainSpecialHouseListAdapter(mContext, list));
+            // TODO:yanfeng 2021/1/11 addItemDecoration 之前，需要判断是否已有了，如果有，则不能再添加！！！！！！！记得判断一下
+
             mRvDiscountHouse.addItemDecoration(new RightWhiteRecyclerDecoration(mContext));
         }
     }
@@ -411,9 +422,114 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
         return String.valueOf(time);
     }
 
+    /**
+     * 营销区域  瓷片区
+     */
     @Override
-    public void renderMarketing() {
+    public void renderMarketing(List<ZraMarketModel> list) {
+        if (list == null || list.isEmpty()) {
+            mLlMarketContainer.setVisibility(View.GONE);
+            return;
+        }
+        mLlMarketContainer.setVisibility(View.VISIBLE);
+        mLlMarketContainer.removeAllViews();
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
 
+        int size = list.size();
+        for (int i = 0; i < size; i++) {
+            if (list.get(i) == null) continue;
+            mLlMarketContainer.addView(getMarketItemView(list.get(i)), layoutParams);
+            if (i == 0 && size == 2) {
+                mLlMarketContainer.addView(new View(mContext), new LinearLayout.LayoutParams(DensityUtil.dip2px(mContext, 16f), ViewGroup.LayoutParams.WRAP_CONTENT));
+            }
+        }
+    }
+
+    private View getMarketItemView(@NonNull ZraMarketModel model) {
+        if (model.isSingleType()) {
+            return getMarketSingleView(model);
+        } else if (model.isMulType()) {
+            return getMarketMulView(model);
+        }
+        return new View(mContext);
+    }
+
+    private View getMarketSingleView(@NonNull ZraMarketModel model) {
+        List<ZraMainMarketBean> list = model.getList();
+        if (list == null || list.isEmpty()) return new View(mContext);
+        ZraMainMarketBean zraMainMarketBean = list.get(0);
+
+        View view = LayoutInflater.from(mContext).inflate(R.layout.zra_layout_market_single_view, null, false);
+        TextView tvTitle = view.findViewById(R.id.tv_title);
+        TextView tvSubTitle = view.findViewById(R.id.tv_sub_title);
+        SimpleDraweeView pvImage = view.findViewById(R.id.pv_image);
+
+        tvTitle.setText(zraMainMarketBean.getTitle());
+        tvSubTitle.setText(zraMainMarketBean.getSubTitle());
+
+        // TODO:yanfeng 2021/1/11 替换图片加载方式
+        // mPvImage.setController(ImageUtil.frescoController(bean.houseTypePic));
+        pvImage.setImageURI(zraMainMarketBean.getImg());
+        // TODO:yanfeng 2021/1/12 重新处理图片的宽高
+
+        view.setOnClickListener(v -> {
+            // TODO:yanfeng 2021/1/11 进入房型详情页/项目详情页？   后端配置路由实现吗？
+            Toast.makeText(mContext, "click single", Toast.LENGTH_SHORT).show();
+        });
+        return view;
+    }
+
+    /**
+     * 内部还有数组，需要遍历添加子视图
+     */
+    private View getMarketMulView(@NonNull ZraMarketModel model) {
+        List<ZraMainMarketBean> list = model.getList();
+        if (list == null || list.isEmpty()) return new View(mContext);
+
+        LinearLayout linearLayout = new LinearLayout(mContext);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+        linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+        int size = list.size();
+        for (int i = 0; i < size; i++) {
+            ZraMainMarketBean zraMainMarketBean = list.get(i);
+            if (zraMainMarketBean == null) continue;
+
+            View view = LayoutInflater.from(mContext).inflate(R.layout.zra_layout_market_active_view, null, false);
+            TextView tvButton = view.findViewById(R.id.tv_btn);
+            TextView tvTitle = view.findViewById(R.id.tv_title);
+            TextView tvSubTitle = view.findViewById(R.id.tv_sub_title);
+            SimpleDraweeView pvImage = view.findViewById(R.id.pv_image);
+
+            tvTitle.setText(zraMainMarketBean.getTitle());
+            tvSubTitle.setText(zraMainMarketBean.getSubTitle());
+            tvButton.setText(zraMainMarketBean.getButtonTitle());
+
+            // TODO:yanfeng 2021/1/11 替换图片加载方式
+            // mPvImage.setController(ImageUtil.frescoController(bean.houseTypePic));
+            pvImage.setImageURI(zraMainMarketBean.getImg());
+            // TODO:yanfeng 2021/1/12 重新处理图片的宽高
+
+            tvButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // TODO:yanfeng 2021/1/12 调接口，刷新按钮状态
+                }
+            });
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // TODO:yanfeng 2021/1/11 进入房型详情页/项目详情页？   后端配置路由实现吗？
+                    Toast.makeText(mContext, "click single", Toast.LENGTH_SHORT).show();
+                }
+            });
+            linearLayout.addView(view, layoutParams);
+            if (i == 0 && size == 2) {
+                linearLayout.addView(new View(mContext), new ViewGroup.LayoutParams(DensityUtil.dip2px(mContext,8f), ViewGroup.LayoutParams.WRAP_CONTENT));
+            }
+        }
+        linearLayout.setLayoutParams(layoutParams);
+        return linearLayout;
     }
 
     @Override

@@ -5,7 +5,9 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.yanftch.review.android.fragment.new_home.model.SpecialPriceHouseBean;
 import com.yanftch.review.android.fragment.new_home.model.ZraEntryBean;
+import com.yanftch.review.android.fragment.new_home.model.ZraMainMarketBean;
 import com.yanftch.review.android.fragment.new_home.model.ZraMainPageBaseModel;
+import com.yanftch.review.android.fragment.new_home.model.ZraMarketModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,11 +60,37 @@ public class ZraMainViewTopPresenter implements ZraMainFragmentContract.Top.Pres
         Gson gson = new Gson();
         SpecialPriceHouseBean specialPriceHouseBean = gson.fromJson(specialPriceBean, SpecialPriceHouseBean.class);
 
+        // 营销区域  瓷片区
+        List<ZraMarketModel> zraMarketModelList = new ArrayList<>();
+        ZraMarketModel model1 = new ZraMarketModel();
+        model1.setType("1");
+        List<ZraMainMarketBean> l1 = new ArrayList<>();
+        ZraMainMarketBean bean1 = new ZraMainMarketBean();
+        bean1.setTitle("预订优惠");
+        bean1.setSubTitle("早订优惠哈");
+        bean1.setImg("https://webimg.ziroom.com/2cef7579-f9f3-4281-8c0d-6fd53f979df9.jpg");
+        l1.add(bean1);
+        model1.setList(l1);
+        zraMarketModelList.add(model1);
+
+        ZraMarketModel model2 = new ZraMarketModel();
+        model2.setType("2");
+        List<ZraMainMarketBean> l2 = new ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            ZraMainMarketBean bean2 = new ZraMainMarketBean();
+            bean2.setTitle("预订优惠"+i);
+            bean2.setSubTitle("早订优惠哈"+i);
+            bean2.setImg("https://webimg.ziroom.com/2cef7579-f9f3-4281-8c0d-6fd53f979df9.jpg");
+            l2.add(bean2);
+        }
+        model2.setList(l2);
+        zraMarketModelList.add(model2);
+
         // 封装
         baseModel.setEntry(entryBeanList);
         baseModel.setBanner(bannerList);
         baseModel.setSpeicalPriceHouse(specialPriceHouseBean);
-
+        baseModel.setMarketingList(zraMarketModelList);
 
         // TODO:yanfeng 2021/1/8 外层，需要判断 baseMode 是否为空
 
@@ -75,6 +103,11 @@ public class ZraMainViewTopPresenter implements ZraMainFragmentContract.Top.Pres
 
             // 渲染 特价房
             getView().renderSpecialHouseInfo(baseModel.getSpeicalPriceHouse());
+
+            // 营销区域  瓷片区
+            getView().renderMarketing(baseModel.getMarketingList());
+
+
         }
 
     }
@@ -94,6 +127,52 @@ public class ZraMainViewTopPresenter implements ZraMainFragmentContract.Top.Pres
     public void detachView() {
         mView = null;
     }
+
+    private String marketString = "[\n" +
+            "    {\n" +
+            "        \"type\": \"1\",\n" +
+            "        \"list\": [\n" +
+            "            {\n" +
+            "                \"title\": \"预订优惠\",\n" +
+            "                \"subTitle\": \"早定早优惠~\",\n" +
+            "                \"img\": \"https://webimg.ziroom.com/2cef7579-f9f3-4281-8c0d-6fd53f979df9.jpg\",\n" +
+            "                \"buttonStatus\": \"1\",\n" +
+            "                \"buttonTitle\": \"领取\",\n" +
+            "                \"target\": \"\",\n" +
+            "                \"parameter\": \"\",\n" +
+            "                \"projectId\": \"项目id\",\n" +
+            "                \"houseTypeId\": \"房型id\"\n" +
+            "            }\n" +
+            "        ]\n" +
+            "    },\n" +
+            "    {\n" +
+            "        \"type\": \"2\",\n" +
+            "        \"list\": [\n" +
+            "            {\n" +
+            "                \"title\": \"右边左\",\n" +
+            "                \"subTitle\": \"早定早优惠~\",\n" +
+            "                \"img\": \"https://webimg.ziroom.com/2cef7579-f9f3-4281-8c0d-6fd53f979df9.jpg\",\n" +
+            "                \"buttonStatus\": \"1\",\n" +
+            "                \"buttonTitle\": \"领取\",\n" +
+            "                \"target\": \"\",\n" +
+            "                \"parameter\": \"\",\n" +
+            "                \"projectId\": \"项目id\",\n" +
+            "                \"houseTypeId\": \"房型id\"\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"title\": \"右边右\",\n" +
+            "                \"subTitle\": \"早定早优惠~\",\n" +
+            "                \"img\": \"https://webimg.ziroom.com/2cef7579-f9f3-4281-8c0d-6fd53f979df9.jpg\",\n" +
+            "                \"buttonStatus\": \"1\",\n" +
+            "                \"buttonTitle\": \"领取\",\n" +
+            "                \"target\": \"\",\n" +
+            "                \"parameter\": \"\",\n" +
+            "                \"projectId\": \"项目id\",\n" +
+            "                \"houseTypeId\": \"房型id\"\n" +
+            "            }\n" +
+            "        ]\n" +
+            "    }\n" +
+            "]";
 
     private String specialPriceBean = "{\n" +
             "            \"actBaseImg\":\"https://webimg.ziroom.com/687cedc4-65fc-45a8-ba20-5b3d1b02b14f.jpeg\",\n" +

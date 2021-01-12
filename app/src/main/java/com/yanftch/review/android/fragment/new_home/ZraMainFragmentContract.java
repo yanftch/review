@@ -2,6 +2,7 @@ package com.yanftch.review.android.fragment.new_home;
 
 import com.yanftch.review.android.fragment.new_home.model.SpecialPriceHouseBean;
 import com.yanftch.review.android.fragment.new_home.model.ZraEntryBean;
+import com.yanftch.review.android.fragment.new_home.model.ZraMarketModel;
 
 import java.util.List;
 
@@ -27,7 +28,7 @@ public interface ZraMainFragmentContract {
             /**
              * 渲染瓷片营销区域
              */
-            void renderMarketing();
+            void renderMarketing(List<ZraMarketModel> list);
 
             /**
              * 渲染多媒体找房模块

@@ -11,12 +11,22 @@ public class ZraMainPageBaseModel {
     // 特价房
     private SpecialPriceHouseBean speicalPriceHouse;
 
+    // 营销区域  瓷片区
+    private List<ZraMarketModel> marketingList;
 
 
     // ============================
     // ============================
     // ============================
 
+
+    public List<ZraMarketModel> getMarketingList() {
+        return marketingList;
+    }
+
+    public void setMarketingList(List<ZraMarketModel> marketingList) {
+        this.marketingList = marketingList;
+    }
 
     public SpecialPriceHouseBean getSpeicalPriceHouse() {
         return speicalPriceHouse;
