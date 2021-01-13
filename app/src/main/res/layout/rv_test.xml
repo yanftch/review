@@ -20,4 +20,12 @@
         android:text="我要飞"
         android:textColor="@color/fm_green"
         android:textSize="18sp" />
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+        android:id="@+id/tv"/>
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/iv"/>
 </RelativeLayout>
