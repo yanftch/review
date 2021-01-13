@@ -252,13 +252,58 @@
                 </LinearLayout>
 
                 <!--多媒体找房模块-->
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
+                        android:id="@+id/cl_media_container"
+                        android:layout_marginStart="@dimen/dp_16"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        tools:layout_height="@dimen/dp_30">
+                        android:layout_marginTop="@dimen/dp_36"
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                    <com.google.android.material.tabs.TabLayout
+                            android:id="@+id/tab_layout_media"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/dp_24"
+                            android:layout_gravity="center_horizontal"
+                            app:layout_constraintEnd_toStartOf="@id/tv_media_more"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tabGravity="center"
+                            app:tabIndicatorFullWidth="false"
+                            app:tabIndicatorHeight="0dp"
+                            app:tabMinWidth="@dimen/dp_88"
+                            app:tabMode="scrollable"
+                            app:tabRippleColor="@color/transparent"
+                            app:tabSelectedTextColor="@color/color_ct1_85"
+                            app:tabTextColor="@color/color_ct1_60"
+                            tools:background="@color/blue"
+                            tools:layout_height="@dimen/dp_24" />
+
+                    <TextView
+                            android:id="@+id/tv_media_more"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingEnd="@dimen/dp_16"
+                            android:text="查看全部"
+                            android:textColor="@color/color_ct1_60"
+                            android:textSize="@dimen/font_6"
+                            app:layout_constraintBottom_toBottomOf="@id/tab_layout_media"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/tab_layout_media" />
+
+
+                    <com.yanftch.review.android.fragment.new_home.AutoHeightViewPager
+                            android:id="@+id/vp_media"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_18"
+                            android:minHeight="@dimen/dp_100"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tab_layout_media"
+                            tools:background="@color/color_c4"
+                            tools:layout_height="@dimen/dp_200" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
 

@@ -14,14 +14,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.android.material.tabs.TabLayout;
 import com.opensource.svgaplayer.SVGADrawable;
 import com.opensource.svgaplayer.SVGAImageView;
 import com.opensource.svgaplayer.SVGAParser;
@@ -29,14 +37,17 @@ import com.opensource.svgaplayer.SVGAVideoEntity;
 import com.yanftch.review.R;
 import com.yanftch.review.android.fragment.new_home.adapter.ZraMainSpecialHouseListAdapter;
 import com.yanftch.review.android.fragment.new_home.model.SpecialPriceHouseBean;
+import com.yanftch.review.android.fragment.new_home.model.TabBean;
 import com.yanftch.review.android.fragment.new_home.model.ZraEntryBean;
 import com.yanftch.review.android.fragment.new_home.model.ZraMainMarketBean;
+import com.yanftch.review.android.fragment.new_home.model.ZraMainPageLiveBean;
 import com.yanftch.review.android.fragment.new_home.model.ZraMarketModel;
 import com.yanftch.review.android.utils.DensityUtil;
 import com.yanftch.review.android.utils.ScreenUtils;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -79,6 +90,15 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
     // 营销模块  瓷片区
     private LinearLayout mLlMarketContainer;
 
+    // 多媒体找房模块
+    private ConstraintLayout mClMediaContainer;
+    private List<String> mMediaTitleList = new ArrayList<>();
+    private List<Fragment> mMediaFragmentList = new ArrayList<>();
+    private TabLayout mMediaTabLayout;
+    private AutoHeightViewPager mMediaViewPager;
+    private MediaVpAdapter mMediaVpAdapter;
+    private TextView mTvMediaMore;
+
     public ZraMainViewTop(@NonNull ZraMainFragment zraMainFragment) {
         mZraMainFragment = zraMainFragment;
         mContext = zraMainFragment.getContext();
@@ -113,6 +133,10 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
 
         mLlMarketContainer = view.findViewById(R.id.ll_market_container);
 
+        mMediaTabLayout = view.findViewById(R.id.tab_layout_media);
+        mClMediaContainer = view.findViewById(R.id.cl_media_container);
+        mTvMediaMore = view.findViewById(R.id.tv_media_more);
+        mMediaViewPager = view.findViewById(R.id.vp_media);
 
     }
 
@@ -233,7 +257,8 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
             // 显示两行（大于5个入口的case）
             int moreSize = size - lMaxSize;
             int itemWidth = (mScreenWidth - DensityUtil.dip2px(mContext, 0)) / lMaxSize;
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(itemWidth, LinearLayout.LayoutParams.WRAP_CONTENT);
+            LinearLayout.LayoutParams layoutParamsTop = new LinearLayout.LayoutParams(itemWidth, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
+            LinearLayout.LayoutParams layoutParamsBottom = new LinearLayout.LayoutParams(itemWidth, LinearLayout.LayoutParams.WRAP_CONTENT);
 
             LinearLayout topLine = new LinearLayout(mContext);
             LinearLayout bottomLine = new LinearLayout(mContext);
@@ -243,11 +268,11 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
             List<ZraEntryBean> bottomList = list.subList(lMaxSize, size);
             for (ZraEntryBean bean : topList) {
                 if (bean == null) continue;
-                topLine.addView(getEntryItemView(bean), layoutParams);
+                topLine.addView(getEntryItemView(bean), layoutParamsTop);
             }
             for (ZraEntryBean bean : bottomList) {
                 if (bean == null) continue;
-                bottomLine.addView(getEntryItemView(bean), layoutParams);
+                bottomLine.addView(getEntryItemView(bean), layoutParamsBottom);
             }
             mLlEntryView.addView(topLine);
             // 改需求了，只显示1行，超过5个的就不显示超出的了
@@ -344,9 +369,7 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
                 mTvCountdownMinuteSeparator.setVisibility(View.GONE);
                 mTvCountdownSecond.setVisibility(View.GONE);
 
-                mLlDiscountCountdownContainer.postDelayed(() -> {
                     startCountDown((int) (specialPriceHouseBean.getSurplusTime() - distanceSeconds));
-                }, distanceSeconds * 1000);
             } else {
                 startCountDown((int) specialPriceHouseBean.getSurplusTime());
             }
@@ -525,20 +548,119 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
             });
             linearLayout.addView(view, layoutParams);
             if (i == 0 && size == 2) {
-                linearLayout.addView(new View(mContext), new ViewGroup.LayoutParams(DensityUtil.dip2px(mContext,8f), ViewGroup.LayoutParams.WRAP_CONTENT));
+                linearLayout.addView(new View(mContext), new ViewGroup.LayoutParams(DensityUtil.dip2px(mContext, 8f), ViewGroup.LayoutParams.WRAP_CONTENT));
             }
         }
         linearLayout.setLayoutParams(layoutParams);
         return linearLayout;
     }
 
+    /**
+     * 多媒体找房模块
+     */
     @Override
-    public void renderMediaInfo() {
+    public void renderMediaInfo(List<ZraMainPageLiveBean> list) {
+        if (list == null || list.isEmpty()) {
+            mClMediaContainer.setVisibility(View.GONE);
+            return;
+        }
+        mClMediaContainer.setVisibility(View.VISIBLE);
+        ZraMainPageLiveBean zraMainPageLiveBean = list.get(0);
+        if (zraMainPageLiveBean != null) {
+            // TODO:yanfeng 2021/1/12 添加右箭头  android:drawableEnd="@drawable/zrk_ic_home_right_copy2"
+            mTvMediaMore.setVisibility(TextUtils.isEmpty(zraMainPageLiveBean.getTarget()) ? View.GONE : View.VISIBLE);
+            mTvMediaMore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // TODO:yanfeng 2021/1/12 放开如下跳转代码
+//                    if (zraMainPageLiveBean.getParameter() == null) {
+//                        Routers.open(mContext, zraMainPageLiveBean.getTarget());
+//                    } else {
+//                        Routers.open(mContext, zraMainPageLiveBean.getTarget(), LazyUtil.toBundle(zraMainPageLiveBean.getParameter()));
+//                    }
+                }
+            });
+        }
+
+        // tab 处理
+        mMediaTitleList.clear();
+        mMediaFragmentList.clear();
+        int size = list.size();
+        // TODO:yanfeng 2021/1/12 放开下边的代码， 本次上线，只要一个Tab，为了后续兼容，所以APP 只取集合中的第一个
+//        if (size >=2) {
+//            list = list.subList(0, 1);
+//        }
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) == null) continue;
+            mMediaTitleList.add(list.get(i).getTitle());
+            String jsonString = JSONObject.toJSONString(list.get(i).getList());
+            mMediaFragmentList.add(ZraMainLiveFragment.newInstance(jsonString));
+
+
+            // 添加tab
+            TabLayout.Tab tab = mMediaTabLayout.newTab();
+            View view = LayoutInflater.from(mContext).inflate(R.layout.zra_item_tab_custom_view, null, false);
+            ((TextView) view.findViewById(R.id.text_view)).setText(list.get(i).getTitle());
+            tab.setCustomView(view);
+            mMediaTabLayout.addTab(tab);
+            if (i == 0 && tab.getCustomView() != null) {
+                ((TextView) tab.getCustomView().findViewById(R.id.text_view)).setTextColor(ContextCompat.getColor(mContext, R.color.black));
+                // 本次不要此功能
+//                tab.getCustomView().findViewById(R.id.v_shadow).setBackgroundColor(ContextCompat.getColor(mContext, R.color.color_FF961E_30));
+            }
+        }
+
+        mMediaTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                View customView = tab.getCustomView();
+                if (customView == null) return;
+                ((TextView) customView.findViewById(R.id.text_view)).setTextColor(ContextCompat.getColor(mContext, R.color.black));
+                // 本次不要此功能
+//                customView.findViewById(R.id.v_shadow).setBackgroundColor(ContextCompat.getColor(mContext, R.color.color_FF961E_30));
+                mMediaViewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                View customView = tab.getCustomView();
+                if (customView == null) return;
+                ((TextView) customView.findViewById(R.id.text_view)).setTextColor(ContextCompat.getColor(mContext, R.color.color_ct1_40));
+                // 本次不要此功能
+//                customView.findViewById(R.id.v_shadow).setBackgroundColor(ContextCompat.getColor(mContext, R.color.transparent));
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        mMediaVpAdapter = new MediaVpAdapter(mZraMainFragment.getChildFragmentManager(), mMediaTitleList, mMediaFragmentList);
+
+        mMediaViewPager.setAdapter(mMediaVpAdapter);
+
+        mMediaViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mMediaViewPager.requestLayout();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
     }
 
     @Override
-    public void renderRecTitle() {
+    public void renderRecTitle(List<TabBean> list) {
 
     }
 
@@ -575,5 +697,35 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
     }
 
     public void onDestroy() {
+    }
+
+    class MediaVpAdapter extends FragmentPagerAdapter {
+        public MediaVpAdapter(@NonNull FragmentManager fm, List<String> titleList, List<Fragment> fragmentList) {
+//        super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+            super(fm);
+            mMediaTitleList = titleList;
+            mMediaFragmentList = fragmentList;
+        }
+
+        public MediaVpAdapter(@NonNull FragmentManager fm, int behavior) {
+            super(fm, behavior);
+        }
+
+        @NonNull
+        @Override
+        public Fragment getItem(int position) {
+            return mMediaFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mMediaFragmentList.size();
+        }
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mMediaTitleList.get(position);
+        }
     }
 }

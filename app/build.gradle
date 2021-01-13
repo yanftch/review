@@ -125,5 +125,7 @@ dependencies {
     implementation project(':mylibrary')
     compile 'com.github.yyued:SVGAPlayer-Android:2.4.7'
 
+    implementation 'com.alibaba:fastjson:1.2.73'
+
 
 }

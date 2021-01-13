@@ -4,9 +4,9 @@ import java.util.List;
 
 public class ZraMainPageBaseModel {
     // 金刚位
-    private List<ZraEntryBean> entry;
+    private List<ZraEntryBean> transformersList;
     // banner
-    private List<ZraEntryBean> banner;
+    private List<ZraEntryBean> headBanner;
 
     // 特价房
     private SpecialPriceHouseBean speicalPriceHouse;
@@ -14,11 +14,32 @@ public class ZraMainPageBaseModel {
     // 营销区域  瓷片区
     private List<ZraMarketModel> marketingList;
 
+    // tab 标题
+    private List<TabBean> tab;
+
+    private List<ZraMainPageLiveBean> mediaList;
+
 
     // ============================
     // ============================
     // ============================
 
+
+    public List<ZraMainPageLiveBean> getMediaList() {
+        return mediaList;
+    }
+
+    public void setMediaList(List<ZraMainPageLiveBean> mediaList) {
+        this.mediaList = mediaList;
+    }
+
+    public List<TabBean> getTab() {
+        return tab;
+    }
+
+    public void setTab(List<TabBean> tab) {
+        this.tab = tab;
+    }
 
     public List<ZraMarketModel> getMarketingList() {
         return marketingList;
@@ -36,19 +57,19 @@ public class ZraMainPageBaseModel {
         this.speicalPriceHouse = speicalPriceHouse;
     }
 
-    public List<ZraEntryBean> getBanner() {
-        return banner;
+    public List<ZraEntryBean> getTransformersList() {
+        return transformersList;
     }
 
-    public void setBanner(List<ZraEntryBean> banner) {
-        this.banner = banner;
+    public void setTransformersList(List<ZraEntryBean> transformersList) {
+        this.transformersList = transformersList;
     }
 
-    public List<ZraEntryBean> getEntry() {
-        return entry;
+    public List<ZraEntryBean> getHeadBanner() {
+        return headBanner;
     }
 
-    public void setEntry(List<ZraEntryBean> entry) {
-        this.entry = entry;
+    public void setHeadBanner(List<ZraEntryBean> headBanner) {
+        this.headBanner = headBanner;
     }
 }

@@ -1,7 +1,9 @@
 package com.yanftch.review.android.fragment.new_home;
 
 import com.yanftch.review.android.fragment.new_home.model.SpecialPriceHouseBean;
+import com.yanftch.review.android.fragment.new_home.model.TabBean;
 import com.yanftch.review.android.fragment.new_home.model.ZraEntryBean;
+import com.yanftch.review.android.fragment.new_home.model.ZraMainPageLiveBean;
 import com.yanftch.review.android.fragment.new_home.model.ZraMarketModel;
 
 import java.util.List;
@@ -33,12 +35,13 @@ public interface ZraMainFragmentContract {
             /**
              * 渲染多媒体找房模块
              */
-            void renderMediaInfo();
+            void renderMediaInfo(List<ZraMainPageLiveBean> list);
 
             /**
              * 渲染瀑布流标题栏
              */
-            void renderRecTitle();
+            void renderRecTitle(List<TabBean> list);
+
         }
 
         interface Presenter extends BasePresenter<Top.View> {

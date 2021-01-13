@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="@dimen/dp_104"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_8"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:background="@color/palette_grey_7">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_rectangle_white_radius_8"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dp_10">
+
+        <RelativeLayout
+                android:id="@+id/rl_container_base"
+                android:layout_width="@dimen/dp_70"
+                android:layout_height="@dimen/dp_70"
+                android:layout_marginTop="@dimen/dp_5"
+                android:gravity="center"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible">
+
+            <FrameLayout
+                    android:id="@+id/fl_container_outer"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/zra_shape_circle_out_60dp" />
+
+            <LinearLayout
+                    android:id="@+id/fl_container_inner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/zra_shape_circle_out_60dp"
+                    android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                <FrameLayout
+                        android:id="@+id/fl_header_container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                            android:id="@+id/zra_pv_user_icon"
+                            android:layout_width="@dimen/dp_60"
+                            android:layout_height="@dimen/dp_60"
+                            app:roundAsCircle="true"
+                            app:roundingBorderColor="#d4d4d4"
+                            app:roundingBorderWidth="0.5dp" />
+
+                    <ImageView
+                            android:id="@+id/iv_live_state"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" />
+                </FrameLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/pv_keeper_header"
+                android:layout_width="@dimen/dp_58"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_height="@dimen/dp_58"
+                app:actualImageScaleType="fitCenter"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:roundAsCircle="true"
+                tools:background="@drawable/zra_shape_circle_out_60dp" />
+
+        <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_80"
+                android:gravity="center"
+                android:maxLines="2"
+                android:textColor="@color/color_ct1_85"
+                android:textSize="@dimen/font_5"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="将府自如寓" />
+
+        <TextView
+                android:id="@+id/tv_sub_title"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:textColor="@color/color_ct1_40"
+                android:lines="1"
+                android:textSize="@dimen/font_7"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_name"
+                tools:text="收获了12个赞" />
+
+        <TextView
+                android:id="@+id/tv_btn"
+                android:layout_width="@dimen/dp_88"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@drawable/bg_rectangle_ct4_radius_14"
+                android:gravity="center"
+                android:paddingTop="@dimen/dp_6"
+                android:paddingBottom="@dimen/dp_6"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_6"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_sub_title"
+                tools:text="关注直播" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
