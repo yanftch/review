@@ -113,6 +113,9 @@ public class ZraMainViewTopPresenter implements ZraMainFragmentContract.Top.Pres
             // 多媒体找房模块
             getView().renderMediaInfo(baseModel.getMediaList());
 
+            // tab 标题
+            getView().renderRecTitle(baseModel.getTab());
+
 
         }
 
@@ -286,7 +289,7 @@ public class ZraMainViewTopPresenter implements ZraMainFragmentContract.Top.Pres
             "        {\n" +
             "            \"title\": \"直播找房\",\n" +
             "            \"type\": \"1\",\n" +
-            "            \"target\":\"123\",\n" +
+            "            \"target\": \"123\",\n" +
             "            \"list\": [\n" +
             "                {\n" +
             "                    \"img\": \"https://webimg.ziroom.com/2cef7579-f9f3-4281-8c0d-6fd53f979df9.jpg\",\n" +
@@ -683,7 +686,7 @@ public class ZraMainViewTopPresenter implements ZraMainFragmentContract.Top.Pres
             "        {\n" +
             "            \"title\": \"视频找房\",\n" +
             "            \"type\": \"2\",\n" +
-            "            \"target\":\"123\",\n" +
+            "            \"target\": \"123\",\n" +
             "            \"list\": [\n" +
             "                {\n" +
             "                    \"img\": \"https://webimg.ziroom.com/2f9042d4-c9dd-4627-bb48-d77da4a99282.jpg\",\n" +
@@ -920,6 +923,16 @@ public class ZraMainViewTopPresenter implements ZraMainFragmentContract.Top.Pres
             "                    \"status\": 0\n" +
             "                }\n" +
             "            ]\n" +
+            "        }\n" +
+            "    ],\n" +
+            "    \"tab\": [\n" +
+            "        {\n" +
+            "            \"title\": \"猜你喜欢\",\n" +
+            "            \"type\": \"1\"\n" +
+            "        },\n" +
+            "        {\n" +
+            "            \"title\": \"项目列表\",\n" +
+            "            \"type\": \"2\"\n" +
             "        }\n" +
             "    ]\n" +
             "}";

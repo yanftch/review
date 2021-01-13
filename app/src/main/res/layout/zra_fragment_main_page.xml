@@ -305,11 +305,32 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+                <!--瀑布流tab标题-->
+                <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tb_rec_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_24"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_36"
+                        android:layout_marginEnd="@dimen/dp_16"
+                        app:tabGravity="center"
+                        app:tabIndicatorFullWidth="false"
+                        app:tabIndicatorHeight="0dp"
+                        app:tabMinWidth="@dimen/dp_88"
+                        app:tabMode="scrollable"
+                        app:tabRippleColor="@color/transparent"
+                        app:tabSelectedTextColor="@color/color_ct1_85"
+                        app:tabTextColor="@color/color_ct1_60"
+                        tools:background="@color/blue"
+                        tools:layout_height="@dimen/dp_24" />
+
             </LinearLayout>
 
+<View
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
             <!-- 如下是 底部 模块 -->
-
-
             <!--瀑布流模块-->
             <FrameLayout
                     android:layout_width="match_parent"

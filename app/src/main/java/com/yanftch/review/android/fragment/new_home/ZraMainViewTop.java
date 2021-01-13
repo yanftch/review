@@ -99,6 +99,12 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
     private MediaVpAdapter mMediaVpAdapter;
     private TextView mTvMediaMore;
 
+    // 瀑布流标题
+    private TabLayout mTblRecTitle;
+    private List<String> mRecTitleList = new ArrayList<>();
+    private List<Fragment> mRecFragmentList = new ArrayList<>();
+
+
     public ZraMainViewTop(@NonNull ZraMainFragment zraMainFragment) {
         mZraMainFragment = zraMainFragment;
         mContext = zraMainFragment.getContext();
@@ -138,6 +144,7 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
         mTvMediaMore = view.findViewById(R.id.tv_media_more);
         mMediaViewPager = view.findViewById(R.id.vp_media);
 
+        mTblRecTitle = view.findViewById(R.id.tb_rec_title);
     }
 
     public void init() {
@@ -659,8 +666,64 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
 
     }
 
+    /**
+     * 瀑布流标题栏
+     */
     @Override
     public void renderRecTitle(List<TabBean> list) {
+        if (list == null || list.isEmpty()) {
+            mTblRecTitle.setVisibility(View.GONE);
+            return;
+        }
+        mTblRecTitle.setVisibility(View.VISIBLE);
+        int size = list.size();
+        mRecTitleList.clear();
+        mRecFragmentList.clear();
+
+        for (int i = 0; i < size; i++) {
+            if (list.get(i) == null) continue;
+            mRecTitleList.add(list.get(i).getTitle());
+            // TODO:yanfeng 2021/1/13 添加 Fragment 到 list 中
+
+            // 添加tab
+            TabLayout.Tab tab = mTblRecTitle.newTab();
+            View view = LayoutInflater.from(mContext).inflate(R.layout.zra_item_tab_custom_view, null, false);
+            ((TextView) view.findViewById(R.id.text_view)).setText(list.get(i).getTitle());
+            tab.setCustomView(view);
+            mTblRecTitle.addTab(tab);
+            if (i == 0 && tab.getCustomView() != null) {
+                ((TextView) tab.getCustomView().findViewById(R.id.text_view)).setTextColor(ContextCompat.getColor(mContext, R.color.black));
+                // 本次不要此功能
+//                tab.getCustomView().findViewById(R.id.v_shadow).setBackgroundColor(ContextCompat.getColor(mContext, R.color.color_FF961E_30));
+            }
+        }
+
+//        mTblRecTitle.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) {
+//                View customView = tab.getCustomView();
+//                if (customView == null) return;
+//                ((TextView) customView.findViewById(R.id.text_view)).setTextColor(ContextCompat.getColor(mContext, R.color.black));
+//                // 本次不要此功能
+////                customView.findViewById(R.id.v_shadow).setBackgroundColor(ContextCompat.getColor(mContext, R.color.color_FF961E_30));
+//                mMediaViewPager.setCurrentItem(tab.getPosition());
+//            }
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//                View customView = tab.getCustomView();
+//                if (customView == null) return;
+//                ((TextView) customView.findViewById(R.id.text_view)).setTextColor(ContextCompat.getColor(mContext, R.color.color_ct1_40));
+//                // 本次不要此功能
+////                customView.findViewById(R.id.v_shadow).setBackgroundColor(ContextCompat.getColor(mContext, R.color.transparent));
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//
+//            }
+//        });
+
 
     }
 
