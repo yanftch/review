@@ -96,13 +96,15 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
     private List<Fragment> mMediaFragmentList = new ArrayList<>();
     private TabLayout mMediaTabLayout;
     private AutoHeightViewPager mMediaViewPager;
-    private MediaVpAdapter mMediaVpAdapter;
+    private VpAdapter mMediaVpAdapter;
     private TextView mTvMediaMore;
 
     // 瀑布流标题
     private TabLayout mTblRecTitle;
+    private ViewPager mRecViewPager;
     private List<String> mRecTitleList = new ArrayList<>();
     private List<Fragment> mRecFragmentList = new ArrayList<>();
+    private VpAdapter mRecFlowVpAdapter;
 
 
     public ZraMainViewTop(@NonNull ZraMainFragment zraMainFragment) {
@@ -145,6 +147,8 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
         mMediaViewPager = view.findViewById(R.id.vp_media);
 
         mTblRecTitle = view.findViewById(R.id.tb_rec_title);
+
+        mRecViewPager = view.findViewById(R.id.vp);
     }
 
     public void init() {
@@ -643,7 +647,7 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
             }
         });
 
-        mMediaVpAdapter = new MediaVpAdapter(mZraMainFragment.getChildFragmentManager(), mMediaTitleList, mMediaFragmentList);
+        mMediaVpAdapter = new VpAdapter(mZraMainFragment.getChildFragmentManager(), mMediaTitleList, mMediaFragmentList);
 
         mMediaViewPager.setAdapter(mMediaVpAdapter);
 
@@ -681,48 +685,75 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
         mRecFragmentList.clear();
 
         for (int i = 0; i < size; i++) {
-            if (list.get(i) == null) continue;
-            mRecTitleList.add(list.get(i).getTitle());
+            TabBean tabBean = list.get(i);
+            if (tabBean == null) continue;
+            mRecTitleList.add(tabBean.getTitle());
             // TODO:yanfeng 2021/1/13 添加 Fragment 到 list 中
+
+            // 添加 Fragment
+            if (tabBean.isRecPage()) {
+                mRecFragmentList.add(ZraMainRecFlowFragment.newInstance("1", "2"));
+            } else if (tabBean.isProjectListPage()) {
+                mRecFragmentList.add(ZraMainProjectListFragment.newInstance( ));
+            }
 
             // 添加tab
             TabLayout.Tab tab = mTblRecTitle.newTab();
             View view = LayoutInflater.from(mContext).inflate(R.layout.zra_item_tab_custom_view, null, false);
-            ((TextView) view.findViewById(R.id.text_view)).setText(list.get(i).getTitle());
+            ((TextView) view.findViewById(R.id.text_view)).setText(tabBean.getTitle());
             tab.setCustomView(view);
             mTblRecTitle.addTab(tab);
             if (i == 0 && tab.getCustomView() != null) {
                 ((TextView) tab.getCustomView().findViewById(R.id.text_view)).setTextColor(ContextCompat.getColor(mContext, R.color.black));
                 // 本次不要此功能
-//                tab.getCustomView().findViewById(R.id.v_shadow).setBackgroundColor(ContextCompat.getColor(mContext, R.color.color_FF961E_30));
+                tab.getCustomView().findViewById(R.id.v_shadow).setBackgroundColor(ContextCompat.getColor(mContext, R.color.color_FF961E_30));
             }
         }
 
-//        mTblRecTitle.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//                View customView = tab.getCustomView();
-//                if (customView == null) return;
-//                ((TextView) customView.findViewById(R.id.text_view)).setTextColor(ContextCompat.getColor(mContext, R.color.black));
-//                // 本次不要此功能
-////                customView.findViewById(R.id.v_shadow).setBackgroundColor(ContextCompat.getColor(mContext, R.color.color_FF961E_30));
-//                mMediaViewPager.setCurrentItem(tab.getPosition());
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//                View customView = tab.getCustomView();
-//                if (customView == null) return;
-//                ((TextView) customView.findViewById(R.id.text_view)).setTextColor(ContextCompat.getColor(mContext, R.color.color_ct1_40));
-//                // 本次不要此功能
-////                customView.findViewById(R.id.v_shadow).setBackgroundColor(ContextCompat.getColor(mContext, R.color.transparent));
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//
-//            }
-//        });
+        mTblRecTitle.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                View customView = tab.getCustomView();
+                if (customView == null) return;
+                ((TextView) customView.findViewById(R.id.text_view)).setTextColor(ContextCompat.getColor(mContext, R.color.black));
+                customView.findViewById(R.id.v_shadow).setBackgroundColor(ContextCompat.getColor(mContext, R.color.color_FF961E_30));
+                mRecViewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                View customView = tab.getCustomView();
+                if (customView == null) return;
+                ((TextView) customView.findViewById(R.id.text_view)).setTextColor(ContextCompat.getColor(mContext, R.color.color_ct1_40));
+                customView.findViewById(R.id.v_shadow).setBackgroundColor(ContextCompat.getColor(mContext, R.color.transparent));
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        mRecFlowVpAdapter = new VpAdapter(mZraMainFragment.getChildFragmentManager(), mRecTitleList, mRecFragmentList);
+
+        mRecViewPager.setAdapter(mRecFlowVpAdapter);
+
+        mRecViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mRecViewPager.requestLayout();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
 
     }
@@ -762,33 +793,36 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
     public void onDestroy() {
     }
 
-    class MediaVpAdapter extends FragmentPagerAdapter {
-        public MediaVpAdapter(@NonNull FragmentManager fm, List<String> titleList, List<Fragment> fragmentList) {
+    class VpAdapter extends FragmentPagerAdapter {
+        private List<String> mTitleList = new ArrayList<>();
+        private List<Fragment> mFragmentList = new ArrayList<>();
+
+        public VpAdapter(@NonNull FragmentManager fm, List<String> titleList, List<Fragment> fragmentList) {
 //        super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
             super(fm);
-            mMediaTitleList = titleList;
-            mMediaFragmentList = fragmentList;
+            mTitleList = titleList;
+            mFragmentList = fragmentList;
         }
 
-        public MediaVpAdapter(@NonNull FragmentManager fm, int behavior) {
+        public VpAdapter(@NonNull FragmentManager fm, int behavior) {
             super(fm, behavior);
         }
 
         @NonNull
         @Override
         public Fragment getItem(int position) {
-            return mMediaFragmentList.get(position);
+            return mFragmentList.get(position);
         }
 
         @Override
         public int getCount() {
-            return mMediaFragmentList.size();
+            return mFragmentList.size();
         }
 
         @Nullable
         @Override
         public CharSequence getPageTitle(int position) {
-            return mMediaTitleList.get(position);
+            return mTitleList.get(position);
         }
     }
 }

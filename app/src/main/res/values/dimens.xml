@@ -165,4 +165,5 @@
     <dimen name="sp_40">40sp</dimen>
     <dimen name="mini_text">15sp</dimen>
     <dimen name="dp_138">138dp</dimen>
+    <dimen name="dp_160">160dp</dimen>
 </resources>

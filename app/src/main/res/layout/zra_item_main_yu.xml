@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/dp_2"
+            app:cardElevation="0dp">
+
+        <LinearLayout
+                android:id="@+id/ll_parent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/zra_bg_white_border_1dp_radius_2dp"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/dp_10">
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/pv_pic"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_160"
+                        app:roundedCornerRadius="@dimen/dp_2"
+                        tools:background="@color/color_cL1_12" />
+
+                <LinearLayout
+                        android:id="@+id/ll_live_status"
+                        android:layout_width="@dimen/dp_54"
+                        android:layout_height="@dimen/dp_18"
+                        android:layout_marginStart="@dimen/dp_10"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:background="@drawable/zr_bg_btn_c5_2dp_common"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                    <com.opensource.svgaplayer.SVGAImageView
+                            android:id="@+id/svga_living"
+                            android:layout_width="@dimen/dp_12"
+                            android:layout_height="@dimen/dp_12"
+                            android:layout_marginStart="@dimen/dp_2"
+                            tools:background="@color/red" />
+
+                    <TextView
+                            android:id="@+id/tv_live_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_1"
+                            android:text="直播中"
+                            android:textColor="@color/color_ct2"
+                            android:textSize="@dimen/font_8"
+                            android:textStyle="bold"
+                            tools:text="直播中" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:lines="1"
+                    android:textColor="@color/color_ct1_85"
+                    android:textSize="@dimen/font_4"
+                    android:textStyle="bold"
+                    tools:text="北京将府全智能自如寓" />
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:orientation="horizontal">
+
+                <TextView
+                        android:id="@+id/tv_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/zra_bg_c4_10_radius_2dp"
+                        android:paddingStart="@dimen/dp_4"
+                        android:paddingTop="@dimen/dp_2"
+                        android:paddingEnd="@dimen/dp_4"
+                        android:paddingBottom="@dimen/dp_2"
+                        android:textColor="@color/color_ct4"
+                        android:textSize="@dimen/font_8"
+                        tools:text="巴拉啦" />
+
+                <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:textColor="@color/color_ct1_85"
+                        android:textSize="@dimen/font_5"
+                        android:textStyle="bold"
+                        tools:text="$2000" />
+
+                <TextView
+                        android:id="@+id/tv_price_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color_ct1_85"
+                        android:textSize="@dimen/font_7"
+                        tools:text="/月起" />
+
+                <TextView
+                        android:id="@+id/tv_original_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:layout_marginStart="@dimen/dp_4"
+                        android:textColor="@color/color_ct1_40"
+                        android:textSize="@dimen/font_7"
+                        android:visibility="gone"
+                        tools:text="￥89300/月起"
+                        tools:visibility="visible" />
+            </LinearLayout>
+
+            <TextView
+                    android:id="@+id/tv_sub_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:textColor="@color/color_ct1_40"
+                    android:textSize="@dimen/font_7"
+                    tools:text="朝阳区｜酒仙桥将台路 | 距您3km" />
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:background="@color/color_cL1_6" />
+
+            <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <TextView
+                        android:id="@+id/tv_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_10"
+                        android:layout_marginTop="@dimen/dp_12"
+                        android:layout_marginEnd="@dimen/dp_10"
+                        android:ellipsize="end"
+                        android:lines="2"
+                        android:textColor="@color/color_ct1_60"
+                        android:textSize="@dimen/font_7"
+                        tools:text="自如首栋全智能公寓,自" />
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_10"
+                        android:visibility="invisible"
+                        android:layout_marginTop="@dimen/dp_12"
+                        android:layout_marginEnd="@dimen/dp_10"
+                        android:ellipsize="end"
+                        android:lines="2"
+                        android:text="统计范围为楼盘周边2公里范围内，数据来源于百度地图，仅供参考统计范围为楼盘周边2公里范围内，数据来源于百度地图，仅供参考"
+                        android:textColor="@color/color_ct1_60"
+                        android:textSize="@dimen/font_7" />
+            </FrameLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:background="@drawable/zra_bg_c4_10_radius_2dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/dp_10"
+                    android:paddingTop="@dimen/dp_10"
+                    android:paddingEnd="@dimen/dp_10"
+                    android:paddingBottom="@dimen/dp_10">
+
+                <TextView
+                        android:id="@+id/tv_btn_tag"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/icon_star_c5"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="@color/color_ct4"
+                        android:textSize="@dimen/font_7"
+                        tools:text="可以养够可以养够可以养够" />
+
+                <TextView
+                        android:id="@+id/tv_call"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_6"
+                        android:drawableStart="@drawable/icon_star_c5"
+                        android:text="咨询"
+                        android:textColor="@color/color_ct4"
+                        android:drawablePadding="@dimen/dp_4"
+                        android:textSize="@dimen/font_7"
+                        tools:text="咨询" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</FrameLayout>
