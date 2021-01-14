@@ -1,6 +1,240 @@
 package com.yanftch.review.android.fragment.new_home.model;
 
 public class DataUtils {
+    public static String recJson = "[\n" +
+            "    {\n" +
+            "        \"type\": 1,\n" +
+            "        \"target\": \"ziroomCustomer://zrRentModule/h5WJFunction\",\n" +
+            "        \"parameter\":{\n" +
+            "            \"url\":\"https://special.ziroom.com/2019/zry_zzj/index.html?id=1393\"\n" +
+            "        },\n" +
+            "        \"projectName\": \"将府\",\n" +
+            "        \"baseImg\": [\n" +
+            "            {\n" +
+            "                \"img\": \"https://webimg.ziroom.com/773e0f36-507e-4df6-a63e-f2190924c0ef.png\",\n" +
+            "                \"radio\": 2.0\n" +
+            "            }\n" +
+            "        ],\n" +
+            "        \"playButton\": \"playButton\",\n" +
+            "        \"signStatus\": \"1\",\n" +
+            "        \"houseTypeName\": \"将府开间B户型\",\n" +
+            "        \"district\": \"朝南？\",\n" +
+            "        \"bizcircleName\": \"酒仙桥\",\n" +
+            "        \"houseTypeShowName\": \"shouName?啥\",\n" +
+            "        \"area\": \"16m\",\n" +
+            "        \"price\": \"$40000\",\n" +
+            "        \"prePrice\": \"$50000\",\n" +
+            "        \"price_unit\": \"/月起\",\n" +
+            "        \"unit\": \"$\",\n" +
+            "        \"tsLabel\": [\n" +
+            "            \"001\",\n" +
+            "            \"002\"\n" +
+            "        ],\n" +
+            "        \"preferentialLabel\": [\n" +
+            "            \"003\",\n" +
+            "            \"004\"\n" +
+            "        ]\n" +
+            "    },\n" +
+            "    {\n" +
+            "        \"type\": 2,\n" +
+            "        \"target\": \"ziroomCustomer://zrRentModule/h5WJFunction\",\n" +
+            "        \"parameter\":{\n" +
+            "            \"url\":\"https://special.ziroom.com/2019/zry_zzj/index.html?id=1393\"\n" +
+            "        },\n" +
+            "        \"projectName\": \"将府\",\n" +
+            "        \"baseImg\": [\n" +
+            "            {\n" +
+            "                \"img\": \"https://webimg.ziroom.com/773e0f36-507e-4df6-a63e-f2190924c0ef.png\",\n" +
+            "                \"radio\": 2.0\n" +
+            "            }\n" +
+            "        ],\n" +
+            "        \"playButton\": \"playButton\",\n" +
+            "        \"signStatus\": \"1\",\n" +
+            "        \"houseTypeName\": \"将府开间B户型\",\n" +
+            "        \"district\": \"朝南？\",\n" +
+            "        \"bizcircleName\": \"酒仙桥\",\n" +
+            "        \"houseTypeShowName\": \"shouName?啥\",\n" +
+            "        \"area\": \"16m\",\n" +
+            "        \"price\": \"$40000\",\n" +
+            "        \"prePrice\": \"$50000\",\n" +
+            "        \"price_unit\": \"/月起\",\n" +
+            "        \"unit\": \"$\",\n" +
+            "        \"tsLabel\": [\n" +
+            "            \"001\",\n" +
+            "            \"002\"\n" +
+            "        ],\n" +
+            "        \"preferentialLabel\": [\n" +
+            "            \"003\",\n" +
+            "            \"004\"\n" +
+            "        ]\n" +
+            "    },\n" +
+            "    {\n" +
+            "        \"type\": 2,\n" +
+            "        \"target\": \"ziroomCustomer://zrRentModule/h5WJFunction\",\n" +
+            "        \"parameter\":{\n" +
+            "            \"url\":\"https://special.ziroom.com/2019/zry_zzj/index.html?id=1393\"\n" +
+            "        },\n" +
+            "        \"projectName\": \"将府\",\n" +
+            "        \"baseImg\": [\n" +
+            "            {\n" +
+            "                \"img\": \"https://webimg.ziroom.com/773e0f36-507e-4df6-a63e-f2190924c0ef.png\",\n" +
+            "                \"radio\": 2.0\n" +
+            "            }\n" +
+            "        ],\n" +
+            "        \"playButton\": \"playButton\",\n" +
+            "        \"signStatus\": \"2\",\n" +
+            "        \"houseTypeName\": \"将府开间B户型\",\n" +
+            "        \"district\": \"朝南？\",\n" +
+            "        \"bizcircleName\": \"酒仙桥\",\n" +
+            "        \"houseTypeShowName\": \"shouName?啥\",\n" +
+            "        \"area\": \"16m\",\n" +
+            "        \"price\": \"$40000\",\n" +
+            "        \"prePrice\": \"$50000\",\n" +
+            "        \"price_unit\": \"/月起\",\n" +
+            "        \"unit\": \"$\",\n" +
+            "        \"tsLabel\": [\n" +
+            "            \"001\",\n" +
+            "            \"002\"\n" +
+            "        ],\n" +
+            "        \"preferentialLabel\": [\n" +
+            "            \"003\",\n" +
+            "            \"004\"\n" +
+            "        ]\n" +
+            "    },\n" +
+            "    {\n" +
+            "        \"type\": 2,\n" +
+            "        \"target\": \"ziroomCustomer://zrRentModule/h5WJFunction\",\n" +
+            "        \"parameter\":{\n" +
+            "            \"url\":\"https://special.ziroom.com/2019/zry_zzj/index.html?id=1393\"\n" +
+            "        },\n" +
+            "        \"projectName\": \"将府\",\n" +
+            "        \"baseImg\": [\n" +
+            "            {\n" +
+            "                \"img\": \"https://webimg.ziroom.com/773e0f36-507e-4df6-a63e-f2190924c0ef.png\",\n" +
+            "                \"radio\": 2.0\n" +
+            "            }\n" +
+            "        ],\n" +
+            "        \"playButton\": \"playButton\",\n" +
+            "        \"signStatus\": \"3\",\n" +
+            "        \"houseTypeName\": \"将府开间B户型\",\n" +
+            "        \"district\": \"朝南？\",\n" +
+            "        \"bizcircleName\": \"酒仙桥\",\n" +
+            "        \"houseTypeShowName\": \"shouName?啥\",\n" +
+            "        \"area\": \"16m\",\n" +
+            "        \"price\": \"$40000\",\n" +
+            "        \"prePrice\": \"$50000\",\n" +
+            "        \"price_unit\": \"/月起\",\n" +
+            "        \"unit\": \"$\",\n" +
+            "        \"tsLabel\": [\n" +
+            "            \"001\",\n" +
+            "            \"002\"\n" +
+            "        ],\n" +
+            "        \"preferentialLabel\": [\n" +
+            "            \"003\",\n" +
+            "            \"004\"\n" +
+            "        ]\n" +
+            "    },\n" +
+            "    {\n" +
+            "        \"type\": 2,\n" +
+            "        \"target\": \"ziroomCustomer://zrRentModule/h5WJFunction\",\n" +
+            "        \"parameter\":{\n" +
+            "            \"url\":\"https://special.ziroom.com/2019/zry_zzj/index.html?id=1393\"\n" +
+            "        },\n" +
+            "        \"projectName\": \"将府\",\n" +
+            "        \"baseImg\": [\n" +
+            "            {\n" +
+            "                \"img\": \"https://webimg.ziroom.com/773e0f36-507e-4df6-a63e-f2190924c0ef.png\",\n" +
+            "                \"radio\": 2.0\n" +
+            "            }\n" +
+            "        ],\n" +
+            "        \"playButton\": \"playButton\",\n" +
+            "        \"signStatus\": \"1\",\n" +
+            "        \"houseTypeName\": \"将府开间B户型\",\n" +
+            "        \"district\": \"朝南？\",\n" +
+            "        \"bizcircleName\": \"酒仙桥\",\n" +
+            "        \"houseTypeShowName\": \"shouName?啥\",\n" +
+            "        \"area\": \"16m\",\n" +
+            "        \"price\": \"$40000\",\n" +
+            "        \"prePrice\": \"$50000\",\n" +
+            "        \"price_unit\": \"/月起\",\n" +
+            "        \"unit\": \"$\",\n" +
+            "        \"tsLabel\": [\n" +
+            "            \"001\",\n" +
+            "            \"002\"\n" +
+            "        ],\n" +
+            "        \"preferentialLabel\": [\n" +
+            "            \"003\",\n" +
+            "            \"004\"\n" +
+            "        ]\n" +
+            "    },\n" +
+            "    {\n" +
+            "        \"type\": 2,\n" +
+            "        \"target\": \"ziroomCustomer://zrRentModule/h5WJFunction\",\n" +
+            "        \"parameter\":{\n" +
+            "            \"url\":\"https://special.ziroom.com/2019/zry_zzj/index.html?id=1393\"\n" +
+            "        },\n" +
+            "        \"projectName\": \"将府\",\n" +
+            "        \"baseImg\": [\n" +
+            "            {\n" +
+            "                \"img\": \"https://webimg.ziroom.com/773e0f36-507e-4df6-a63e-f2190924c0ef.png\",\n" +
+            "                \"radio\": 2.0\n" +
+            "            }\n" +
+            "        ],\n" +
+            "        \"playButton\": \"playButton\",\n" +
+            "        \"signStatus\": \"1\",\n" +
+            "        \"houseTypeName\": \"将府开间B户型\",\n" +
+            "        \"district\": \"朝南？\",\n" +
+            "        \"bizcircleName\": \"酒仙桥\",\n" +
+            "        \"houseTypeShowName\": \"shouName?啥\",\n" +
+            "        \"area\": \"16m\",\n" +
+            "        \"price\": \"$40000\",\n" +
+            "        \"prePrice\": \"$50000\",\n" +
+            "        \"price_unit\": \"/月起\",\n" +
+            "        \"unit\": \"$\",\n" +
+            "        \"tsLabel\": [\n" +
+            "            \"001\",\n" +
+            "            \"002\"\n" +
+            "        ],\n" +
+            "        \"preferentialLabel\": [\n" +
+            "            \"003\",\n" +
+            "            \"004\"\n" +
+            "        ]\n" +
+            "    },\n" +
+            "    {\n" +
+            "        \"type\": 2,\n" +
+            "        \"target\": \"ziroomCustomer://zrRentModule/h5WJFunction\",\n" +
+            "        \"parameter\":{\n" +
+            "            \"url\":\"https://special.ziroom.com/2019/zry_zzj/index.html?id=1393\"\n" +
+            "        },\n" +
+            "        \"projectName\": \"将府\",\n" +
+            "        \"baseImg\": [\n" +
+            "            {\n" +
+            "                \"img\": \"https://webimg.ziroom.com/773e0f36-507e-4df6-a63e-f2190924c0ef.png\",\n" +
+            "                \"radio\": 2.0\n" +
+            "            }\n" +
+            "        ],\n" +
+            "        \"playButton\": \"playButton\",\n" +
+            "        \"signStatus\": \"1\",\n" +
+            "        \"houseTypeName\": \"将府开间B户型\",\n" +
+            "        \"district\": \"朝南？\",\n" +
+            "        \"bizcircleName\": \"酒仙桥\",\n" +
+            "        \"houseTypeShowName\": \"shouName?啥\",\n" +
+            "        \"area\": \"16m\",\n" +
+            "        \"price\": \"$40000\",\n" +
+            "        \"prePrice\": \"$50000\",\n" +
+            "        \"price_unit\": \"/月起\",\n" +
+            "        \"unit\": \"$\",\n" +
+            "        \"tsLabel\": [\n" +
+            "            \"001\",\n" +
+            "            \"002\"\n" +
+            "        ],\n" +
+            "        \"preferentialLabel\": [\n" +
+            "            \"003\",\n" +
+            "            \"004\"\n" +
+            "        ]\n" +
+            "    }\n" +
+            "]";
+
     public static String json = "[\n" +
             "        {\n" +
             "            \"imgs\": [\n" +

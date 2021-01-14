@@ -461,6 +461,7 @@
     <color name="color_14000000">#14000000</color>
     <color name="text_color2">#000000</color>
     <color name="zra_holo_green_light">#ff99cc00</color>
+    <color name="color_ct1_12">#1E000000</color>
 
     <drawable name="translate_window_background">#00000000</drawable>
 

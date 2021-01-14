@@ -2,15 +2,13 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/red"
-        tools:context=".android.fragment.new_home.ZraMainRecFlowFragment">
+        android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
+            android:id="@+id/rv_list"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_16"
             android:layout_height="match_parent"
-            android:textSize="30sp"
-            android:text="@string/hello_blank_fragment" />
-
+            android:scrollbars="none" />
 </FrameLayout>

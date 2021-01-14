@@ -692,7 +692,7 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
 
             // 添加 Fragment
             if (tabBean.isRecPage()) {
-                mRecFragmentList.add(ZraMainRecFlowFragment.newInstance("1", "2"));
+                mRecFragmentList.add(new ZraMainRecFlowFragment());
             } else if (tabBean.isProjectListPage()) {
                 mRecFragmentList.add(ZraMainProjectListFragment.newInstance( ));
             }
