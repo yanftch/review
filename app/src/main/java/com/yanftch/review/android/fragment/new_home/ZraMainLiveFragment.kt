@@ -112,6 +112,8 @@ class ZraMainLiveFragment : Fragment() {
     }
 
     inner class LiveAdapter : RecyclerView.Adapter<LiveAdapter.LiveViewHolder>() {
+        private val TYPE_ITEM_ONE = 1 // 单个卡片
+        private val TYPE_ITEM_MORE = 2 // 大于1个卡片
 
         inner class LiveViewHolder(_itemView: View) : RecyclerView.ViewHolder(_itemView) {
             private var mTvName: TextView? = null
@@ -153,7 +155,7 @@ class ZraMainLiveFragment : Fragment() {
                 mTvName?.text = bean.projectName
                 // TODO:yanfeng 2021/1/12 左边添加小图标  android:drawableStart="@drawable/l_time"
                 // 时间
-                mTvSubTitle?.text = bean.liveTime
+                mTvSubTitle?.text = bean.liveShowTime
 
                 if (bean.isLiving) {
                     mPvHeader?.visible = false
@@ -197,10 +199,12 @@ class ZraMainLiveFragment : Fragment() {
                     animatorSet.start()
 
                 } else { // 非直播中
-                    mPvHeader?.visible = true
-                    mRlLiveContainer?.visible = false
+                    mPvHeader?.visible = false
+                    mRlLiveContainer?.visible = true
+                    mPvLiveIcon?.setImageURI(bean.img)
 
-                    mPvHeader?.setImageURI(bean.img)
+
+//                    mPvHeader?.setImageURI(bean.img)
                     // TODO:yanfeng 2021/1/12 替换如下方法
 //                    mPvHeader?.setImageUri(bean?.img)?.display()
 
@@ -289,6 +293,15 @@ class ZraMainLiveFragment : Fragment() {
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LiveViewHolder {
+            if (getItemViewType(viewType) == TYPE_ITEM_ONE) {
+                return LiveViewHolder(
+                    mLayoutInflater.inflate(
+                        R.layout.zra_item_layout_live_item_single,
+                        parent,
+                        false
+                    )
+                )
+            }
             return LiveViewHolder(
                 mLayoutInflater.inflate(
                     R.layout.zra_item_layout_live_item,
@@ -296,6 +309,10 @@ class ZraMainLiveFragment : Fragment() {
                     false
                 )
             )
+        }
+
+        override fun getItemViewType(position: Int): Int {
+            return itemCount
         }
 
         override fun getItemCount() = mList.size
