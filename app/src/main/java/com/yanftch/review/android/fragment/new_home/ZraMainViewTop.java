@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -75,7 +74,7 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
 
     // banner
     private ConvenientBanner mConvenientBanner;
-    private RelativeLayout mRlBannerContainer;
+    private ViewGroup mRlBannerContainer;
 
     // 特价房
     private ConstraintLayout mClDiscountContainer;
