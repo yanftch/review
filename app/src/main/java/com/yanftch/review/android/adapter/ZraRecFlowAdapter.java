@@ -42,9 +42,11 @@ public class ZraRecFlowAdapter <M extends LoadMoreAdapter.IMuilType, VH extends 
         switch (viewType) {
             case 1:
                 viewHolder = new ZraMainHouseTypeViewHolder(inflater.inflate(R.layout.zra_main_item_rec_house_type, null), mContext);
+                break;
             case 2:
-            default:
                 viewHolder = new ZraMainHouseTypeViewHolder(inflater.inflate(R.layout.zra_main_item_rec_house_type, null), mContext);
+                break;
+            default:
                 break;
         }
         if (viewHolder != null) {

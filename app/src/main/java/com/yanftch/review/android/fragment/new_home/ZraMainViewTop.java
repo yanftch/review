@@ -99,8 +99,8 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
     private TextView mTvMediaMore;
 
     // 瀑布流标题
-    private TabLayout mTblRecTitle;
-    private ViewPager mRecViewPager;
+    public TabLayout mTblRecTitle;
+    public ViewPager mRecViewPager;
     private List<String> mRecTitleList = new ArrayList<>();
     private List<Fragment> mRecFragmentList = new ArrayList<>();
     private VpAdapter mRecFlowVpAdapter;
@@ -121,6 +121,7 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
      * UI 初始化
      */
     private void initView(View view) {
+
         mLlEntryView = view.findViewById(R.id.ll_top_entry_container);
         mConvenientBanner = view.findViewById(R.id.cb_banner);
         mRlBannerContainer = view.findViewById(R.id.rl_top_banner_container);
@@ -148,6 +149,10 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
         mTblRecTitle = view.findViewById(R.id.tb_rec_title);
 
         mRecViewPager = view.findViewById(R.id.vp);
+
+
+
+
     }
 
     public void init() {
@@ -396,6 +401,8 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
             mLlHsvOuterContainer.setVisibility(View.VISIBLE);
 
             mRvDiscountHouse.setLayoutManager(new LinearLayoutManager(mContext, RecyclerView.HORIZONTAL, false));
+            list.addAll(list);
+
             mRvDiscountHouse.setAdapter(new ZraMainSpecialHouseListAdapter(mContext, list));
             // TODO:yanfeng 2021/1/11 addItemDecoration 之前，需要判断是否已有了，如果有，则不能再添加！！！！！！！记得判断一下
 
@@ -668,7 +675,16 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
         });
 
     }
+    private List<TabBean> mRecData = new ArrayList<>();
 
+
+    private int mSelectedTab = 0;
+
+    public void updatePosition(int position) {
+        mSelectedTab = position;
+        TabLayout.Tab tabAt = mTblRecTitle.getTabAt(mSelectedTab);
+        mTblRecTitle.selectTab(tabAt);
+    }
     /**
      * 瀑布流标题栏
      */
@@ -678,6 +694,13 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
             mTblRecTitle.setVisibility(View.GONE);
             return;
         }
+        mRecData.clear();
+        mRecData.addAll(list);
+
+        if (mZraMainFragment != null) {
+            mZraMainFragment.renderTabData(mRecData);
+        }
+
         mTblRecTitle.setVisibility(View.VISIBLE);
         int size = list.size();
         mRecTitleList.clear();
@@ -717,6 +740,7 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
                 ((TextView) customView.findViewById(R.id.text_view)).setTextColor(ContextCompat.getColor(mContext, R.color.black));
                 customView.findViewById(R.id.v_shadow).setBackgroundColor(ContextCompat.getColor(mContext, R.color.color_FF961E_30));
                 mRecViewPager.setCurrentItem(tab.getPosition());
+                mZraMainFragment.updatePosition(tab.getPosition());
             }
 
             @Override

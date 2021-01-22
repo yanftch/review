@@ -41,6 +41,7 @@ class ZraMainSpecialHouseListAdapter(
 
     init {
         this.mList = list
+        Log.e("debug_ZraMainSpecialHouseListAdapter:", "==>mList.size === " + mList.size)
         mLayoutInflater = LayoutInflater.from(mContext)
     }
 
@@ -59,9 +60,18 @@ class ZraMainSpecialHouseListAdapter(
         return SpecialHouseViewHolder(inflate, viewType)
     }
 
-    override fun getItemCount() = Math.min(TYPE_ITEM_THREE, mList.size)
+    override fun getItemCount(): Int {
+        var size = Math.min(TYPE_ITEM_THREE, mList.size)
+        if (size == TYPE_ITEM_THREE) {
+            size = mList.size
+        }
+        return size
+    }
 
-    override fun getItemViewType(position: Int) = itemCount
+    override fun getItemViewType(position: Int):Int {
+        var size = Math.min(TYPE_ITEM_THREE, itemCount)
+        return size
+    }
 
     override fun onBindViewHolder(holder: SpecialHouseViewHolder, position: Int) {
         holder.render(mList[position], position)
@@ -98,6 +108,7 @@ class ZraMainSpecialHouseListAdapter(
             position: Int
         ) {
             bean ?: return
+            Log.e("debug_SpecialHouseViewHolder:", "render==>getItemViewType(position) = " + getItemViewType(position))
             // TODO:yanfeng 2021/1/11 图片加载方式替换
             // 图片
             mPvImage.setImageURI(bean.houseTypePic)

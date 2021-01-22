@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewStub
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,6 +25,7 @@ class ZraMainProjectListFragment : Fragment() {
 
     private lateinit var mRv: RecyclerView
     private lateinit var mAdapter: ZraMainProjectListAdapter
+    private lateinit var mVsEmpty: ViewStub
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +51,8 @@ class ZraMainProjectListFragment : Fragment() {
     }
 
     private fun initView(view: View) {
+        mVsEmpty = view.findViewById(R.id.vs_empty)
+
         mList =
             JSONObject.parseArray(DataUtils.json, ZraRecommendzryEntity.RecommendZRY::class.java)
 
@@ -66,6 +70,7 @@ class ZraMainProjectListFragment : Fragment() {
         )
         mRv.adapter = mAdapter
 
+        mVsEmpty.visibility=View.VISIBLE
     }
 
     companion object {

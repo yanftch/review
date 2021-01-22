@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <com.yanftch.review.android.view.ObservableScrollView
+    <com.yanftch.review.android.fragment.new_home.HomeNestedScrollView
             android:layout_width="match_parent"
+            android:id="@+id/osv"
             android:layout_height="wrap_content"
             android:scrollbars="none">
 
@@ -24,35 +25,42 @@
                     android:orientation="vertical">
 
                 <!--top banner-->
-                <FrameLayout
+                <RelativeLayout
                         android:id="@+id/rl_top_banner_container"
                         android:layout_width="match_parent"
+                        android:clipChildren="false"
                         android:layout_height="wrap_content"
-                        tools:background="@color/color_5D4037"
-                        tools:layout_height="@dimen/dp_200">
+                        tools:background="@color/color_5D4037">
 
                     <!--banner模块-->
-                    <com.yanftch.review.android.fragment.new_home.ArcLayout
+                    <!--                    <com.yanftch.review.android.fragment.new_home.ArcLayout-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            tools:visibility="gone"-->
+                    <!--                            android:layout_height="wrap_content">-->
+
+                    <com.bigkoo.convenientbanner.ConvenientBanner
+                            android:id="@+id/cb_banner"
                             android:layout_width="match_parent"
-                            tools:visibility="gone"
-                            android:layout_height="wrap_content">
+                            android:layout_height="200dp" />
 
-                        <com.bigkoo.convenientbanner.ConvenientBanner
-                                android:id="@+id/cb_banner"
-                                android:layout_width="match_parent"
-                                android:layout_height="200dp" />
+                    <!--                    </com.yanftch.review.android.fragment.new_home.ArcLayout>-->
 
-                    </com.yanftch.review.android.fragment.new_home.ArcLayout>
+                    <!--                    <View-->
+                    <!--                            android:layout_width="100dp"-->
+                    <!--                            android:layout_height="3dp"-->
+                    <!--                            android:visibility="gone"-->
+                    <!--                            android:layout_gravity="center_horizontal|bottom"-->
+                    <!--                            android:layout_marginBottom="@dimen/dp_30"-->
+                    <!--                            android:background="@color/red"-->
+                    <!--                            android:gravity="center" />-->
 
-                    <View
-                            android:layout_width="100dp"
-                            android:layout_height="3dp"
-                            android:layout_gravity="center_horizontal|bottom"
-                            android:layout_marginBottom="@dimen/dp_10"
-                            android:background="@color/red"
-                            android:gravity="center" />
+                    <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="182dp"
+                            android:src="@drawable/bg_img_banner_2" />
 
-                </FrameLayout>
+                </RelativeLayout>
 
                 <!--顶部金刚位入口-->
                 <LinearLayout
@@ -244,20 +252,53 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <!--营销模块-->
-                <LinearLayout
+                <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/ll_market_container"
                         android:layout_marginStart="@dimen/dp_16"
                         android:layout_marginTop="@dimen/dp_28"
-                        android:layout_marginEnd="@dimen/dp_16"
-                        android:background="@drawable/bg_rectangle_white_radius_6"
-                        tools:background="@color/green"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/dp_8"
-                        tools:layout_height="@dimen/dp_30">
+                        android:layout_marginEnd="@dimen/dp_16">
 
-                </LinearLayout>
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:id="@+id/llv1"
+                            android:layout_marginStart="@dimen/dp_12"
+                            android:layout_marginEnd="@dimen/dp_12"
+                            android:layout_marginBottom="@dimen/dp_2"
+                            android:background="@drawable/bg_rectangle_66ff731e_radius_6"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/dp_8"
+                            tools:background="@color/blue"
+                            tools:layout_height="@dimen/dp_30" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:id="@+id/llv2"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/dp_8"
+                            android:layout_marginStart="@dimen/dp_8"
+                            android:layout_marginEnd="@dimen/dp_8"
+                            android:background="@drawable/bg_rectangle_66ff731e_radius_6"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/dp_8"
+                            tools:background="@color/green"
+                            tools:layout_height="@dimen/dp_30" />
+
+                    <LinearLayout
+                            android:id="@+id/ll_market_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/dp_12"
+                            android:background="@drawable/bg_rectangle_66ff731e_radius_6"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/dp_8"
+                            tools:background="@color/red"
+                            tools:layout_height="@dimen/dp_30" />
+
+                </RelativeLayout>
+
 
                 <!--多媒体找房模块-->
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -271,6 +312,7 @@
                     <com.google.android.material.tabs.TabLayout
                             android:id="@+id/tab_layout_media"
                             android:layout_width="0dp"
+                            app:tabPaddingStart="0dp"
                             android:layout_height="@dimen/dp_24"
                             android:layout_gravity="center_horizontal"
                             app:layout_constraintEnd_toStartOf="@id/tv_media_more"
@@ -369,6 +411,67 @@
             </FrameLayout>
 
         </LinearLayout>
-    </com.yanftch.review.android.view.ObservableScrollView>
+    </com.yanftch.review.android.fragment.new_home.HomeNestedScrollView>
 
-</LinearLayout>
+    <RelativeLayout
+            android:id="@+id/zra_rl_head_rent_homepage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48">
+
+        <View
+                android:id="@+id/zra_view_title_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0"
+                android:background="@color/white" />
+
+        <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="自如寓"
+                android:textColor="@color/color_ct1_85"
+                android:textSize="@dimen/font_5"
+                android:visibility="gone" />
+
+        <LinearLayout
+                android:id="@+id/zra_back_rent_homepage"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_48"
+                android:layout_alignParentLeft="true"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+            <ImageView
+                    android:id="@+id/zra_iv_back_rent_homepage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tb_rec_title_stable"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_24"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_48"
+            android:background="@color/white"
+            android:paddingStart="@dimen/dp_16"
+            android:paddingEnd="@dimen/dp_16"
+            android:visibility="gone"
+            app:tabGravity="center"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="0dp"
+            app:tabMinWidth="@dimen/dp_88"
+            app:tabMode="scrollable"
+            app:tabRippleColor="@color/transparent"
+            app:tabSelectedTextColor="@color/color_ct1_85"
+            app:tabTextColor="@color/color_ct1_60"
+            tools:background="@color/blue"
+            tools:layout_height="@dimen/dp_24"
+            tools:visibility="visible" />
+
+</RelativeLayout>
