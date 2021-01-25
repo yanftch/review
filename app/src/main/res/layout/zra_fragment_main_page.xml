@@ -28,31 +28,20 @@
                 <RelativeLayout
                         android:id="@+id/rl_top_banner_container"
                         android:layout_width="match_parent"
-                        android:clipChildren="false"
-                        android:layout_height="wrap_content"
-                        tools:background="@color/color_5D4037">
-
-                    <!--banner模块-->
-                    <!--                    <com.yanftch.review.android.fragment.new_home.ArcLayout-->
-                    <!--                            android:layout_width="match_parent"-->
-                    <!--                            tools:visibility="gone"-->
-                    <!--                            android:layout_height="wrap_content">-->
+                        android:layout_height="wrap_content">
 
                     <com.bigkoo.convenientbanner.ConvenientBanner
                             android:id="@+id/cb_banner"
+                            tools:background="@color/color_5D4037"
                             android:layout_width="match_parent"
                             android:layout_height="200dp" />
 
-                    <!--                    </com.yanftch.review.android.fragment.new_home.ArcLayout>-->
-
-                    <!--                    <View-->
-                    <!--                            android:layout_width="100dp"-->
-                    <!--                            android:layout_height="3dp"-->
-                    <!--                            android:visibility="gone"-->
-                    <!--                            android:layout_gravity="center_horizontal|bottom"-->
-                    <!--                            android:layout_marginBottom="@dimen/dp_30"-->
-                    <!--                            android:background="@color/red"-->
-                    <!--                            android:gravity="center" />-->
+                    <View
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="192dp"
+                            android:background="@color/red"
+                            android:layout_width="@dimen/dp_100"
+                            android:layout_height="@dimen/dp_3" />
 
                     <ImageView
                             android:layout_width="match_parent"
@@ -313,8 +302,10 @@
                             android:id="@+id/tab_layout_media"
                             android:layout_width="0dp"
                             app:tabPaddingStart="0dp"
+                            app:tabPaddingTop="0dp"
+                            app:tabPaddingBottom="0dp"
                             android:layout_height="@dimen/dp_24"
-                            android:layout_gravity="center_horizontal"
+                            android:layout_gravity="center"
                             app:layout_constraintEnd_toStartOf="@id/tv_media_more"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
@@ -347,7 +338,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dp_18"
-                            android:minHeight="@dimen/dp_100"
+                            android:minHeight="140dp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/tab_layout_media"
                             tools:background="@color/color_c4"

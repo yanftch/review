@@ -604,9 +604,9 @@ public class ZraMainViewTop implements ZraMainFragmentContract.Top.View {
         mMediaFragmentList.clear();
         int size = list.size();
         // TODO:yanfeng 2021/1/12 放开下边的代码， 本次上线，只要一个Tab，为了后续兼容，所以APP 只取集合中的第一个
-//        if (size >=2) {
-//            list = list.subList(0, 1);
-//        }
+        if (size >=2) {
+            list = list.subList(0, 1);
+        }
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i) == null) continue;
             mMediaTitleList.add(list.get(i).getTitle());

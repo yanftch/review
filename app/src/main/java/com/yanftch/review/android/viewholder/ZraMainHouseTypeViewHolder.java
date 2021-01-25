@@ -1,6 +1,8 @@
 package com.yanftch.review.android.viewholder;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.text.SpannableString;
 import android.view.View;
 import android.widget.TextView;
 
@@ -9,6 +11,10 @@ import androidx.annotation.NonNull;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.yanftch.review.R;
 import com.yanftch.review.android.fragment.new_home.model.ZraRecFlowBean;
+import com.yanftch.review.android.utils.DensityUtil;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * User : yanftch
@@ -61,9 +67,30 @@ public class ZraMainHouseTypeViewHolder extends BaseCardViewHolder {
         // 压图
 
         // 房型title
-        // TODO:yanfeng 2021/1/14 换行，怎么显示左边的icon？？？
 
-        mTvTitle.setText(data.getHouseTypeName());
+        // 房型title
+        int resId = R.drawable.icon_zra_ding;
+
+        String logoTag = "pic ";
+
+        String content = logoTag + data.getHouseTypeName();
+
+        SpannableString spannableString = new SpannableString(content);
+//        ImageSpan imageSpan = new ImageSpan(mContext, resId, ImageSpan.ALIGN_BASELINE);
+//        spannableString.setSpan(imageSpan, 0, 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+////        spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#FFBA15")), 4, 4 + categoryName.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+//        mTvTitle.setText(spannableString);
+
+
+        Pattern patternLogo = Pattern.compile(logoTag);
+        Matcher matcherLogo = patternLogo.matcher(content);
+        if (matcherLogo.find()) {
+            Drawable drawable = mContext.getResources().getDrawable(R.drawable.icon_zra_ding);
+            drawable.setBounds(0, 0, DensityUtil.dip2px(mContext, 16), DensityUtil.dip2px(mContext, 15)); //自定义图片尺寸
+            spannableString.setSpan(new CustomImageSpan(drawable), matcherLogo.start(), matcherLogo.end(), SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE); //SPAN_EXCLUSIVE_EXCLUSIVE代表只对所选范围内文字生效
+            mTvTitle.setText(spannableString);
+        }
+
         mTvSubtitle.setText(data.getHouseTypeName());
         mTvAddress.setText(data.getHouseTypeName());
 

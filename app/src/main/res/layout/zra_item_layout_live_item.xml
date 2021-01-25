@@ -15,7 +15,7 @@
             android:background="@drawable/bg_rectangle_white_radius_8"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/dp_10">
+            android:paddingBottom="@dimen/dp_24">
 
         <RelativeLayout
                 android:id="@+id/rl_container_base"
@@ -104,7 +104,7 @@
                 android:layout_width="wrap_content"
                 android:gravity="center"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
                 android:textColor="@color/color_ct1_40"
                 android:lines="1"
                 android:textSize="@dimen/font_8"
@@ -116,7 +116,7 @@
                 android:id="@+id/tv_btn"
                 android:layout_width="@dimen/dp_88"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_24"
                 android:background="@drawable/bg_rectangle_ct4_radius_14"
                 android:gravity="center"
                 android:paddingTop="@dimen/dp_6"

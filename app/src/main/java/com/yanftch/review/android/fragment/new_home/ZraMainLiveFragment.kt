@@ -69,6 +69,9 @@ class ZraMainLiveFragment : Fragment() {
             e.printStackTrace()
         }
 
+        // TODO:yanfeng 2021/1/25 测试
+        mList = mList.subList(0 ,2)
+
         mLayoutInflater = LayoutInflater.from(mFragmentActivity)
     }
 
@@ -156,6 +159,7 @@ class ZraMainLiveFragment : Fragment() {
                 // TODO:yanfeng 2021/1/12 左边添加小图标  android:drawableStart="@drawable/l_time"
                 // 时间
                 mTvSubTitle?.text = bean.liveShowTime
+                mIvLiveState?.setImageResource(if (bean.isLiving) R.drawable.img_live_bg_zra_28 else R.drawable.img_notice_bg_zra_28)
 
                 if (bean.isLiving) {
                     mPvHeader?.visible = false
