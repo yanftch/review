@@ -24,7 +24,8 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/dp_4"
             android:layout_marginBottom="@dimen/dp_1"
-            app:layout_constraintBottom_toBottomOf="@id/text_view"
+            app:layout_constraintTop_toBottomOf="@id/text_view"
+            android:layout_marginTop="@dimen/dp_2"
             app:layout_constraintEnd_toEndOf="@id/text_view"
             app:layout_constraintStart_toStartOf="@id/text_view"
             tools:background="#FF961E" />

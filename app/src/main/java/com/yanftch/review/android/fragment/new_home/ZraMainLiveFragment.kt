@@ -10,10 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
-import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,7 +19,9 @@ import com.alibaba.fastjson.JSONObject
 import com.facebook.drawee.view.SimpleDraweeView
 import com.yanftch.review.R
 import com.yanftch.review.android.dialog.LoadingDialog
+import com.yanftch.review.android.fragment.DividerItemDecoration
 import com.yanftch.review.android.fragment.new_home.model.ZraLiveInfoVo
+import com.yanftch.review.android.utils.DensityUtil
 import org.jetbrains.anko.textColor
 import kotlin.random.Random
 
@@ -70,7 +69,7 @@ class ZraMainLiveFragment : Fragment() {
         }
 
         // TODO:yanfeng 2021/1/25 测试
-        mList = mList.subList(0 ,2)
+//        mList = mList.subList(2 ,3)
 
         mLayoutInflater = LayoutInflater.from(mFragmentActivity)
     }
@@ -91,10 +90,20 @@ class ZraMainLiveFragment : Fragment() {
     }
 
     fun initView(view: View) {
-        mRvList = view.findViewById(R.id.rv_live_list)
-        mRvList.layoutManager =
-            LinearLayoutManager(mFragmentActivity, LinearLayoutManager.HORIZONTAL, false)
 
+        mRvList = view.findViewById(R.id.rv_live_list)
+        if (mList.size == 2) {
+            val lp = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+            lp.rightMargin = DensityUtil.dip2px(mFragmentActivity, 16f)
+            mRvList.layoutParams = lp
+
+            mRvList.layoutManager =
+                LinearLayoutManager(mFragmentActivity, LinearLayoutManager.VERTICAL, false)
+            mRvList.addItemDecoration(DividerItemDecoration(mFragmentActivity, 10f))
+        } else {
+            mRvList.layoutManager =
+                LinearLayoutManager(mFragmentActivity, LinearLayoutManager.HORIZONTAL, false)
+        }
         mAdapter = LiveAdapter()
         mRvList.adapter = mAdapter
 
@@ -116,7 +125,8 @@ class ZraMainLiveFragment : Fragment() {
 
     inner class LiveAdapter : RecyclerView.Adapter<LiveAdapter.LiveViewHolder>() {
         private val TYPE_ITEM_ONE = 1 // 单个卡片
-        private val TYPE_ITEM_MORE = 2 // 大于1个卡片
+        private val TYPE_ITEM_TWO = 2 // 单个卡片
+        private val TYPE_ITEM_MORE = 3 // 大于1个卡片
 
         inner class LiveViewHolder(_itemView: View) : RecyclerView.ViewHolder(_itemView) {
             private var mTvName: TextView? = null
@@ -135,6 +145,7 @@ class ZraMainLiveFragment : Fragment() {
             private var mIvLiveState: ImageView? = null
             private var mFlOuterContainer: FrameLayout? = null
             private var mFlHeaderContainer: FrameLayout? = null
+//            private var mFlRootView: FrameLayout
 
             init {
                 mTvName = _itemView.findViewById(R.id.tv_name)
@@ -148,6 +159,12 @@ class ZraMainLiveFragment : Fragment() {
                 mFlOuterContainer = _itemView.findViewById(R.id.fl_container_outer)
                 mFlHeaderContainer = _itemView.findViewById(R.id.fl_header_container)
 
+//                mFlRootView = _itemView.findViewById(R.id.fl_container)
+
+//                if (mList.size == 2) {
+//                    var lp = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT)
+//                    mFlRootView.layoutParams = lp
+//                }
 
             }
 
@@ -159,7 +176,7 @@ class ZraMainLiveFragment : Fragment() {
                 // TODO:yanfeng 2021/1/12 左边添加小图标  android:drawableStart="@drawable/l_time"
                 // 时间
                 mTvSubTitle?.text = bean.liveShowTime
-                mIvLiveState?.setImageResource(if (bean.isLiving) R.drawable.img_live_bg_zra_28 else R.drawable.img_notice_bg_zra_28)
+                mIvLiveState?.setImageResource(if (bean.isLiving) R.drawable.img_live_bg_28_zra else R.drawable.img_notice_bg_28_zra)
 
                 if (bean.isLiving) {
                     mPvHeader?.visible = false
@@ -298,6 +315,14 @@ class ZraMainLiveFragment : Fragment() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LiveViewHolder {
             if (getItemViewType(viewType) == TYPE_ITEM_ONE) {
+                return LiveViewHolder(
+                    mLayoutInflater.inflate(
+                        R.layout.zra_item_layout_live_item_single,
+                        parent,
+                        false
+                    )
+                )
+            } else if (getItemViewType(viewType) == TYPE_ITEM_TWO) {
                 return LiveViewHolder(
                     mLayoutInflater.inflate(
                         R.layout.zra_item_layout_live_item_single,

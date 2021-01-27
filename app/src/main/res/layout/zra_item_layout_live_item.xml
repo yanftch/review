@@ -6,6 +6,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/dp_8"
         android:gravity="center_horizontal"
+        android:id="@+id/fl_container"
         android:orientation="vertical"
         tools:background="@color/palette_grey_7">
 
@@ -48,8 +49,8 @@
 
                 <FrameLayout
                         android:id="@+id/fl_header_container"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_width="@dimen/dp_60"
+                        android:layout_height="@dimen/dp_60">
 
                     <com.facebook.drawee.view.SimpleDraweeView
                             android:id="@+id/zra_pv_user_icon"
@@ -61,6 +62,7 @@
 
                     <ImageView
                             android:id="@+id/iv_live_state"
+                            android:src="@drawable/img_live_bg_28_zra"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom|center_horizontal" />

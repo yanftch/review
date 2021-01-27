@@ -15,7 +15,6 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/palette_grey_7"
                 android:orientation="vertical">
 
             <LinearLayout
@@ -241,41 +240,83 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <!--营销模块-->
-                <RelativeLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dp_16"
                         android:layout_marginTop="@dimen/dp_28"
                         android:layout_marginEnd="@dimen/dp_16">
 
+                    <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/margin_top"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_begin="@dimen/dp_10" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/margin_bottom"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_end="@dimen/dp_1" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/margin_bottom2"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_end="@dimen/dp_2" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/margin_left"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_begin="@dimen/dp_10" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/margin_right"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_end="@dimen/dp_10" />
+
+
                     <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
                             android:id="@+id/llv1"
-                            android:layout_marginStart="@dimen/dp_12"
-                            android:layout_marginEnd="@dimen/dp_12"
-                            android:layout_marginBottom="@dimen/dp_2"
-                            android:background="@drawable/bg_rectangle_66ff731e_radius_6"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toBottomOf="@id/margin_bottom2"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_30"
+                            android:layout_marginStart="@dimen/dp_14"
+                            android:layout_marginEnd="@dimen/dp_14"
+                            android:layout_marginBottom="@dimen/dp_6"
+                            android:background="@drawable/bg_rectangle_33ff961e_radius_6"
                             android:orientation="horizontal"
                             android:padding="@dimen/dp_8"
                             tools:background="@color/blue"
                             tools:layout_height="@dimen/dp_30" />
 
                     <LinearLayout
-                            android:layout_width="match_parent"
                             android:id="@+id/llv2"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/dp_8"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_30"
                             android:layout_marginStart="@dimen/dp_8"
                             android:layout_marginEnd="@dimen/dp_8"
-                            android:background="@drawable/bg_rectangle_66ff731e_radius_6"
+                            android:layout_marginBottom="@dimen/dp_9"
+                            android:background="@drawable/bg_rectangle_4dff961e_radius_6"
                             android:orientation="horizontal"
+                            app:layout_constraintBottom_toBottomOf="@id/margin_bottom2"
+                            app:layout_constraintStart_toStartOf="parent"
                             android:padding="@dimen/dp_8"
                             tools:background="@color/green"
                             tools:layout_height="@dimen/dp_30" />
 
                     <LinearLayout
+                            app:layout_constraintBottom_toBottomOf="@id/margin_bottom2"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
                             android:id="@+id/ll_market_container"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -286,7 +327,8 @@
                             tools:background="@color/red"
                             tools:layout_height="@dimen/dp_30" />
 
-                </RelativeLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
                 <!--多媒体找房模块-->
@@ -350,7 +392,7 @@
                 <com.google.android.material.tabs.TabLayout
                         android:id="@+id/tb_rec_title"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp_24"
+                        android:layout_height="@dimen/dp_30"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginStart="@dimen/dp_16"
                         android:layout_marginTop="@dimen/dp_36"
@@ -371,7 +413,6 @@
                         android:overScrollMode="never"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
-
 
                 <View
                         android:layout_width="match_parent"
@@ -446,7 +487,7 @@
     <com.google.android.material.tabs.TabLayout
             android:id="@+id/tb_rec_title_stable"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_24"
+            android:layout_height="@dimen/dp_30"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/dp_48"
             android:background="@color/white"
