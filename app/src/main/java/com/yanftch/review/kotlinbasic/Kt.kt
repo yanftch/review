@@ -2,6 +2,8 @@ package com.yanftch.review.kotlinbasic
 
 fun main(args: Array<String>) {
     println("Hello World")
+    println("Hello World2")
+    println("Hello World3")
 
     // 变量的数据类型
     var byte: Byte
