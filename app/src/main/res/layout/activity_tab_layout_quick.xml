@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:background="@color/color_ct1_85" />
+
+            </LinearLayout>
+
+            <View
+                    android:id="@+id/anchor_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+
+       <androidx.constraintlayout.widget.ConstraintLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+           <com.yanftch.review.android.view.TextViewLine
+                   android:layout_width="0dp"
+                   android:lines="1"
+                   android:textSize="@dimen/font_6"
+                   android:textColor="@color/color_ct4"
+                   android:ellipsize="end"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent"
+                   android:id="@+id/tv_line_view"
+                   android:layout_height="wrap_content"/>
+       </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"/>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_400"
+                    android:background="@color/color_ct4"
+                    android:gravity="center"
+                    android:text="文本1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_1" />
+
+            <View
+                    android:id="@+id/anchor_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_400"
+                    android:background="@color/color_ct3"
+                    android:gravity="center"
+                    android:text="文本2"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_1" />
+
+            <View
+                    android:id="@+id/anchor_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_400"
+                    android:background="@color/green"
+                    android:gravity="center"
+                    android:text="文本3"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_1" />
+
+            <View
+                    android:id="@+id/anchor_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_400"
+                    android:background="@color/bid_yellow"
+                    android:gravity="center"
+                    android:text="文本4"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_1" />
+
+            <View
+                    android:id="@+id/anchor_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_400"
+                    android:background="@color/color_0C3D37"
+                    android:gravity="center"
+                    android:text="文本5"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_1" />
+
+            <View
+                    android:id="@+id/anchor_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_400"
+                    android:background="@color/color_00BCD4"
+                    android:gravity="center"
+                    android:text="文本6"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_1" />
+
+            <View
+                    android:id="@+id/anchor_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_400"
+                    android:background="@color/color_4CAF50"
+                    android:gravity="center"
+                    android:text="文本7"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_1" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

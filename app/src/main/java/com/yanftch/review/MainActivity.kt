@@ -34,6 +34,7 @@ import com.yanftch.review.android.pages.tablayout_viewpager_fragment.SwitchFragm
 import com.yanftch.review.android.pages.tablayout_viewpager_fragment.TabLayoutActivity
 import com.yanftch.review.android.unit_test.UnitTestDemoActivity
 import com.yanftch.review.android.view.InputDialogFragment
+import com.yanftch.review.android.view.TextViewLine
 import com.yanftch.review.demo.ui.login.LoginActivity
 import okhttp3.OkHttpClient
 import org.jetbrains.anko.*
@@ -122,6 +123,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun generateDatas() {
         datas = ArrayList()
+        datas.add(
+            MenuItems(
+                name = "SVGA 页面",
+                clazz = SvgaActivity::class.java
+            )
+        )
+        datas.add(
+            MenuItems(
+                name = "Tablayout 快速入口 ",
+                clazz = TabLayoutQuickActivity::class.java
+            )
+        )
         datas.add(
             MenuItems(
                 name = "Diy Tablayout Page ",

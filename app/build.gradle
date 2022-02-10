@@ -123,7 +123,7 @@ dependencies {
     implementation 'com.facebook.fresco:fresco:2.3.0'
 
     implementation project(':mylibrary')
-    compile 'com.github.yyued:SVGAPlayer-Android:2.4.7'
+    compile 'com.github.yyued:SVGAPlayer-Android:2.5.14'
 
     implementation 'com.alibaba:fastjson:1.2.73'
 

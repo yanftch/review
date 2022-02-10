@@ -3,7 +3,6 @@
         xmlns:tools="http://schemas.android.com/tools"
         package="com.yanftch.review">
 
-
     <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 读写日历的权限 -->
@@ -25,10 +24,9 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-
-        <activity
-                android:name=".android.pages.tablayout_viewpager_fragment.DiyTablayoutActivity">
-        </activity>
+        <activity android:name=".android.pages.SvgaActivity"></activity>
+        <activity android:name=".android.pages.TabLayoutQuickActivity" />
+        <activity android:name=".android.pages.tablayout_viewpager_fragment.DiyTablayoutActivity" />
         <activity
                 android:name=".android.pages.NewHomeActivity"
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
