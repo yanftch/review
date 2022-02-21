@@ -7,22 +7,85 @@
         tools:context="com.yanftch.review.android.pages.ImageLoadActivity">
 
     <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="getBitmap"
-            app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:text="getBitmap"
+            android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/sdv"
             android:layout_width="120dp"
             android:layout_height="@dimen/dp_90"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn"
             tools:background="@color/palette_grey_20" />
+
+    <Space
+            android:id="@+id/s_search_stub"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_48"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sdv" />
+
+    <TextView
+            android:id="@+id/tv_price"
+            android:textSize="@dimen/font_5"
+            android:textColor="@color/color_ct1_85"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$1000"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/s_search_stub"
+            tools:text="$100" />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:textColor="@color/color_ct1_60"
+            android:text="/月起"
+            android:id="@+id/tv_price_unit"
+            app:layout_constraintStart_toEndOf="@id/tv_price"
+            android:textSize="@dimen/font_7"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_price"
+            android:layout_height="wrap_content"/>
+
+    <Space
+            android:id="@+id/s_2"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_48"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_price" />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/tv_1"
+            android:text="测试文案;"
+            app:layout_constraintEnd_toStartOf="@id/tv_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/s_2"
+            android:layout_height="wrap_content"/>
+    <TextView
+            android:layout_width="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/tv_3"
+            app:layout_constrainedWidth="true"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:id="@+id/tv_2"
+            android:text="测试文案2-00000-11111111大家好的跟进偶就个IG哦我解放军懊恼数据Gina几"
+            app:layout_constraintStart_toEndOf="@id/tv_1"
+            app:layout_constraintTop_toBottomOf="@id/s_2"
+            android:layout_height="wrap_content"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/tv_3"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="-测试文案3"
+            app:layout_constraintStart_toEndOf="@id/tv_2"
+            app:layout_constraintTop_toBottomOf="@id/s_2"
+            android:layout_height="wrap_content"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,6 +22,7 @@ import com.facebook.imagepipeline.datasource.BaseBitmapDataSubscriber;
 import com.facebook.imagepipeline.image.ImageInfo;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.yanftch.review.R;
+import com.yanftch.review.android.utils.ImageUtil;
 
 public class ImageLoadActivity extends AppCompatActivity {
     private static final String TAG = "debug_ImageLoadActivity";
@@ -30,10 +31,9 @@ public class ImageLoadActivity extends AppCompatActivity {
     private String mUrl5 = "https://image.ziroom.com/g2m3/M00/83/F0/ChAZVF-_K2qAJLTLAEwuOY9u18w434.jpg";
 
     private String mUrl2_5 = "https://image.ziroom.com/g2m3/M00/83/94/ChAZVF-_ENuAG5xdACXSGCeNAeE593.jpg";
+    private String mImageUrl = "https://static.runoob.com/images/demo/demo4.jpg";
 
-    // 4032 * 3024
-    private String mUrl = mUrl2_5;
-
+    private String mUrl = mImageUrl;
 
 
     @Override
@@ -53,7 +53,7 @@ public class ImageLoadActivity extends AppCompatActivity {
         });
 
 
-//        mSimpleDraweeView.setImageURI(mUrl5);
+//        mSimpleDraweeView.setImageURI(mUrl);
 
         ControllerListener mControllerListener = new BaseControllerListener<ImageInfo>() {
             @Override
@@ -61,25 +61,25 @@ public class ImageLoadActivity extends AppCompatActivity {
                 super.onFinalImageSet(id, imageInfo, animatable);
                 int width = imageInfo.getWidth();
                 int height = imageInfo.getHeight();
-                Log.e(TAG, "onFinalImageSet: width = " + width + ", height = " + height);
+                Log.e(TAG, "onFinalImageSet: width = " + width + ", height = " + height); // 图片的实际宽高像素大小
+
 
             }
 
         };
         DraweeController mDraweeController = Fresco.newDraweeControllerBuilder().setControllerListener(mControllerListener).setUri(mUrl).build();
 
-        mSimpleDraweeView.setController(mDraweeController);
+//        mSimpleDraweeView.setController(mDraweeController);
+        mSimpleDraweeView.setController(ImageUtil.frescoResizeController(mUrl, 960, 500));
+//        mSimpleDraweeView.setController(ImageUtil.frescoController(mUrl));
         mSimpleDraweeView.post(new Runnable() {
             @Override
             public void run() {
                 int width = mSimpleDraweeView.getWidth();
                 int height = mSimpleDraweeView.getHeight();
-                Log.e(TAG, "onCreate: width = " + width + ", height = "+ height);
-
+                Log.e(TAG, "onCreate: width = " + width + ", height = "+ height); // UI 控件的大小  360*270
             }
         });
-
-
     }
 
     private Bitmap mShareBitmap;
