@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:background="@color/color_000000_50">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent">
+
+        <ImageView
+                android:id="@+id/iv_bg_award"
+                android:layout_width="358dp"
+                android:layout_height="342dp"
+                android:src="@drawable/img_home_388"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="110dp"
+                android:text="恭喜获得"
+                android:textColor="@color/color_ct1_85"
+                android:textSize="@dimen/font_4"
+                app:layout_constraintEnd_toEndOf="@id/iv_bg_award"
+                app:layout_constraintStart_toStartOf="@id/iv_bg_award"
+                app:layout_constraintTop_toTopOf="@id/iv_bg_award" />
+
+        <View
+                android:id="@+id/v_line"
+                android:layout_width="@dimen/dp_200"
+                android:layout_height="@dimen/dp_2"
+                android:layout_marginTop="@dimen/dp_30"
+                android:background="@drawable/dotted_line_view"
+                android:layerType="software"
+                app:layout_constraintEnd_toEndOf="@id/tv_title"
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toTopOf="@id/tv_title" />
+
+        <TextView
+                android:id="@+id/tv_content_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:textColor="@color/color_ct3"
+                android:textSize="@dimen/font_3"
+                app:layout_constraintEnd_toEndOf="@id/v_line"
+                app:layout_constraintStart_toStartOf="@id/v_line"
+                app:layout_constraintTop_toTopOf="@id/v_line"
+                tools:text="房租减免优惠券" />
+
+        <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_6"
+                android:textColor="@color/color_ct3"
+                android:textSize="@dimen/font_1"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@id/tv_content_title"
+                app:layout_constraintStart_toStartOf="@id/tv_content_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_content_title"
+                tools:text="1000元" />
+
+        <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_6"
+                android:textColor="@color/color_ct1_40"
+                android:textSize="@dimen/font_5"
+                app:layout_constraintEnd_toEndOf="@id/tv_price"
+                app:layout_constraintStart_toStartOf="@id/tv_price"
+                app:layout_constraintTop_toBottomOf="@id/tv_price"
+                tools:text="有效期至2022.04.26" />
+
+        <TextView
+                android:id="@+id/tv_button"
+                android:layout_width="@dimen/dp_220"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginBottom="@dimen/dp_18"
+                android:background="@drawable/bg_rectangle_fff1c6_raidus_22dp"
+                android:gravity="center"
+                android:text="立即领取"
+                android:textColor="@color/color_ct1_85"
+                android:textSize="@dimen/font_4"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/iv_bg_award"
+                app:layout_constraintEnd_toEndOf="@id/iv_bg_award"
+                app:layout_constraintStart_toStartOf="@id/iv_bg_award" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+            android:id="@+id/iv_close_dialog"
+            android:layout_width="@dimen/dp_32"
+            android:layout_height="@dimen/dp_32"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_24"
+            android:src="@drawable/close_circle"
+            android:tint="@color/white" />
+
+
+</LinearLayout>

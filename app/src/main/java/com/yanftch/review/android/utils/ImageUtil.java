@@ -5,8 +5,11 @@
 
 package com.yanftch.review.android.utils;
 
+import android.graphics.drawable.Animatable;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.util.Log;
+
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.backends.pipeline.PipelineDraweeControllerBuilder;
 import com.facebook.drawee.controller.AbstractDraweeController;
@@ -19,9 +22,14 @@ import com.facebook.imagepipeline.common.ResizeOptions;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import com.facebook.imagepipeline.request.Postprocessor;
+import com.yanftch.review.ziroom.ui.ImageInfo;
+
+import org.jetbrains.annotations.Nullable;
+
 import java.io.File;
 
 public class ImageUtil {
+    private static final String TAG = "debug_ImageUtil";
     public ImageUtil() {
     }
 
@@ -58,6 +66,37 @@ public class ImageUtil {
         }
 
         AbstractDraweeController controller = generateController(listener, request);
+        controller.addControllerListener(new ControllerListener<ImageInfo>() {
+            @Override
+            public void onSubmit(String id, Object callerContext) {
+                Log.e(TAG, "onSubmit: ");
+            }
+
+            @Override
+            public void onFinalImageSet(String id, @Nullable ImageInfo imageInfo, @Nullable Animatable animatable) {
+                Log.e(TAG, "onFinalImageSet: 底层。。。w  " + imageInfo.getWidth() + ", h = "+ imageInfo.getHeight());
+            }
+
+            @Override
+            public void onIntermediateImageSet(String id, @Nullable ImageInfo imageInfo) {
+                Log.e(TAG, "onIntermediateImageSet: ");
+            }
+
+            @Override
+            public void onIntermediateImageFailed(String id, Throwable throwable) {
+                Log.e(TAG, "onIntermediateImageFailed: ");
+            }
+
+            @Override
+            public void onFailure(String id, Throwable throwable) {
+                Log.e(TAG, "onFailure: ");
+            }
+
+            @Override
+            public void onRelease(String id) {
+                Log.e(TAG, "onRelease: ");
+            }
+        });
         return controller;
     }
 

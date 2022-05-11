@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
@@ -80,6 +81,9 @@ class TransDialogFragment : DialogFragment() {
         val layoutParams = window?.attributes
         layoutParams?.width = width
         window?.attributes = layoutParams
+        window?.attributes?.dimAmount = 0.0f
+        window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
+        dialog?.setCanceledOnTouchOutside(true)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -113,6 +117,7 @@ class TransDialogFragment : DialogFragment() {
         mTvTitlePrePrice = view.findViewById(R.id.tv_title_pre_price)
         mTvTitleOriginalPrice = view.findViewById(R.id.tv_title_original_price)
         mCountDownView = view.findViewById(R.id.countdown_view)
+        view.findViewById<View>(R.id.iv_close_dialog).setOnClickListener { dismissAllowingStateLoss() }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

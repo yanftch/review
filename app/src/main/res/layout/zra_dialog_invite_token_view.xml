@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_44"
+        android:layout_marginRight="@dimen/dp_44"
+        android:background="@color/transparent"
+        android:orientation="vertical"
+        tools:background="@color/color_000000_50">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_24"
+            android:background="@drawable/im_bg_white_cornor_8"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+        <View
+                android:id="@+id/pv_image"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/dp_24"
+                android:layout_marginTop="@dimen/dp_24"
+                android:layout_marginEnd="@dimen/dp_24"
+                android:background="@color/red"
+                app:layout_constraintDimensionRatio="h, 3:2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_24"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_24"
+                android:gravity="center"
+                android:text="视频邀请标题"
+                android:textColor="@color/color_ct1_85"
+                android:textSize="@dimen/font_4"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pv_image" />
+
+        <ImageView
+                android:id="@+id/pv_header"
+                android:layout_width="@dimen/dp_20"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@color/green"
+                app:layout_constraintEnd_toStartOf="@id/tv_sub_title"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+        <TextView
+                android:id="@+id/tv_sub_title"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/font_5"
+                android:textColor="@color/color_ct1_60"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_8"
+                android:text="邀请人名字"
+                app:layout_constraintBottom_toBottomOf="@id/pv_header"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@id/pv_header"
+                app:layout_constraintTop_toTopOf="@id/pv_header" />
+
+
+        <TextView
+                android:layout_width="match_parent"
+                android:id="@+id/tv_open"
+                android:layout_marginStart="@dimen/dp_24"
+                android:layout_marginEnd="@dimen/dp_24"
+                android:layout_marginTop="@dimen/dp_20"
+                android:textColor="@color/color_ct2"
+                android:textSize="@dimen/font_5"
+                android:paddingTop="@dimen/dp_12"
+                android:paddingBottom="@dimen/dp_12"
+                android:background="@drawable/bg_rectangle_c4_radius_4"
+                android:text="立即打开"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pv_header"
+                android:gravity="center"
+                android:layout_height="wrap_content"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:background="@color/color_000000_50">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/im_bg_white_cornor_8"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_24">
+
+        <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color_ct1_85"
+                android:textSize="@dimen/font_3"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="口令复制" />
+
+        <TextView
+                android:id="@+id/tv_sub_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:gravity="center"
+                android:textColor="@color/color_ct1_60"
+                android:textSize="@dimen/font_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"
+                tools:text="2020年08月09日16:36:04" />
+
+        <RadioGroup
+                android:id="@+id/rg_group"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_26"
+                app:layout_constraintTop_toBottomOf="@id/tv_sub_title">
+
+<!--            <RadioButton-->
+<!--                    android:id="@+id/rb_a"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/video_rb_bg"-->
+<!--                    android:button="@null"-->
+<!--                    android:checked="false"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:textSize="@dimen/font_5"-->
+<!--                    android:lines="1"-->
+<!--                    android:paddingStart="@dimen/dp_16"-->
+<!--                    android:paddingTop="@dimen/dp_10"-->
+<!--                    android:paddingBottom="@dimen/dp_10"-->
+<!--                    android:text="选线A=及机构案件共计硅胶机构拟机加工啊改价格及嘎几个仅供"-->
+<!--                    android:textColor="@color/video_rb_tv_color" />-->
+
+<!--            <RadioButton-->
+<!--                    android:id="@+id/rb_b"-->
+<!--                    android:textSize="@dimen/font_5"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="@dimen/dp_16"-->
+<!--                    android:background="@drawable/video_rb_bg"-->
+<!--                    android:button="@null"-->
+<!--                    android:checked="false"-->
+<!--                    android:paddingStart="@dimen/dp_16"-->
+<!--                    android:paddingTop="@dimen/dp_10"-->
+<!--                    android:paddingBottom="@dimen/dp_10"-->
+<!--                    android:text="选线B"-->
+<!--                    android:textColor="@color/video_rb_tv_color" />-->
+
+        </RadioGroup>
+
+        <TextView
+                android:id="@+id/tv_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_24"
+                android:background="@drawable/bg_rectangle_cl1_12_raidus_4"
+                android:gravity="center"
+                android:paddingTop="@dimen/dp_14"
+                android:paddingBottom="@dimen/dp_14"
+                android:text="提交"
+                android:textColor="@color/color_ct1_60"
+                android:textSize="@dimen/font_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rg_group" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <ImageView
+            android:id="@+id/iv_close_dialog"
+            android:layout_width="@dimen/dp_32"
+            android:layout_height="@dimen/dp_32"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_24"
+            android:src="@drawable/close_circle"
+            android:tint="@color/white" />
+
+
+</LinearLayout>

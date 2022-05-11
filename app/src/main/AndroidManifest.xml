@@ -24,7 +24,14 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".android.pages.SvgaActivity"></activity>
+        <activity android:name=".android.pages.PictureViewActivity"></activity>
+        <activity android:name=".android.pages.ClipDataActivity" />
+        <activity android:name=".android.pages.ImageActivity" />
+        <activity android:name=".android.pages.TrasActivity" />
+        <activity android:name=".android.pages.TempJavaActivity" />
+        <activity android:name=".android.pages.TempActivity" />
+        <activity android:name=".android.pages.RecyclerViewCodeActivity" />
+        <activity android:name=".android.pages.SvgaActivity" />
         <activity android:name=".android.pages.TabLayoutQuickActivity" />
         <activity android:name=".android.pages.tablayout_viewpager_fragment.DiyTablayoutActivity" />
         <activity
