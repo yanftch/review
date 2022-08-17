@@ -3,6 +3,7 @@ package com.yanftch.review.android.pages;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,6 +15,10 @@ import android.widget.Button;
 import com.facebook.common.executors.CallerThreadExecutor;
 import com.facebook.datasource.DataSource;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.controller.BaseControllerListener;
+import com.facebook.drawee.controller.ControllerListener;
+import com.facebook.drawee.interfaces.DraweeController;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.core.ImagePipeline;
 import com.facebook.imagepipeline.datasource.BaseBitmapDataSubscriber;
 import com.facebook.imagepipeline.request.ImageRequest;
@@ -46,6 +51,8 @@ public class PictureViewActivity extends AppCompatActivity {
     private PictureView mPictureView;
     private Button mBtnGet;
 
+    private SimpleDraweeView mSimpleDraweeView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +63,11 @@ public class PictureViewActivity extends AppCompatActivity {
         Log.e(TAG, "onCreate: w120 = " + w120 + ", h90 = " + h90);
 
         mPictureView = findViewById(R.id.sdv);
+        mSimpleDraweeView = findViewById(R.id.drawee_view);
+
         mBtnGet = findViewById(R.id.btn_get);
-        loadImage3();
+        loadImage5();
+//        originalMethod();
         mBtnGet.setOnClickListener(v -> {
             // 获取 Bitmap
             getBitmapFromUrl(imageUrl, this);
@@ -66,6 +76,21 @@ public class PictureViewActivity extends AppCompatActivity {
                 Log.e(TAG, "onCreate: byteCount = " + byteCount);
             }
         });
+    }
+    private void originalMethod() {
+        ControllerListener mControllerListener = new BaseControllerListener<com.facebook.imagepipeline.image.ImageInfo>() {
+
+            @Override
+            public void onFinalImageSet(String id, com.facebook.imagepipeline.image.ImageInfo imageInfo, Animatable animatable) {
+                super.onFinalImageSet(id, imageInfo, animatable);
+                int width = imageInfo.getWidth();
+                int height = imageInfo.getHeight();
+                Log.e(TAG, "originalMethod: onFinalImageSet: 实际 width = " + width + ", height = " + height); // 图片的实际宽高像素大小
+            }
+//
+        };
+        DraweeController mDraweeController = Fresco.newDraweeControllerBuilder().setControllerListener(mControllerListener).setUri(imageUrl).build();
+        mSimpleDraweeView.setController(mDraweeController);
     }
 
     /**

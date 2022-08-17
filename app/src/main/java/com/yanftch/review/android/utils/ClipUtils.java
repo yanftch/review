@@ -3,12 +3,14 @@ package com.yanftch.review.android.utils;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.text.TextUtils;
 
 /**
-* 剪贴板工具类
-*/
+ * 剪贴板工具类
+ */
 public class ClipUtils {
     private static final int MAX_RETRY_TIME = 3;
     private static final int FIRST_TIME_DELAY = 20;// 首次等待20ms
@@ -90,13 +92,36 @@ public class ClipUtils {
     }
 
     /**
-    * 清空剪贴板
-    */
+     * 清空剪贴板
+     */
     public static void clearClipboard(Context context) {
         ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         if (clipboardManager == null) return;
+        boolean b = checkDefaultPackage(context);
+        if (b) {
+            ClipData clipData = ClipData.newPlainText(null, "");
+            clipboardManager.setPrimaryClip(clipData);
+        }
+    }
 
-        ClipData clipData = ClipData.newPlainText(null, "");
-        clipboardManager.setPrimaryClip(clipData);
+    /**
+     * 使用了getPackagesForUid返回的package[]数组的第0个package，比较这两个是否相同，所以尝试自己获取比较，
+     * 如果第0个返回的不是com.ziroom.ziroomcustomer，则 return FALSE
+     *
+     * @return 是否需要显示Notification
+     */
+    private static boolean checkDefaultPackage(final Context context) {
+        String pkgName = context.getPackageName();
+        PackageManager packageManager = context.getPackageManager();
+        try {
+            ApplicationInfo ai = packageManager.getApplicationInfo(pkgName, PackageManager.GET_META_DATA);
+            String[] packages = packageManager.getPackagesForUid(ai.uid);
+            if (packages == null) return true;
+            return TextUtils.equals(pkgName, packages[0]);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return true;
     }
 }

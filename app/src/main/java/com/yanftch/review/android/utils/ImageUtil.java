@@ -29,7 +29,7 @@ import org.jetbrains.annotations.Nullable;
 import java.io.File;
 
 public class ImageUtil {
-    private static final String TAG = "debug_ImageUtil";
+    private static final String TAG = "debug_PImageUtil";
     public ImageUtil() {
     }
 
@@ -66,20 +66,20 @@ public class ImageUtil {
         }
 
         AbstractDraweeController controller = generateController(listener, request);
-        controller.addControllerListener(new ControllerListener<ImageInfo>() {
+        controller.addControllerListener(new ControllerListener<com.facebook.imagepipeline.image.ImageInfo>() {
             @Override
             public void onSubmit(String id, Object callerContext) {
                 Log.e(TAG, "onSubmit: ");
             }
 
             @Override
-            public void onFinalImageSet(String id, @Nullable ImageInfo imageInfo, @Nullable Animatable animatable) {
+            public void onFinalImageSet(String id, @Nullable com.facebook.imagepipeline.image.ImageInfo imageInfo, @Nullable Animatable animatable) {
                 Log.e(TAG, "onFinalImageSet: 底层。。。w  " + imageInfo.getWidth() + ", h = "+ imageInfo.getHeight());
             }
 
             @Override
-            public void onIntermediateImageSet(String id, @Nullable ImageInfo imageInfo) {
-                Log.e(TAG, "onIntermediateImageSet: ");
+            public void onIntermediateImageSet(String id, @Nullable com.facebook.imagepipeline.image.ImageInfo imageInfo) {
+                Log.e(TAG, "onIntermediateImageSet: 底层");
             }
 
             @Override
@@ -108,6 +108,7 @@ public class ImageUtil {
 
     public static AbstractDraweeController generateController(ControllerListener listener, ImageRequest request) {
         AbstractDraweeController controller;
+        Log.e(TAG, "generateController: listener = " + listener);
         if (listener != null) {
             controller = ((PipelineDraweeControllerBuilder)((PipelineDraweeControllerBuilder)((PipelineDraweeControllerBuilder)Fresco.newDraweeControllerBuilder().setImageRequest(request)).setControllerListener(listener)).setAutoPlayAnimations(true)).build();
         } else {

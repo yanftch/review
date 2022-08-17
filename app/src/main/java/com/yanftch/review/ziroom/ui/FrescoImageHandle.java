@@ -411,7 +411,7 @@ public class FrescoImageHandle implements IImageHandler {
                 {
                     mImageRequestBuilder.setResizeOptions(mOptions);
                 } else {
-                    if(view.getLayoutParams() != null && view.getLayoutParams().width > 0 && view.getLayoutParams().height > 0) {
+                    if(view.getLayoutParams() != null && view.getLayoutParams().width > 0 && view.getLayoutParams().height > 0) { // w 和 h 分别是 360、270
                         mImageRequestBuilder.setResizeOptions(new ResizeOptions(view.getLayoutParams().width, view.getLayoutParams().height));
                     }
 
@@ -460,10 +460,14 @@ public class FrescoImageHandle implements IImageHandler {
         return this;
     }
 
+    private static final String TAG = "debug_FrescoImageHandle";
     private class ImageCallBack extends ImageFetchCallBack
     {
         @Override
         protected void onNewResultImpl(Bitmap bitmap) {
+            if (bitmap != null) {
+                Log.e(TAG, "onNewResultImpl: bitmap.getHeight() = " + bitmap.getHeight() + ", bitmap.getWidth() = "+ bitmap.getWidth());
+            }
             Log.i("xjq", "done");
             mImageInfo = new EncodeImageInfo();
             mImageInfo.height = bitmap.getHeight();

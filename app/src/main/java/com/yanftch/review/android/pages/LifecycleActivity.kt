@@ -42,7 +42,7 @@ class LifecycleActivity : AppCompatActivity() {
             tasks.forEach {
                 Log.e(
                     "debug_LifecycleActivity",
-                    "onCreate: ${it.topActivity.className}     ${it.baseActivity.className}"
+                    "onCreate: ${it.topActivity?.className}     ${it.baseActivity?.className}"
                 )
 
             }
