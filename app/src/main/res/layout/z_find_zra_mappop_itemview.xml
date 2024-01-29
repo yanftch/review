@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_rectangle_white_radius_8">
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/margin_top"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="@dimen/dp_12" />
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/margin_bottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="@dimen/dp_16" />
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/margin_left"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/dp_12" />
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/margin_right"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/dp_12" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_img_collection"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_rectangle_white_radius_8"
+            app:layout_constraintDimensionRatio="h,311:154"
+            app:layout_constraintEnd_toEndOf="@id/margin_right"
+            app:layout_constraintStart_toStartOf="@id/margin_left"
+            app:layout_constraintTop_toTopOf="@id/margin_top"
+            tools:background="@color/red">
+
+        <com.yanftch.review.ziroom.ui.PictureView
+                android:id="@+id/pv_map_main_img"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintDimensionRatio="h,154:203"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:roundBottomEnd="true"
+                app:roundBottomStart="true"
+                app:roundTopEnd="true"
+                app:roundTopStart="true"
+                app:roundedCornerRadius="@dimen/dp_8"
+                tools:background="@color/green" />
+
+        <com.yanftch.review.ziroom.ui.PictureView
+                android:id="@+id/pv_map_image2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/dp_6"
+                app:layout_constraintBottom_toTopOf="@id/pv_map_image3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/pv_map_main_img"
+                app:layout_constraintTop_toTopOf="parent"
+                app:roundBottomEnd="true"
+                app:roundBottomStart="true"
+                app:roundTopEnd="true"
+                app:roundTopStart="true"
+                app:roundedCornerRadius="@dimen/dp_8"
+                tools:background="@color/bid_yellow" />
+
+        <com.yanftch.review.ziroom.ui.PictureView
+                android:id="@+id/pv_map_image3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/dp_6"
+                android:layout_marginTop="@dimen/dp_6"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/pv_map_main_img"
+                app:layout_constraintTop_toBottomOf="@id/pv_map_image2"
+                app:roundBottomEnd="true"
+                app:roundBottomStart="true"
+                app:roundTopEnd="true"
+                app:roundTopStart="true"
+                app:roundedCornerRadius="@dimen/dp_8"
+                tools:background="@color/blue" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Space
+            android:id="@+id/cl_space"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="@id/margin_right"
+            app:layout_constraintStart_toStartOf="@id/margin_left"
+            app:layout_constraintTop_toBottomOf="@id/cl_img_collection" />
+
+    <TextView
+            android:id="@+id/tv_map_pro_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:textColor="@color/color_ct1_85"
+            android:textSize="@dimen/font_4"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/margin_left"
+            app:layout_constraintTop_toBottomOf="@id/cl_space"
+            tools:text="将府自如寓" />
+
+    <TextView
+            android:id="@+id/tv_map_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_6"
+            android:textColor="@color/color_ct1_85"
+            android:textSize="@dimen/font_2"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/margin_left"
+            app:layout_constraintTop_toBottomOf="@id/tv_map_pro_name"
+            tools:text="$9999" />
+
+    <TextView
+            android:id="@+id/tv_map_line_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_7"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_map_price"
+            app:layout_constraintStart_toEndOf="@id/tv_map_price"
+            tools:text="划线价"
+            tools:visibility="visible" />
+
+    <TextView
+            android:id="@+id/tv_map_price_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_ct1_60"
+            android:textSize="@dimen/font_7"
+            android:layout_marginStart="@dimen/dp_2"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_map_price"
+            app:layout_constraintStart_toEndOf="@id/tv_map_line_price"
+            tools:text="/月起" />
+
+    <LinearLayout
+            android:id="@+id/ll_map_collect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_36"
+            android:layout_marginTop="@dimen/dp_16"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@id/margin_right"
+            app:layout_constraintTop_toTopOf="@id/cl_space">
+
+        <ImageView
+                android:id="@+id/iv_map_collect"
+                android:layout_width="@dimen/dp_20"
+                android:layout_height="@dimen/dp_20"
+                android:src="@drawable/icon_unfollowed_outline_20_c1_85" />
+
+        <TextView
+                android:id="@+id/tv_map_collect_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_ct1_85"
+                android:textSize="@dimen/font_8"
+                tools:text="200人想住" />
+
+    </LinearLayout>
+
+    <com.yanftch.review.android.view.FlowLayoutLimitLine
+            android:id="@+id/fl_map_tags"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_6"
+            app:layout_constraintEnd_toEndOf="@id/margin_right"
+            app:layout_constraintStart_toStartOf="@id/margin_left"
+            app:layout_constraintTop_toBottomOf="@id/tv_map_price"
+            tools:layout_height="@dimen/dp_20" />
+
+    <ImageView
+            android:id="@+id/iv_map_subway_station_img"
+            android:layout_width="@dimen/dp_16"
+            android:layout_height="@dimen/dp_16"
+            android:src="@drawable/icon_address_12_c1_60"
+            android:tint="@color/color_ct4"
+            app:layout_constraintBottom_toBottomOf="@id/tv_map_subway_station"
+            app:layout_constraintStart_toStartOf="@id/margin_left"
+            app:layout_constraintTop_toTopOf="@id/tv_map_subway_station" />
+
+    <!--项目地址-->
+    <TextView
+            android:id="@+id/tv_map_subway_station"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_2"
+            android:layout_marginTop="@dimen/dp_12"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:lines="1"
+            android:textColor="@color/color_ct1_60"
+            android:textSize="@dimen/font_7"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="@id/margin_right"
+            app:layout_constraintStart_toEndOf="@id/iv_map_subway_station_img"
+            app:layout_constraintTop_toBottomOf="@id/fl_map_tags"
+            tools:text="距8号线金台夕照地铁站1.2km" />
+
+    <com.yanftch.review.ziroom.ui.PictureView
+            android:id="@+id/pv_map_commute_img"
+            android:layout_width="@dimen/dp_16"
+            android:layout_height="@dimen/dp_16"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/tv_map_commute_info"
+            app:layout_constraintStart_toStartOf="@id/margin_left"
+            app:layout_constraintTop_toTopOf="@id/tv_map_commute_info"
+            tools:background="@color/red"
+            tools:visibility="visible" />
+
+    <!--通勤信息-->
+    <TextView
+            android:id="@+id/tv_map_commute_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_2"
+            android:layout_marginTop="@dimen/dp_6"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:lines="1"
+            android:textColor="@color/color_ct1_60"
+            android:textSize="@dimen/font_7"
+            android:visibility="gone"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintStart_toEndOf="@id/pv_map_commute_img"
+            app:layout_constraintTop_toBottomOf="@id/tv_map_subway_station"
+            tools:text="地铁距离自如15 分钟-十几个i骄傲给哦刚开哦估计哦及嘎几个"
+            tools:visibility="visible" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

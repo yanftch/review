@@ -10,10 +10,12 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 
 public class MyApp extends Application {
     private static final String TAG = "debug_MyApp";
+    public static Application instance;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
         Fresco.initialize(this);
 
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {

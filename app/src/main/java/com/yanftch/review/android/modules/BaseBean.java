@@ -1,9 +1,9 @@
 package com.yanftch.review.android.modules;
 
-public class BaseBean<T> {
+public class BaseBean {
     private String code;
     private String message;
-    private T data;
+    private FindZraMapBaseBean data;
 
     public String getCode() {
         return code;
@@ -21,11 +21,11 @@ public class BaseBean<T> {
         this.message = message;
     }
 
-    public T getData() {
+    public FindZraMapBaseBean getData() {
         return data;
     }
 
-    public void setData(T data) {
+    public void setData(FindZraMapBaseBean data) {
         this.data = data;
     }
 }

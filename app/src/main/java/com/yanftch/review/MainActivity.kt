@@ -30,18 +30,18 @@ import com.yanftch.review.android.modules.MenuItems
 import com.yanftch.review.android.modules.PriceDialogModel
 import com.yanftch.review.android.pages.*
 import com.yanftch.review.android.pages.douyin.Page2DouYinActivity
+import com.yanftch.review.android.pages.page1.SchemeOpenPageActivity
 import com.yanftch.review.android.pages.smartrefreshlayout.SmartActivity1
 import com.yanftch.review.android.pages.smartrefreshlayout.SmartActivity2
 import com.yanftch.review.android.pages.tablayout_viewpager_fragment.DiyTablayoutActivity
 import com.yanftch.review.android.pages.tablayout_viewpager_fragment.SwitchFragmentActivity
 import com.yanftch.review.android.pages.tablayout_viewpager_fragment.TabLayoutActivity
+import com.yanftch.review.android.pages.two_tab.TwoTabActivity
+import com.yanftch.review.android.pages.vp2.Vp2BannerActivity
 import com.yanftch.review.android.unit_test.UnitTestDemoActivity
-import com.yanftch.review.android.view.InputDialogFragment
-import com.yanftch.review.android.view.TextViewLine
 import com.yanftch.review.demo.ui.login.LoginActivity
 import okhttp3.OkHttpClient
 import org.jetbrains.anko.*
-import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.sdk15.listeners.onClick
 import java.util.*
 import kotlin.collections.ArrayList
@@ -126,6 +126,30 @@ class MainActivity : AppCompatActivity() {
 
     private fun generateDatas() {
         datas = ArrayList()
+        datas.add(
+            MenuItems(
+                name = "scheme打开详情页",
+                clazz = SchemeOpenPageActivity::class.java
+            )
+        )
+        datas.add(
+            MenuItems(
+                name = "VP2+transform的Banner",
+                clazz = Vp2BannerActivity::class.java
+            )
+        )
+        datas.add(
+            MenuItems(
+                name = "DIY 视图",
+                clazz = DiyMainActivity::class.java
+            )
+        )
+        datas.add(
+            MenuItems(
+                name = "二级tab联动",
+                clazz = TwoTabActivity::class.java
+            )
+        )
         datas.add(
             MenuItems(
                 name = "PictureView 实践",
@@ -487,7 +511,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                recyclerView = recyclerView().lparams(matchParent, matchParent)
+                recyclerView = recyclerView.lparams(matchParent, matchParent)
             }
         }.view
 

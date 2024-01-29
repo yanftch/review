@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".android.pages.DiyMainActivity">
+
+
+    <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:showText="true"
+            android:id="@+id/sw_view"
+            android:switchMinWidth="60dp"
+            android:switchTextAppearance="@style/SwitchTheme"
+            android:textOff="房型"
+            android:textOn="公寓"
+            android:thumb="@drawable/thumb"
+            android:track="@drawable/track" />
+
+    <com.yanftch.review.android.view.DiySwitchView
+            android:layout_width="wrap_content"
+            android:id="@+id/diy_switch_view"
+            android:layout_height="wrap_content"/>
+
+</LinearLayout>

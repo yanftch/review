@@ -15,13 +15,23 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:background="@color/palette_grey_20" />
 
+    <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/drawee_view"
+            android:layout_width="120dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="@dimen/dp_20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sdv"
+            tools:background="@color/palette_grey_20" />
+
     <Button
             android:id="@+id/btn_get"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAllCaps="false"
             android:text="获取 bitmap"
+            android:textAllCaps="false"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sdv" />
+            app:layout_constraintTop_toBottomOf="@id/drawee_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

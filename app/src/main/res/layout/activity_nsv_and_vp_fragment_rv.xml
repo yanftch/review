@@ -5,24 +5,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".android.pages.ClipDataActivity">
+        tools:context=".android.pages.page1.SchemeOpenPageActivity">
 
     <Button
-            android:id="@+id/btn_set"
+            android:id="@+id/btn1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="复制" />
+            android:text="房源详情页" />
 
     <Button
-            android:id="@+id/btn_get"
+            android:id="@+id/btn2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="获取剪贴板内容" />
-
-    <LinearLayout
-            android:orientation="vertical"
+            android:text="房源详情页 包名+类名" />
+    <Button
+            android:id="@+id/btn3"
             android:layout_width="match_parent"
-            android:id="@+id/ll_container"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="H5交互" />
+
+
 
 </LinearLayout>

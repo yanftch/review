@@ -24,7 +24,11 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".android.pages.PictureViewActivity"></activity>
+        <activity android:name=".android.pages.page1.SchemeOpenPageActivity"></activity>
+        <activity android:name=".android.pages.vp2.Vp2BannerActivity" />
+        <activity android:name=".android.pages.DiyMainActivity" />
+        <activity android:name=".android.pages.two_tab.TwoTabActivity" />
+        <activity android:name=".android.pages.PictureViewActivity" />
         <activity android:name=".android.pages.ClipDataActivity" />
         <activity android:name=".android.pages.ImageActivity" />
         <activity android:name=".android.pages.TrasActivity" />
