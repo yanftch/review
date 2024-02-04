@@ -96,6 +96,7 @@
         <activity android:name=".android.pages.AccessibilityServiceActivity" />
         <activity
                 android:name=".MainActivity"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"
                 android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
