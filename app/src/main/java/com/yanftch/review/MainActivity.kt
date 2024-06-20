@@ -9,9 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.yanftch.review.activity.EventActivity
-import com.yanftch.review.activity.EventCase1Activity
-import com.yanftch.review.activity.TextSwitcherActivity
+import com.yanftch.review.android.activity.EventActivity
+import com.yanftch.review.android.activity.EventCase1Activity
+import com.yanftch.review.android.activity.TextSwitcherActivity
 import com.yanftch.review.bean.MenuItems
 
 class MainActivity : AppCompatActivity() {

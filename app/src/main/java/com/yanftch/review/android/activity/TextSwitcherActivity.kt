@@ -1,4 +1,4 @@
-package com.yanftch.review.activity
+package com.yanftch.review.android.activity
 
 
 import android.os.Bundle

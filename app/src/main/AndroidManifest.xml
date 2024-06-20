@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".MyApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,13 +14,13 @@
         android:theme="@style/Theme.Review"
         tools:targetApi="31">
         <activity
-            android:name=".activity.EventCase1Activity"
+            android:name=".android.activity.EventCase1Activity"
             android:exported="false" />
         <activity
-            android:name=".activity.TextSwitcherActivity"
+            android:name=".android.activity.TextSwitcherActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.EventActivity"
+            android:name=".android.activity.EventActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

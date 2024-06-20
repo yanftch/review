@@ -1,4 +1,4 @@
-package com.yanftch.review.widget
+package com.yanftch.review.android.widget
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
@@ -9,7 +9,7 @@ import android.view.MotionEvent
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import com.yanftch.review.R
-import com.yanftch.review.utils.getEventName
+import com.yanftch.review.android.utils.getEventName
 
 /**
  * 自定义View，按下缩小抬起手指恢复原状

@@ -1,0 +1,14 @@
+首先，定义一个抽象的价格计算的接口，命名为 CalculateStrategy；
+对于每一种出行方式(策略)都有自己独立的计算策略类，这些策略实现了 上述接口；
+初始情况，我只创建了公交和地铁的策略类：BusStrategy 和 SubwayStrategy，实现上述接口，然后重写方法实现自己的价格计算方式；
+
+接下来创建 Context 角色的类，这里将它命名为 TraficCalculator.
+提供对外的设置具体策略的方法，然后提供一个计算价格的方法。
+
+源码中：
+ListAdapter 是一个接口，ArrayAdapter 和 BaseAdapter 是它的一个实现类。
+对比文章开始给出的 策略模式 UML 图，可以发现 ListAdapter 就是 strategy 接口，ArrayAdpater 等就是具体的实现类，
+而在 ListView 中引用的是 接口 ListAdapter，可以证实这就是一个 策略模式 的使用。
+
+
+

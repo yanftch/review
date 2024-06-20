@@ -1,4 +1,4 @@
-package com.yanftch.review.utils
+package com.yanftch.review.android.utils
 
 import android.view.MotionEvent
 

@@ -1,4 +1,4 @@
-package com.yanftch.review.activity
+package com.yanftch.review.android.activity
 
 import android.os.Bundle
 import android.util.Log
@@ -10,9 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.yanftch.review.R
-import com.yanftch.review.utils.getEventName
-import com.yanftch.review.widget.ChildView
-import com.yanftch.review.widget.ParentViewGroup
+import com.yanftch.review.android.utils.getEventName
+import com.yanftch.review.android.widget.ChildView
+import com.yanftch.review.android.widget.ParentViewGroup
 
 class EventActivity : AppCompatActivity() {
     private val TAG = "debug_EventActivity"
