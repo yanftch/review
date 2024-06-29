@@ -1,5 +1,7 @@
 package com.yanftch.review.algorithm;
 
+import java.util.Arrays;
+
 public class Search {
     static int[] baseArray = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 22, 33, 44, 55, 66, 77, 88, 99, 100}; // 20个数
     static int[] base1 = {21, 1, 56, 2, 34, 3, 45, 4, 12, 5, 22, 6, 55, 7, 78, 8, 9, 11, 33, 92, 44, 66, 31, 77, 109, 88, 15, 99, 200, 100}; // 30个数
@@ -7,6 +9,12 @@ public class Search {
     public static void main(String[] args) {
         System.out.println("折半查找：" + binarySearch(baseArray, 44));
 //        System.out.println("插值查找：" + Insert_Search(baseArray, 44));
+        b1();
+    }
+
+    private static void b1() {
+        int i = Arrays.binarySearch(baseArray, 3);
+        System.out.println(i);
     }
 
     /**
