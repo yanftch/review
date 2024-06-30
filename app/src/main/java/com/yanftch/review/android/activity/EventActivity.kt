@@ -23,6 +23,12 @@ class EventActivity : AppCompatActivity() {
         setContentView(R.layout.activity_event)
         parentViewGroup = findViewById(R.id.parent)
         childView = findViewById(R.id.child)
+        findViewById<View>(R.id.btn1).setOnClickListener {
+            childView.requestLayout()
+        }
+        findViewById<View>(R.id.btn2).setOnClickListener {
+            childView.invalidate()
+        }
 //        childView.setOnClickListener {
 //            Log.e(TAG, "onCreate: onClick...")
 //        }

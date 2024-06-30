@@ -7,21 +7,37 @@
     android:layout_height="match_parent"
     tools:context=".android.activity.EventActivity">
 
-    <com.yanftch.review.widget.ParentViewGroup
+    <com.yanftch.review.android.widget.ParentViewGroup
         android:layout_width="400dp"
         android:id="@+id/parent"
         android:layout_height="400dp"
         android:layout_gravity="center"
         android:background="@color/color_c7">
 
-        <com.yanftch.review.widget.ChildView
+        <com.yanftch.review.android.widget.ChildView
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:id="@+id/child"
             android:layout_gravity="center"
             android:background="@color/color_c6" />
 
-    </com.yanftch.review.widget.ParentViewGroup>
+    </com.yanftch.review.android.widget.ParentViewGroup>
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="match_parent"
+            android:text="requestLayout"
+            android:id="@+id/btn1"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:layout_width="match_parent"
+            android:text="invalidate"
+            android:id="@+id/btn2"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
 </FrameLayout>
