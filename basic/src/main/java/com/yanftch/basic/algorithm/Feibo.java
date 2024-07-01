@@ -1,4 +1,4 @@
-package com.yanftch.review.algorithm;
+package com.yanftch.basic.algorithm;
 
 public class Feibo {
     public static void main(String[] args) {

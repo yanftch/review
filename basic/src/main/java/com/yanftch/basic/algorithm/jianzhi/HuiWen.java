@@ -1,4 +1,4 @@
-package com.yanftch.review.algorithm.jianzhi;
+package com.yanftch.basic.algorithm.jianzhi;
 
 /**
  * User : yanftch

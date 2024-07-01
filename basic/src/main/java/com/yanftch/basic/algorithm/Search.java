@@ -1,4 +1,4 @@
-package com.yanftch.review.algorithm;
+package com.yanftch.basic.algorithm;
 
 import java.util.Arrays;
 

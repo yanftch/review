@@ -1,6 +1,5 @@
-package com.yanftch.review.algorithm;
+package com.yanftch.basic.algorithm;
 
-import androidx.annotation.NonNull;
 
 /**
  * User : yanftch
@@ -63,7 +62,6 @@ public class NodeListReverse {
             return this;
         }
 
-        @NonNull
         @Override
         public String toString() {
             return "data=" + data + "-->" + next;
