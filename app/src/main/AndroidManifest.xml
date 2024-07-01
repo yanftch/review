@@ -31,6 +31,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+
+        <provider
+            android:name=".MyContentProvider"
+            android:authorities="${applicationId}.MyContentProvider" />
     </application>
+
+
 
 </manifest>
