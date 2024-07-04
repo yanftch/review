@@ -6,6 +6,8 @@ import java.util.Map;
 
 /**
  * 热题100道
+ * 1.两数之和 {@link #twoSumBetter(int[], int)} ()}
+ * 2.
  */
 public class Hot100 {
     public static void main(String[] args) throws Exception {

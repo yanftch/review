@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.work.OneTimeWorkRequest
 import com.yanftch.review.android.activity.EventActivity
 import com.yanftch.review.android.activity.EventCase1Activity
 import com.yanftch.review.android.activity.TextSwitcherActivity
@@ -28,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.rv)
         recyclerView.adapter = RvAdapter()
         recyclerView.layoutManager = lm
+        val intent = Intent()
+        val bundle = Bundle()
     }
 
     private fun generateDatas() {
