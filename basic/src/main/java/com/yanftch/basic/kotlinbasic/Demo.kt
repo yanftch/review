@@ -6,6 +6,15 @@ object Demo {
         return@lazy "1"
     }
 
+    @JvmStatic
+    fun main(args: Array<String>) {
+        var list: ArrayList<String> = ArrayList<String>()
+        list.add("A")
+        list.add("B")
+        list.add("C")
+        val result = list.joinToString(separator = "|")
+        println("result = " + result)
+    }
 
 
 //    fun method1() {
