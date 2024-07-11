@@ -1,4 +1,4 @@
-package com.yanftch.basic.javabasic.leetcode;
+package com.yanftch.basic.java_basic.leetcode;
 
 /**
  *

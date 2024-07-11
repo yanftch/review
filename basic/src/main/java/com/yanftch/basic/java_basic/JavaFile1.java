@@ -1,8 +1,8 @@
-package com.yanftch.basic.javabasic;
+package com.yanftch.basic.java_basic;
 
-import com.yanftch.basic.javabasic.demo.Action;
-import com.yanftch.basic.javabasic.demo.Dog;
-import com.yanftch.basic.javabasic.demo.Animal;
+import com.yanftch.basic.java_basic.demo.Action;
+import com.yanftch.basic.java_basic.demo.Dog;
+import com.yanftch.basic.java_basic.demo.Animal;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,9 +11,24 @@ import java.util.List;
 import java.util.Map;
 
 
-public class Main {
+public class JavaFile1 {
 
     public static void main(String[] args) {
+        ArrayList<String> arrayList1 = new ArrayList<>();
+        LinkedList<String> linkedList1 = new LinkedList<>();
+        for (int i = 0; i < 10000; i++) {
+            arrayList1.add("arr-item" + i);
+            linkedList1.add("link-item" + i);
+        }
+        long arrTimeStart = System.currentTimeMillis();
+        arrayList1.remove(0);
+        System.out.println("ArrayList移除第一个元素耗时：" + (System.currentTimeMillis() - arrTimeStart));
+//        linkedList1.remove(0);
+//        System.out.println("LinkedList移除第一个元素耗时：" + (System.currentTimeMillis() - arrTimeStart));
+
+
+
+
 
         List<String> list = new ArrayList<>(100);
 //        list.add("0");

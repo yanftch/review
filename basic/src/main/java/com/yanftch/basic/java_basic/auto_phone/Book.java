@@ -1,4 +1,4 @@
-package com.yanftch.basic.javabasic.auto_phone;//package com.yanftch.review.javabasic.auto_phone;
+package com.yanftch.basic.java_basic.auto_phone;//package com.yanftch.review.javabasic.auto_phone;
 //
 //public class Book {
 //    private int bookId;

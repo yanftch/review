@@ -1,4 +1,4 @@
-package com.yanftch.basic.javabasic.demo;
+package com.yanftch.basic.java_basic.demo;
 
 public class Action<T> {
     private T item;

@@ -1,4 +1,4 @@
-package com.yanftch.basic.javabasic;
+package com.yanftch.basic.java_basic;
 
 /**
  * User : yanftch

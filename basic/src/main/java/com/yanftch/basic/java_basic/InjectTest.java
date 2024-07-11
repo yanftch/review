@@ -1,4 +1,4 @@
-package com.yanftch.basic.javabasic;//package com.yanftch.review.javabasic;
+package com.yanftch.basic.java_basic;//package com.yanftch.review.javabasic;
 //
 //import com.alibaba.fastjson.asm.ClassReader;
 //

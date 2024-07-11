@@ -1,4 +1,4 @@
-package com.yanftch.basic.javabasic.auto_phone;//package auto_phone;
+package com.yanftch.basic.java_basic.auto_phone;//package auto_phone;
 //
 //import java.io.FileOutputStream;
 //import java.io.OutputStream;
