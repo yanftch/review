@@ -9,9 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.work.OneTimeWorkRequest
 import com.yanftch.review.android.activity.EventActivity
 import com.yanftch.review.android.activity.EventCase1Activity
+import com.yanftch.review.android.activity.LeakActivity
 import com.yanftch.review.android.activity.TextSwitcherActivity
 import com.yanftch.review.bean.MenuItems
 
@@ -38,6 +38,11 @@ class MainActivity : AppCompatActivity() {
         datas.apply {
             add(
                 MenuItems(
+                    name = "内存泄漏的页面", highlight = false, clazz = LeakActivity::class.java
+                )
+            )
+            add(
+                MenuItems(
                     name = "事件分发", highlight = true, clazz = EventActivity::class.java
                 )
             )
@@ -57,7 +62,6 @@ class MainActivity : AppCompatActivity() {
                 )
             )
         }
-
     }
 
     inner class RvAdapter() : RecyclerView.Adapter<RvAdapter.RvViewHolder>() {
