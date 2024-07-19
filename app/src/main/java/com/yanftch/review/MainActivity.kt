@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yanftch.review.android.activity.EventActivity
 import com.yanftch.review.android.activity.EventCase1Activity
 import com.yanftch.review.android.activity.LeakActivity
+import com.yanftch.review.android.activity.MemorySharkActivity
 import com.yanftch.review.android.activity.TextSwitcherActivity
 import com.yanftch.review.bean.MenuItems
 
@@ -38,12 +39,17 @@ class MainActivity : AppCompatActivity() {
         datas.apply {
             add(
                 MenuItems(
+                    name = "内存抖动页面", highlight = false, clazz = MemorySharkActivity::class.java
+                )
+            )
+            add(
+                MenuItems(
                     name = "内存泄漏的页面", highlight = false, clazz = LeakActivity::class.java
                 )
             )
             add(
                 MenuItems(
-                    name = "事件分发", highlight = true, clazz = EventActivity::class.java
+                    name = "事件分发", highlight = false, clazz = EventActivity::class.java
                 )
             )
             add(
