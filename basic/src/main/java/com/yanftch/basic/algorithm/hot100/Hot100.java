@@ -1,8 +1,12 @@
 package com.yanftch.basic.algorithm.hot100;
 
+import com.yanftch.basic.algorithm.jianzhi.ListNode;
+
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 热题100道
@@ -16,6 +20,8 @@ import java.util.Map;
  * # 二分查找
  * 35. 搜索插入位置 {@link #searchInsert(int[], int)}
  * 34. 在排序数组中查找元素的第一个和最后一个位置 {@link #searchRange(int[], int)}
+ * 206. 反转链表 {@link #reverseList(ListNode)}
+ * 160. 相交链表 {@link #getIntersectionNode(ListNode, ListNode)}
  */
 public class Hot100 {
     public static void main(String[] args) throws Exception {
@@ -185,6 +191,80 @@ public class Hot100 {
             }
         }
         return ans;
+    }
+
+    /**
+     *
+     * 206.反转链表
+     *
+     * 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
+     *
+     * 示例：
+     * 输入：head = [1,2,3,4,5]
+     * 输出：[5,4,3,2,1]
+     *
+     * 解题思路>>>
+     *
+     *
+     */
+    private static ListNode reverseList(ListNode head) {
+        ListNode pre = null;
+        ListNode cur = head;
+        while (cur != null) {
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
+    }
+
+    public static ListNode reverseListDigui(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode newHead = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newHead;
+    }
+    
+    /**
+    * 206. 相交链表
+     * 给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。如果两个链表没有交点，返回 null 。
+     *
+     * 解题思路>>>
+     * 判断两个链表是否相交，可以使用哈希集合存储链表节点。
+     * 首先遍历链表 headA，并将链表 headA 中的每个节点加入哈希集合中。然后遍历链表 headB，对于遍历到的每个节点，判断该节点是否在哈希集合中：
+     * 如果当前节点不在哈希集合中，则继续遍历下一个节点；
+     * 如果当前节点在哈希集合中，则后面的节点都在哈希集合中，即从当前节点开始的所有节点都在两个链表的相交部分，因此在链表 headB 中遍历到的第一个在哈希集合中的节点就是两个链表相交的节点，返回该节点。
+     * 如果链表 headB 中的所有节点都不在哈希集合中，则两个链表不相交，返回 null。
+    */
+    public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        Set<ListNode> set = new HashSet<>();
+        while (headA != null) {
+            set.add(headA);
+            headA = headA.next;
+        }
+        while (headB != null) {
+            if (set.contains(headB)) {
+                return headB;
+            }
+            headB = headB.next;
+        }
+        return null;
+    }
+
+    public ListNode getIntersectionNode2(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) {
+            return null;
+        }
+        ListNode pA = headA, pB = headB;
+        while (pA != pB) {
+            pA = pA == null ? headB : pA.next;
+            pB = pB == null ? headA : pB.next;
+        }
+        return pA;
     }
 
 

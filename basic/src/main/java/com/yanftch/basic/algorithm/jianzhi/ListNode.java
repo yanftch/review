@@ -7,8 +7,8 @@ package com.yanftch.basic.algorithm.jianzhi;
  * Desc : 链表的结点类
  */
 public class ListNode {
-    int data;
-    ListNode next;
+    public int data;
+    public ListNode next;
 
     public ListNode(int data) {
         this.data = data;
